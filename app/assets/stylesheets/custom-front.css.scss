@@ -1,0 +1,31 @@
+$btn-primary-bg: #2e8300;
+$link-color: #000cac;
+
+#boxes {
+	width: 1448px;
+  position:absolute;
+  top:100px;
+  left:50%;
+  margin-left:-724px; /* half of the width */
+  height:500px;
+}
+
+.head {
+	display: inline-block;
+	width: 480px;
+	height: 480px;
+	text-align: center;
+}
+
+.head img {
+	display: block;
+	margin: 0 auto;
+}
+
+.head .btn {
+	border: none;
+}
+
+
+
+@import 'bootstrap';
