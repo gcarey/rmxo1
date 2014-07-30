@@ -28,6 +28,7 @@ gem 'spring',        group: :development
 
 # ADDED BY G
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'devise', '~> 3.1.0.rc2'
 
 group :development, :test do 
 	gem 'sqlite3'
