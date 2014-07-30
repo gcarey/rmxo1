@@ -1,7 +1,7 @@
 $btn-primary-bg: #2e8300;
 $link-color: #000cac;
 
-#boxes {
+#boxes-container {
 	width: 1448px;
   position:absolute;
   top:100px;
@@ -10,11 +10,16 @@ $link-color: #000cac;
   height:500px;
 }
 
+.boxes {
+	float: left;
+}
+
 .head {
 	display: inline-block;
 	width: 480px;
 	height: 480px;
 	text-align: center;
+	float: left;
 }
 
 .head img {
