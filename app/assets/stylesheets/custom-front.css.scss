@@ -1,6 +1,11 @@
 $btn-primary-bg: #2e8300;
 $link-color: #000cac;
 
+#front h2, #front h3, #front p, #front a {
+	font-family: 'Muli', sans-serif;
+	font-weight: 300;
+}
+
 #boxes-container {
 	width: 1448px;
   position:absolute;
@@ -19,17 +24,27 @@ $link-color: #000cac;
 	width: 480px;
 	height: 480px;
 	text-align: center;
+	padding: 154px 0 0 0;
 	float: left;
 }
 
-.head img {
-	display: block;
-	margin: 0 auto;
-}
+	.head img {
+		display: block;
+		margin: 0 auto;
+	}
 
-.head .btn {
-	border: none;
-}
+	.head h2 {
+		font-size: 20px;
+		margin-top: 12px;
+	}
+
+	.head .btn {
+		border: none;
+		padding: 7px 30px;
+		margin: 25px 0 10px;
+		font-size: 16px;
+		color: white;
+	}
 
 
 
