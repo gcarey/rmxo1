@@ -1,12 +1,8 @@
 $btn-primary-bg: #2e8300;
 $link-color: #000cac;
+$font-family-sans-serif: 'Muli', sans-serif;
 
 
-
-#front h2, #front h3, #front p, #front a, .userform .btn, .userform label {
-	font-family: 'Muli', sans-serif;
-	font-weight: 300;
-}
 
 #boxes-container {
 	width: 1448px;
@@ -81,7 +77,7 @@ $link-color: #000cac;
 
 	.userform .form-control {
 		height: 40px;
-		padding: 6px 16px;
+		padding: 8px 16px 6px;
 	}
 
 	.userform .btn {

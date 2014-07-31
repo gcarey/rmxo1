@@ -1,5 +1,13 @@
-$brand-primary: #ff6600;
-$btn-success-bg: #2e8300;
+$body-bg: #f4f4f4;
+$font-family-sans-serif: 'Muli', sans-serif;
+$navbar-height: 60px;
+$navbar-default-bg: white;
 $link-color: #000cac;
+$btn-primary-bg: #ff6600;
+$btn-success-bg: #2e8300;
+
+.navbar .logo {
+	margin: 16px 10px 0 0;
+}
 
 @import 'bootstrap';
