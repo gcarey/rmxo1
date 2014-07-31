@@ -10,4 +10,8 @@ class UsersController < ApplicationController
   		@user = current_user
 		end
 	end
+
+	def create
+	  @user = User.create(user_params)
+	end
 end

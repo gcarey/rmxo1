@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  has_attached_file :avatar, :styles => { :medium => "190x190>", :thumb => "45x45>" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 end
