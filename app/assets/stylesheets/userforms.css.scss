@@ -1,0 +1,57 @@
+.userform a, .userform .btn, .userform p, .userform h1, .userform h2, .userform label {
+	font-family: 'Muli', sans-serif;
+}
+
+.userforms-container {
+	width: 960px;
+	margin: 100px auto 0;
+  height: 480px;
+}
+
+.userform {
+	display: inline-block;
+	width: 480px;
+	height: 480px;
+	text-align: center;
+	padding: 55px 100px 5px;
+	float: left;
+}
+
+	.userform .logotype {
+		border-bottom: 1px solid #bcbcbc;
+		padding: 0 20px 5px;
+	}
+
+	.userform h2 {
+		font-weight: 400;
+		margin: 8px 0 15px;
+	}
+
+	.userform a, .userform .btn, .userform p, .userform label {
+		font-weight: 300;
+	}
+
+	.userform p {
+		font-size: 12px;
+	}
+
+	.userform .form-control {
+		height: 40px;
+		padding: 6px 16px;
+	}
+
+	.userform .btn {
+		border: none;
+		padding: 7px 30px;
+		margin: 10px 0 0;
+		font-size: 16px;
+		color: white;
+	}
+
+	.userform-group {
+		height: 50px
+	}
+
+.boxes {
+	float: left;
+}
