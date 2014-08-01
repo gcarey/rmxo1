@@ -6,8 +6,11 @@ $brand-primary: #ff6600;
 $link-color: #000cac;
 $btn-success-bg: #2e8300;
 
+body, html {
+  height: 100%;
+}
+
 body {
-	height: 100%;
 	padding-bottom: 70px;
 }
 
@@ -31,6 +34,7 @@ body {
 	padding: 50px;
 	text-align: center;
 	background-color: #f0f0f0;
+	height: 100%;
 }
 
 .avatar {
