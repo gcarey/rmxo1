@@ -8,7 +8,7 @@
 	<ul>
 		<% @user.friends.each do |friend| %>
 			<li>
-	      <%=h friend.email %>
+	      <%= friend.email %><%= link_to "remove", friendship_path(:id => friend), :method => :delete %>
 	    </li>
 	  <% end %>
 	</ul>
@@ -17,7 +17,9 @@
 	<ul>
 		<% @user.requested_friendships.each do |request| %>
 			<li>
-	      <%=h request.email %> <%= link_to "Accept", friendship_path(:id => request), :method => "put" %>
+	      <%= request.email %> 
+	      <%= link_to "Accept", friendship_path(:id => request), :method => "put" %> 
+	      <%= link_to "Decline", friendship_path(:id => request), :method => :delete %>
 	    </li>
 	  <% end %>
 	</ul>

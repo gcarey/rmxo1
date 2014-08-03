@@ -28,9 +28,9 @@ class FriendshipsController < ApplicationController
   # DELETE /friendships/1
   # DELETE /friendships/1.json
   def destroy
-    @friendship = current_user.friendships.find(params[:id])
+    @friendship = Friendship.where(friend_id: [current_user, params[:id]]).where(user_id: [current_user, params[:id]]).last
     @friendship.destroy
     flash[:notice] = "Removed friendship."
-    redirect_to current_user
+    redirect_to :back
   end
 end
