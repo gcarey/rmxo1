@@ -1,4 +1,14 @@
 <div class="profile-column">
 	<%= image_tag @user.avatar.url(:medium), class: "avatar" %>
 	<h3><%= @user.first_name %> <%= @user.last_name %></h3>
+	<%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
+
+	<h2>Friends</h2>
+	<ul>
+		<% @user.friendlist.each do |friend| %>
+			<li>
+	      <%=h friend.email %>
+	    </li>
+	  <% end %>
+	</ul>
 </div>
