@@ -1,13 +1,23 @@
 <div class="profile-column">
 	<%= image_tag @user.avatar.url(:medium), class: "avatar" %>
 	<h3><%= @user.first_name %> <%= @user.last_name %></h3>
+
 	<%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
 
-	<h2>Friends</h2>
+	<h4>Friends</h4>
 	<ul>
-		<% @user.friendlist.each do |friend| %>
+		<% @user.friends.each do |friend| %>
 			<li>
 	      <%=h friend.email %>
+	    </li>
+	  <% end %>
+	</ul>
+
+	<h4>Friend Requests</h4>
+	<ul>
+		<% @user.requested_friendships.each do |request| %>
+			<li>
+	      <%=h request.email %> <%= link_to "Accept", friendship_path(:id => request), :method => "put" %>
 	    </li>
 	  <% end %>
 	</ul>

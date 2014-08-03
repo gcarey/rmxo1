@@ -13,11 +13,13 @@ class User < ActiveRecord::Base
   has_many :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 
-	has_many :friends, :through => :friendships
-	has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  has_many :direct_friends, -> { where(friendships: { approved: true}) }, :through => :friendships, :source => :friend
+  has_many :inverse_friends, -> { where(friendships: { approved: true}) }, :through => :inverse_friendships, :source => :user
+  has_many :pending_friends, -> { where(friendships: { approved: false}) }, :through => :friendships, :source => :friend
+  has_many :requested_friendships, -> { where(friendships: { approved: false}) }, :through => :inverse_friendships, :source => :user
 
 
-	def friendlist
-    friends | inverse_friends
+	def friends
+    direct_friends | inverse_friends
   end
 end
