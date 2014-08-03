@@ -11,15 +11,15 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   has_many :friendships
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :passive_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 
-  has_many :direct_friends, -> { where(friendships: { approved: true}) }, :through => :friendships, :source => :friend
-  has_many :inverse_friends, -> { where(friendships: { approved: true}) }, :through => :inverse_friendships, :source => :user
+  has_many :active_friends, -> { where(friendships: { approved: true}) }, :through => :friendships, :source => :friend
+  has_many :passive_friends, -> { where(friendships: { approved: true}) }, :through => :passive_friendships, :source => :user
   has_many :pending_friends, -> { where(friendships: { approved: false}) }, :through => :friendships, :source => :friend
-  has_many :requested_friendships, -> { where(friendships: { approved: false}) }, :through => :inverse_friendships, :source => :user
+  has_many :requested_friendships, -> { where(friendships: { approved: false}) }, :through => :passive_friendships, :source => :user
 
 
 	def friends
-    direct_friends | inverse_friends
+    active_friends | passive_friends
   end
 end
