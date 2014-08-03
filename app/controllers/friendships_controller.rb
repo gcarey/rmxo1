@@ -5,10 +5,10 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id], approved: "false")
     if @friendship.save
-      flash[:notice] = "Added friend."
+      flash[:notice] = "Friend requested."
       redirect_to :back
     else
-      flash[:error] = "Unable to add friend."
+      flash[:error] = "Unable to request friendship."
       redirect_to :back
     end
   end
