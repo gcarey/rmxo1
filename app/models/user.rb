@@ -18,8 +18,10 @@ class User < ActiveRecord::Base
   has_many :pending_friends, -> { where(friendships: { approved: false}) }, :through => :friendships, :source => :friend
   has_many :requested_friendships, -> { where(friendships: { approved: false}) }, :through => :passive_friendships, :source => :user
 
-
 	def friends
     active_friends | passive_friends
   end
+
+  has_many :tips
+  has_many :tips_received, :class_name => "Tip", :foreign_key => "recipient_id"
 end
