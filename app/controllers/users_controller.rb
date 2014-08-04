@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   		# Show the currently logged in user
   		@user = current_user
 		end
+		@tip = current_user.tips.build
 	end
 
 	def create

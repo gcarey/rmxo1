@@ -1,1 +1,1 @@
-json.extract! @tip, :id, :link, :—-skip-stylesheets, :created_at, :updated_at
+json.extract! @tip, :id, :link, :created_at, :updated_at

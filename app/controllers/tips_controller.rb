@@ -14,7 +14,7 @@ class TipsController < ApplicationController
 
   # GET /tips/new
   def new
-    @tip = Tip.new
+    @tip = current_user.tips.build
   end
 
   # GET /tips/1/edit
@@ -24,7 +24,8 @@ class TipsController < ApplicationController
   # POST /tips
   # POST /tips.json
   def create
-    @tip = Tip.new(tip_params)
+    @tip = current_user.tips.build(tip_params)
+    @tip.recipient_id = @user
 
     respond_to do |format|
       if @tip.save
@@ -69,6 +70,6 @@ class TipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tip_params
-      params.require(:tip).permit(:link, :—-skip-stylesheets)
+      params.require(:tip).permit(:link)
     end
 end

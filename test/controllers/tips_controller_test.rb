@@ -18,7 +18,7 @@ class TipsControllerTest < ActionController::TestCase
 
   test "should create tip" do
     assert_difference('Tip.count') do
-      post :create, tip: { link: @tip.link, —-skip-stylesheets: @tip.—-skip-stylesheets }
+      post :create, tip: { link: @tip.link }
     end
 
     assert_redirected_to tip_path(assigns(:tip))
@@ -35,7 +35,7 @@ class TipsControllerTest < ActionController::TestCase
   end
 
   test "should update tip" do
-    patch :update, id: @tip, tip: { link: @tip.link, —-skip-stylesheets: @tip.—-skip-stylesheets }
+    patch :update, id: @tip, tip: { link: @tip.link }
     assert_redirected_to tip_path(assigns(:tip))
   end
 

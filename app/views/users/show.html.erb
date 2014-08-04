@@ -4,6 +4,7 @@
 
 	<% unless current_user == @user %>
 		<%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
+		<%= render '/tips/form' %>
 	<% end %>
 
 	<h4>Friends</h4>

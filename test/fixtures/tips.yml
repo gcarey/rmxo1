@@ -2,8 +2,6 @@
 
 one:
   link: MyString
-  —-skip-stylesheets: MyString
 
 two:
   link: MyString
-  —-skip-stylesheets: MyString

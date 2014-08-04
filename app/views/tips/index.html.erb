@@ -1,10 +1,9 @@
-<h1>Listing tips</h1>
+<h1>Tips</h1>
 
 <table>
   <thead>
     <tr>
       <th>Link</th>
-      <th>—-skip-stylesheets</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,9 +12,6 @@
     <% @tips.each do |tip| %>
       <tr>
         <td><%= tip.link %></td>
-        <td><%= tip.—-skip-stylesheets %></td>
-        <td><%= link_to 'Show', tip %></td>
-        <td><%= link_to 'Edit', edit_tip_path(tip) %></td>
         <td><%= link_to 'Destroy', tip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
