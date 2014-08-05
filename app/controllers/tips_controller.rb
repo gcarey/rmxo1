@@ -7,20 +7,6 @@ class TipsController < ApplicationController
     @tips = Tip.all
   end
 
-  # GET /tips/1
-  # GET /tips/1.json
-  def show
-  end
-
-  # GET /tips/new
-  def new
-    @tip = current_user.tips.build
-  end
-
-  # GET /tips/1/edit
-  def edit
-  end
-
   # POST /tips
   # POST /tips.json
   def create
@@ -33,20 +19,6 @@ class TipsController < ApplicationController
         format.json { render :show, status: :created, location: @tip }
       else
         format.html { render :new }
-        format.json { render json: @tip.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /tips/1
-  # PATCH/PUT /tips/1.json
-  def update
-    respond_to do |format|
-      if @tip.update(tip_params)
-        format.html { redirect_to @tip, notice: 'Tip was successfully updated.' }
-        format.json { render :show, status: :ok, location: @tip }
-      else
-        format.html { render :edit }
         format.json { render json: @tip.errors, status: :unprocessable_entity }
       end
     end
