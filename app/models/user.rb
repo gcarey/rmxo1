@@ -28,4 +28,13 @@ class User < ActiveRecord::Base
   # Tips
   has_many :tips
   has_many :tips_received, :class_name => "Tip", :foreign_key => "recipient_id"
+
+  # Display
+  def last_initial
+    last_name = last_name[0, 1]
+  end
+
+  def full_name
+    [first_name, last_name].join(" ")
+  end
 end

@@ -13,8 +13,7 @@ Rails.application.routes.draw do
     root "users#show", as: :authenticated_root
   end
 
-  get 'users/:id' => 'users#show'
-
+  get 'users/:id' => 'users#show', as: :profile
   
 
   # The priority is based upon order of creation: first created -> highest priority.
