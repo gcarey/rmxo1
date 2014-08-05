@@ -4,12 +4,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # Validation
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  # Profile Photos
   has_attached_file :avatar, :styles => { :medium => "190x190#", :thumb => "45x45#" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  # Friendships
   has_many :friendships
   has_many :passive_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 
@@ -22,6 +25,7 @@ class User < ActiveRecord::Base
     active_friends | passive_friends
   end
 
+  # Tips
   has_many :tips
   has_many :tips_received, :class_name => "Tip", :foreign_key => "recipient_id"
 end
