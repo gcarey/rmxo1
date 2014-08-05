@@ -1,6 +1,6 @@
 <div class="profile-sidebar">
 	<%= image_tag @user.avatar.url(:medium), class: "avatar" %>
-	<h3><%= @user.first_name %> <%= @user.last_name %></h3>
+	<h3><%= @user.full_name %></h3>
 
 	<% unless current_user == @user || @friendship != nil %>
 		<%= link_to "Add Friend", friendships_path(:friend_id => @user), class: "btn btn-primary", :method => :post %>
@@ -39,7 +39,10 @@
 </div>
 
 <div class="profile-body">
-  <% @tips.each do |tip| %>
-      <%= tip.link %>
-  <% end %>
+	<h4>Tips Sent by <%= @user.first_name %></h4>
+		<ul>
+		  <% @tips.each do |tip| %>
+		      <li><%= tip.link %></li>
+		  <% end %>
+		</ul>
 </div>

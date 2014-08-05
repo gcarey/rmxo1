@@ -15,7 +15,7 @@ class TipsController < ApplicationController
 
     respond_to do |format|
       if @tip.save
-        format.html { redirect_to @tip, notice: 'Tip was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Tip was successfully created.' }
         format.json { render :show, status: :created, location: @tip }
       else
         format.html { render :new }
@@ -28,10 +28,7 @@ class TipsController < ApplicationController
   # DELETE /tips/1.json
   def destroy
     @tip.destroy
-    respond_to do |format|
-      format.html { redirect_to tips_url, notice: 'Tip was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to tips_url, notice: 'Tip was successfully destroyed.'
   end
 
   private
