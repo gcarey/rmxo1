@@ -25,7 +25,7 @@ class TipsController < ApplicationController
   # POST /tips.json
   def create
     @tip = current_user.tips.build(tip_params)
-    @tip.recipient_id = @user
+    @tip.recipient_id = params[:recipient_id]
 
     respond_to do |format|
       if @tip.save
