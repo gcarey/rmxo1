@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :link %><br>
-    <%= f.text_field :link %>
+    <%= f.label :link, class: "sr-only" %><br>
+    <%= f.text_field :link, class: "form-control", placeholder: "e.g., www.google.com"  %>
     <%= hidden_field_tag(:recipient_id, @user.id) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Send Tip", class: "btn btn-default" %>
   </div>
 <% end %>
