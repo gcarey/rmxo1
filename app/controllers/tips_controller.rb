@@ -18,6 +18,7 @@ class TipsController < ApplicationController
   def create
     @tip = current_user.tips.build(tip_params)
     @tip.recipient_id = params[:recipient_id]
+    Grabbit.url(params[:tip][:link])
 
     respond_to do |format|
       if @tip.save

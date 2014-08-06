@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804162805) do
+ActiveRecord::Schema.define(version: 20140806051455) do
 
   create_table "friendships", force: true do |t|
     t.integer  "user_id"
@@ -27,6 +27,9 @@ ActiveRecord::Schema.define(version: 20140804162805) do
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
+    t.text     "description"
+    t.text     "images"
   end
 
   create_table "users", force: true do |t|
