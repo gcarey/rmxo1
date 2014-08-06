@@ -4,7 +4,13 @@ class TipsController < ApplicationController
   # GET /tips
   # GET /tips.json
   def index
-    @tips = Tip.all
+    if params[:user_id] 
+      @tips = Tip.where(user_id: params[:user_id]).all
+    elsif params[:recipient_id] 
+      @tips = Tip.where(recipient_id: params[:recipient_id]).all
+    else 
+      @tips = Tip.all
+    end
   end
 
   # POST /tips

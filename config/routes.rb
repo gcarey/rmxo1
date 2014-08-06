@@ -14,8 +14,15 @@ Rails.application.routes.draw do
   end
 
   get 'users/:id' => 'users#show', as: :profile
-  
 
+  resources :recipients do
+    resources :tips
+  end
+  
+  resources :users do
+    resources :tips
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
