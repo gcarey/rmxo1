@@ -32,6 +32,6 @@ class UsersController < ApplicationController
 
   # List tips sent by a user on his profile
   def user_tips
-  	@tips = Tip.where(user_id: current_user).all
+  	@tips = Tip.where(user_id: @user).all
   end
 end
