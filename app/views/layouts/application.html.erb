@@ -22,17 +22,16 @@
 var ready;
 ready = function() {
 
-  var $container = $('#profile-body').imagesLoaded( function() {
-    // init
-    $container.isotope({
-      // options
-      itemSelector: '.tip',
-      layoutMode: 'masonryHorizontal',
-      masonryHorizontal: {
-        rowHeight: 240,
-        gutter: 10
-      }
-    });
+  var $container = $('#profile-body');
+  // init
+  $container.isotope({
+    // options
+    itemSelector: '.tip',
+    layoutMode: 'masonryHorizontal',
+    masonryHorizontal: {
+      rowHeight: 240,
+      gutter: 10
+    }
   });
 
 };
