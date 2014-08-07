@@ -32,6 +32,7 @@ gem 'devise', '~> 3.1.0.rc2'
 gem "paperclip", "~> 4.1"
 gem 'aws-sdk', '~> 1.20.0'
 gem 'grabbit', '~> 1.0.0'
+gem 'jquery-turbolinks', '~> 2.0.2'
 
 group :development, :test do 
 	gem 'sqlite3'
