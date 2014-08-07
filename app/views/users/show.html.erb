@@ -44,7 +44,7 @@
 		<div class="tip">
 			<%= image_tag(tip.image.url(:full)) %>
 			<div class="box">
-	      <h3><%= tip.title %></h3>
+	      <h3><%= link_to tip.title, tip.link %></h3>
 	      <p><%= tip.description %></p>
 	    </div>
     </div>
