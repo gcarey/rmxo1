@@ -165,7 +165,7 @@ DEPENDENCIES
   grabbit (~> 1.0.0)
   jbuilder (~> 2.0)
   jquery-rails
-  jquery-turbolinks (~> 2.0.2)
+  jquery-turbolinks
   paperclip (~> 4.1)
   pg
   rails (= 4.1.4)

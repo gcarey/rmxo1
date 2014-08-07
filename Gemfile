@@ -16,7 +16,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# Disabled until compatibility with Isotope can be figured out
+# gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -33,7 +34,6 @@ gem 'devise', '~> 3.1.0.rc2'
 gem "paperclip", "~> 4.1"
 gem 'aws-sdk', '~> 1.20.0'
 gem 'grabbit', '~> 1.0.0'
-gem 'jquery-turbolinks', '~> 2.0.2'
 
 group :development, :test do 
 	gem 'sqlite3'
