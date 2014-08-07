@@ -52,6 +52,9 @@ body {
 .profile-body {
 	float: left;
 	padding: 10px;
+	position:absolute;
+	left: 320px;
+	top: 0;
 }
 
 @import 'bootstrap';

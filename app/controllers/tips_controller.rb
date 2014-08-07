@@ -18,11 +18,13 @@ class TipsController < ApplicationController
   def create
     @tip = current_user.tips.build(tip_params)
     @tip.recipient_id = params[:recipient_id]
-    Grabbit.url(params[:tip][:link])
 
     respond_to do |format|
-      if @tip.save
+      if @tip.valid? && @tip.save
         format.html { redirect_to root_url, notice: 'Tip was successfully created.' }
+        format.json { render :show, status: :created, location: @tip }
+      elsif !@tip.valid?
+        format.html { redirect_to root_url, notice: "That doesn't seem to be a real URL." }
         format.json { render :show, status: :created, location: @tip }
       else
         format.html { render :new }
@@ -37,6 +39,7 @@ class TipsController < ApplicationController
     @tip.destroy
     redirect_to tips_url, notice: 'Tip was successfully destroyed.'
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

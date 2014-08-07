@@ -40,9 +40,11 @@
 
 <div class="profile-body">
 	<h4>Tips Sent by <%= @user.first_name %></h4>
-	<ul>
-	  <% @tips.each do |tip| %>
-	      <li><%= tip.link %></li>
-	  <% end %>
-	</ul>
+	<% @tips.each do |tip| %>
+		<div class="box">
+      <p><%= tip.title %></p>
+      <p><%= tip.description %></p>
+      <%= image_tag(tip.image.url) %>
+    </div>
+  <% end %>
 </div>

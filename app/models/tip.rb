@@ -8,8 +8,13 @@ class Tip < ActiveRecord::Base
 
   before_save :scrape_with_grabbit
 
+  has_attached_file :image
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+
+
   private
 
+  # Scrape images, title, description
   def scrape_with_grabbit
     # I highly recommend passing the following call off to a Resque worker, or Delayed Job queue.
     # The reason is that Grabbit will attempt to access the remote URL. If there is a network problem,
@@ -21,6 +26,7 @@ class Tip < ActiveRecord::Base
       self.title = data.title
       self.description = data.description
       self.images = data.images
+      self.image = URI.parse(data.images.first)
     end
   end
 end
