@@ -1,6 +1,3 @@
-var ready;
-ready = function() {
-
 /*!
  * masonryHorizontal layout mode for Isotope
  * http://isotope.metafizzy.co
@@ -153,10 +150,3 @@ if ( typeof define === 'function' && define.amd ) {
 }
 
 })( window );
-
-
-
-};
-
-$(document).ready(ready);
-$(document).on('page:load', ready);

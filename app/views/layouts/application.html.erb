@@ -18,5 +18,25 @@
 	<%= yield %>
 </div>
 
+<script type="text/javascript"> 
+var ready;
+ready = function() {
+
+  var $container = $('#profile-body');
+  // init
+  $container.isotope({
+    // options
+    itemSelector: '.tip',
+    layoutMode: 'masonryHorizontal',
+    rowHeight: 240,
+    gutter: 10
+  });
+
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
+</script>
+
 </body>
 </html>
