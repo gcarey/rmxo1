@@ -91,6 +91,17 @@ body {
 
 	.box h3 {
 		margin-top: 10px;
+		height: 52px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.box p {
+		height: 100px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 @import 'bootstrap';
