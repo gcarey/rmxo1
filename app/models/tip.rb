@@ -6,10 +6,10 @@ class Tip < ActiveRecord::Base
 
   validates :link, presence: true, :format => URI::regexp(%w(http https))
 
-  before_save :scrape_with_grabbit
-
-  has_attached_file :image
+  has_attached_file :image, :styles => { :full => "225x225#"}
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+
+  before_save :scrape_with_grabbit
 
 
   private
