@@ -1,4 +1,4 @@
-<div class="profile-sidebar">
+<div id="profile-sidebar">
 	<%= image_tag @user.avatar.url(:medium), class: "avatar" %>
 	<h1><%= @user.full_name %></h1>
 
@@ -38,8 +38,7 @@
 	<div class="spacer"></div>
 </div>
 
-<div class="profile-body">
-	<h4>Tips Sent by <%= @user.first_name %></h4>
+<div id="profile-body" class="js-isotope" data-isotope-options='{ "layoutMode": "masonryHorizontal", "itemSelector": ".tip", "rowHeight": 240, "gutter": 10 }'>
 	<% @tips.each do |tip| %>
 		<div class="tip">
 			<%= link_to image_tag(tip.image.url(:full)), tip.link %>

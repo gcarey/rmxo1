@@ -30,14 +30,16 @@ body {
 	margin-top: -7px;
 }
 
-.profile-sidebar {
+#profile-sidebar {
 	width: 320px;
-	height: 100%;
-	float: left;
 	background-color: #f0f0f0;
 	border-right: 1px solid white;
 	padding: 50px 50px 0;
 	text-align: center;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
 }
 
 	.avatar {
@@ -52,17 +54,16 @@ body {
 		height: 70px;
 	}
 
-.profile-body {
-	float: left;
-	padding: 10px;
-	position:absolute;
-	left: 320px;
-	top: 0;
+#profile-body {
+	padding: 10px 10px 70px;
+	margin: 0 0 0 320px;
+	height: 100%;
 }
 
 	.tip {
 		display: inline;
-		margin: 0 10px 10px 0;
+		margin: 10px;
+		width: 450px;
 	}
 
 	.tip img {
