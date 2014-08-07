@@ -42,7 +42,7 @@
 	<h4>Tips Sent by <%= @user.first_name %></h4>
 	<% @tips.each do |tip| %>
 		<div class="tip">
-			<%= image_tag(tip.image.url(:full)) %>
+			<%= link_to image_tag(tip.image.url(:full)), tip.link %>
 			<div class="box">
 	      <h3><%= link_to tip.title, tip.link %></h3>
 	      <p><%= tip.description %></p>
