@@ -2,14 +2,12 @@ class Tip < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :recipient, :class_name => "User"
 
-	serialize :images   # Store images array as YAML in the database  
-
   validates :link, presence: true, :format => URI::regexp(%w(http https))
+  before_save :scrape_with_grabbit
+	serialize :images   # Store images array as YAML in the database  
 
   has_attached_file :image, :styles => { :full => "225x225#"}
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-
-  before_save :scrape_with_grabbit
 
 
   private
@@ -26,7 +24,12 @@ class Tip < ActiveRecord::Base
       self.title = data.title
       self.description = data.description
       self.images = data.images
-      self.image = URI.parse(data.images.first)
+      unless self.images.nil?
+        geometry = Paperclip::Geometry.from_file(self.images.first)
+        if geometry.width.to_i > 225 && geometry.height.to_i > 225
+          self.image = URI.parse(data.images.first)
+        end
+      end
     end
   end
 end
