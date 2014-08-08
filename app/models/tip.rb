@@ -23,13 +23,18 @@ class Tip < ActiveRecord::Base
     if data
       self.title = data.title
       self.description = data.description
+      # Only runs if images were returned by Grabbit 
       unless data.images.nil?
-        geometry = Paperclip::Geometry.from_file(data.images.first)
-        if geometry.width.to_i >= 225 && geometry.height.to_i >= 225
-          self.image = URI.parse(data.images.first)
-        else
-          self.image = URI.parse(data.images.second)
-        end
+        # Runs until an image is saved
+        while self.image_file_name == nil
+          geometry = Paperclip::Geometry.from_file(data.images.first)
+          if geometry.width.to_i >= 225 && geometry.height.to_i >= 225
+            self.image = URI.parse(data.images.first)
+          else
+            #Replace this with logic for dumping first image and moving to next one indefinitely
+            self.image = URI.parse(data.images.second)
+          end
+        end 
       end
     end
   end
