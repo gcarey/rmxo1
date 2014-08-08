@@ -24,9 +24,9 @@ class Tip < ActiveRecord::Base
       self.title = data.title
       self.description = data.description
       self.images = data.images
-      unless self.images.nil?
+      unless data.images.nil?
         geometry = Paperclip::Geometry.from_file(self.images.first)
-        if geometry.width.to_i > 225 && geometry.height.to_i > 225
+        if geometry.width.to_i >= 225 && geometry.height.to_i >= 225
           self.image = URI.parse(data.images.first)
         end
       end
