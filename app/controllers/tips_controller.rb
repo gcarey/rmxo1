@@ -22,7 +22,11 @@ class TipsController < ApplicationController
     #Check if the tip being saved is a reshare
     if Tip.exists?(recipient_id: current_user, link: params[:tip][:link])
       @received_tip = Tip.where(recipient_id: current_user).where(link: params[:tip][:link]).last
-      @received_tip.update(reshares: 1)
+      if @received_tip.reshares == nil
+        @received_tip.update(reshares: 1)
+      else
+        @received_tip.update_attribute("reshares", @received_tip.reshares + 1)
+      end
     end
 
     respond_to do |format|
