@@ -1,4 +1,4 @@
-<div id="app-sidebar">
+<div id="profile-sidebar" class="sidebar">
 	<%= image_tag @user.avatar.url(:medium), class: "avatar" %>
 	<h1><%= @user.full_name %></h1>
 
@@ -38,6 +38,6 @@
 	<div class="spacer"></div>
 </div>
 
-<div id="app-body" class="js-isotope" data-isotope-options='{ "layoutMode": "masonryHorizontal", "itemSelector": ".tip", "rowHeight": 240, "gutter": 10 }'>
+<div id="profile-content" class="js-isotope content" data-isotope-options='{ "layoutMode": "masonryHorizontal", "itemSelector": ".tip", "rowHeight": 240, "gutter": 10 }'>
 	<%= render "/tips/tips" %>
 </div>

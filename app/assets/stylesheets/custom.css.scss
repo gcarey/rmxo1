@@ -17,6 +17,8 @@ body {
 	margin-bottom: 70px;
 }
 
+
+
 .navbar .logo {
 	margin: 16px 10px 0 0;
 }
@@ -34,16 +36,21 @@ body {
 	margin: 0 5px 0 325px;
 }
 
-#app-sidebar {
-	width: 320px;
+
+
+.sidebar {
 	background-color: #f0f0f0;
 	border-right: 1px solid white;
-	padding: 50px 50px 0;
 	text-align: center;
 	position: absolute;
 	left: 0;
 	top: 0;
 	bottom: 0;
+}
+
+#profile-sidebar {
+	width: 320px;
+	padding: 50px 50px 0;
 }
 
 	.avatar {
@@ -58,10 +65,19 @@ body {
 		height: 70px;
 	}
 
-#app-body {
+#inbox-sidebar {
+	width: 280px;
+}
+
+
+
+.content {
 	padding: 20px 20px 70px;
-	margin: 0 0 0 320px;
 	height: 100%;
+}
+
+#profile-content {
+	margin: 0 0 0 320px;
 }
 
 	.tip {
@@ -107,6 +123,10 @@ body {
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
+
+#inbox-content {
+	margin: 0 0 0 280px;
+}
 
 
 /* Temporary styles for testing, etc. */
