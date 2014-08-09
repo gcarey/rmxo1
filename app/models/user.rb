@@ -34,11 +34,7 @@ class User < ActiveRecord::Base
 
 
   # Display
-  def last_initial
-    last_name = last_name[0, 1]
-  end
-
   def full_name
-    [first_name, last_name].join(" ")
+    [first_name, last_name[0.1]].join(" ")+"."
   end
 end
