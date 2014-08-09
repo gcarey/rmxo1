@@ -34,7 +34,7 @@ body {
 	margin: 0 5px 0 325px;
 }
 
-#profile-sidebar {
+#app-sidebar {
 	width: 320px;
 	background-color: #f0f0f0;
 	border-right: 1px solid white;
@@ -50,7 +50,7 @@ body {
 		border: 4px solid white;
 	}
 
-	.profile-sidebar .field {
+	.app-sidebar .field {
 		margin-bottom: 5px;
 	}
 
@@ -58,7 +58,7 @@ body {
 		height: 70px;
 	}
 
-#profile-body {
+#app-body {
 	padding: 20px 20px 70px;
 	margin: 0 0 0 320px;
 	height: 100%;
@@ -107,5 +107,9 @@ body {
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
+
+
+/* Temporary styles for testing, etc. */
+#tips-index {height:100%;padding-bottom:70px}
 
 @import 'bootstrap';

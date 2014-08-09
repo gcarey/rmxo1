@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  resources :tips
-
-  resources :friendships
-
   devise_for :users, :controllers => {:registrations => "registrations"}
 
   unauthenticated :user do
@@ -13,16 +9,12 @@ Rails.application.routes.draw do
     root "users#show", as: :authenticated_root
   end
 
-  get 'users/:id' => 'users#show', as: :profile
+  resources :tips
+  resources :friendships
 
-  resources :recipients do
-    resources :tips
-  end
-  
-  resources :users do
-    resources :tips
-  end
-  
+  get 'users/:id' => 'users#show', as: :profile
+  get 'inbox' => 'inbox#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
