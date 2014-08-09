@@ -8,9 +8,11 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+
   # Profile Photos
   has_attached_file :avatar, :styles => { :medium => "190x190#", :thumb => "45x45#" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
 
   # Friendships
   has_many :friendships
@@ -25,9 +27,11 @@ class User < ActiveRecord::Base
     active_friends | passive_friends
   end
 
+
   # Tips
   has_many :tips
-  has_many :tips_received, :class_name => "Tip", :foreign_key => "recipient_id"
+  has_many :received_tips, :class_name => "Tip", :foreign_key => "recipient_id"
+
 
   # Display
   def last_initial

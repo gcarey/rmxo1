@@ -10,6 +10,7 @@ class Tip < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
 
+
   private
 
   # Scrape images, title, description

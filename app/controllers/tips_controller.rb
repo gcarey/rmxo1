@@ -19,6 +19,12 @@ class TipsController < ApplicationController
     @tip = current_user.tips.build(tip_params)
     @tip.recipient_id = params[:recipient_id]
 
+    #Check if the tip being saved is a reshare
+    if Tip.exists?(recipient_id: current_user, link: params[:tip][:link])
+      @received_tip = Tip.where(recipient_id: current_user).where(link: params[:tip][:link]).last
+      @received_tip.update(reshares: 1)
+    end
+
     respond_to do |format|
       if @tip.valid? && @tip.save
         format.html { redirect_to root_url, notice: 'Tip was successfully created.' }
