@@ -16,12 +16,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li>
+        <li class="wide">
           <%= link_to root_path, class: "thumb" do %>
             <%= image_tag current_user.avatar.url(:thumb), width: "30px" %>
           <% end %>
         </li>
-        <li class="dropdown">
+        <li class="dropdown wide">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <button type="button" class="navbar-toggle">
               <span class="sr-only">Options</span>
@@ -36,6 +36,9 @@
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>
+        <li><%= link_to "Inbox", inbox_path, class: "narrow" %></li>
+        <li><%= link_to "Account Settings", edit_user_registration_path, class: "narrow" %></li>
+        <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "narrow" %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

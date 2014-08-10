@@ -128,8 +128,26 @@ body {
 	margin: 0 0 0 280px;
 }
 
+.wide {
+	color: red;
+}
+
+
+
+@media (max-width: 767px) {
+	.wide {display:none !important;}
+}
+
+@media (min-width: 767px) {
+	.narrow {display:none !important;}
+}
+
+
+
 
 /* Temporary styles for testing, etc. */
 #tips-index {height:100%;padding-bottom:70px}
+
+
 
 @import 'bootstrap';
