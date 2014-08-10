@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
 
   # Profile Photos
-  has_attached_file :avatar, :styles => { :medium => "190x190#", :thumb => "45x45#" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => { :medium => "190x190#", :thumb => "45x45#" }, :default_url => ":style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
 
