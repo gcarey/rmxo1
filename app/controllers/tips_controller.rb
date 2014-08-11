@@ -4,13 +4,7 @@ class TipsController < ApplicationController
   # GET /tips
   # GET /tips.json
   def index
-    if params[:user_id] 
-      @tips = Tip.where(user_id: params[:user_id]).all
-    elsif params[:recipient_id] 
-      @tips = Tip.where(recipient_id: params[:recipient_id]).all
-    else 
-      @tips = Tip.all
-    end
+    @tips = Tip.all
   end
 
   # POST /tips
@@ -19,7 +13,7 @@ class TipsController < ApplicationController
     @tip = current_user.tips.build(tip_params)
     @tip.recipient_id = params[:recipient_id]
 
-    #Check if the tip being saved is a reshare
+    #Check if the tip being saved is a reshare, add reshare to original tip
     if Tip.exists?(recipient_id: current_user, link: params[:tip][:link])
       @received_tip = Tip.where(recipient_id: current_user).where(link: params[:tip][:link]).last
       @received_tip.increment!("reshares", by = 1)
@@ -43,7 +37,7 @@ class TipsController < ApplicationController
   # DELETE /tips/1.json
   def destroy
     @tip.destroy
-    redirect_to tips_url, notice: 'Tip was successfully destroyed.'
+    redirect_to :back, notice: 'Tip was successfully destroyed.'
   end
 
 

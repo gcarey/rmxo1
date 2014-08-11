@@ -39,5 +39,24 @@
 </div>
 
 <div id="profile-content" class="js-isotope content" data-isotope-options='{ "layoutMode": "masonryHorizontal", "itemSelector": ".tip", "rowHeight": 240, "gutter": 10 }'>
-	<%= render "/tips/tips" %>
+	<% @tips.each do |tip| %>
+		<div class="tip">
+			<% unless tip.image_file_name.nil? %>
+				<%= image_tag "tip-aro.png", class: "aro" %>
+				<%= link_to image_tag(tip.image.url(:full)), tip.link %>
+			<% end %>
+			<div class="box">
+		    <h3><%= link_to tip.title, tip.link %></h3>
+		    <p><%= tip.description %></p>
+		    <p>
+		    	<span class="count"><%= tip.reshares %></span>
+		    	<% if current_user == @user %>
+		    		<%= link_to tip, method: :delete, data: { confirm: 'Are you sure?' } do %>
+		    			<span class="glyphicon glyphicon-trash"></span>
+		    		<% end %>
+		    	<% end %>
+	    	</p>
+		  </div>
+		</div>
+	<% end %>
 </div>

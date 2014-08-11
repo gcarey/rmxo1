@@ -111,25 +111,27 @@ body {
 		float: left;
 	}
 
-	.box h3 {
-		margin-top: 10px;
-		height: 35px;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
+		.box h3 {
+			margin-top: 10px;
+			height: 35px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
 
-	.box p {
-		height: 100px;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
+		.box p {
+			height: 100px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.box .glyphicon {
+			color: #b5b5b5;
+			top: 0;
+			left: 5px;
+		}
 
 #inbox-content {
 	margin: 0 0 0 280px;
-}
-
-.wide {
-	color: red;
 }
 
 
