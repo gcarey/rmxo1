@@ -8,7 +8,7 @@
 	</div>
 
 	<div class="friends-display">
-		<% @user.friends.take(1).each do |friend| %>
+		<% @user.friends.first(1).each do |friend| %>
 	      <%= link_to profile_path(friend) do %> 
 	      	<%= image_tag friend.avatar.url(:thumb) %>
 	      <% end %>
@@ -17,7 +17,7 @@
 			<span class="count"><%= @user.friends.count %></span>
 			<p>Friends</p>
 		</div>
-		<% @user.friends.take(5).drop(1).each do |friend| %>
+		<% @user.friends.first(5).drop(1).each do |friend| %>
 	      <%= link_to profile_path(friend) do %> 
 	      	<%= image_tag friend.avatar.url(:thumb) %>
 	      <% end %>
