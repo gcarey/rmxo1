@@ -10,17 +10,22 @@
 		<%= render '/tips/form' %>
 	<% end %>
 
-	<h2>Friends</h2>
-	<ul>
-		<% @user.friends.each do |friend| %>
-			<li>
-	      <%= link_to friend.full_name, profile_path(friend) %> 
-	      <% if current_user == @user %>
-	      	(<%= link_to "Unfriend?", friendship_path(:id => friend), :method => :delete %>)
+	<div class="friends-display">
+		<% @user.friends.take(1).each do |friend| %>
+	      <%= link_to profile_path(friend) do %> 
+	      	<%= image_tag friend.avatar.url(:thumb) %>
 	      <% end %>
-	    </li>
 	  <% end %>
-	</ul>
+		<div class="friends-count">
+			<span class="count"><%= @user.friends.count %></span>
+			<p>Friends</p>
+		</div>
+		<% @user.friends.take(4).drop(1).each do |friend| %>
+	      <%= link_to profile_path(friend) do %> 
+	      	<%= image_tag friend.avatar.url(:thumb) %>
+	      <% end %>
+	  <% end %>
+	</div>
 
 	<% if current_user == @user %>
 		<h2>Friend Requests</h2>

@@ -27,6 +27,10 @@ body {
 	padding: 15px 0 5px;
 }
 
+.navbar .thumb img {
+	border-radius: 3px;
+}
+
 .dropdown .navbar-toggle {
 	display: initial;
 	margin-top: -7px;
@@ -64,6 +68,32 @@ body {
 	.spacer {
 		height: 70px;
 	}
+
+	.friends-display {
+		width: 143px;
+		margin: 0 auto;
+	}
+
+		.friends-display img {
+			border-radius: 5px;
+		}
+
+		.friends-count {
+			display: inline-block;
+			width: 45px;
+			height: 45px;
+			overflow: hidden;
+			margin-bottom: -20px;
+		}
+
+		.friends-count .count {
+			font-size: 26px;
+		}
+
+		.friends-count p {
+			font-size: 12px;
+			margin-top: -8px;
+		}
 
 #inbox-sidebar {
 	width: 280px;
