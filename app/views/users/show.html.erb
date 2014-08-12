@@ -2,13 +2,10 @@
 	<%= image_tag @user.avatar.url(:medium), class: "avatar" %>
 	<h1><%= @user.full_name %></h1>
 
-	<% unless current_user == @user || @friendship != nil %>
-		<%= link_to "Add Friend", friendships_path(:friend_id => @user), class: "btn btn-primary", :method => :post %>
-	<% end %>
-
-	<% unless current_user == @user || @friendship = nil %>
-		<%= render '/tips/form' %>
-	<% end %>
+	<div class="tips-counts">
+		<span class="count"><%= @user.tips.count %></span>
+		<p>Tips</p>
+	</div>
 
 	<div class="friends-display">
 		<% @user.friends.take(1).each do |friend| %>
@@ -26,6 +23,14 @@
 	      <% end %>
 	  <% end %>
 	</div>
+
+	<% unless current_user == @user || @friendship != nil %>
+		<%= link_to "Add Friend", friendships_path(:friend_id => @user), class: "btn btn-primary", :method => :post %>
+	<% end %>
+
+	<% unless current_user == @user || @friendship = nil %>
+		<%= render '/tips/form' %>
+	<% end %>
 
 	<% if current_user == @user %>
 		<h2>Friend Requests</h2>
