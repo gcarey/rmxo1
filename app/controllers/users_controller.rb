@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 		is_friend
 		new_tip
 		user_tips
-    friend_list
 	end
 
 	def create
@@ -34,9 +33,5 @@ class UsersController < ApplicationController
   # List tips sent by a user on his profile
   def user_tips
   	@tips = Tip.where(user_id: @user).all.order("created_at DESC")
-  end
-
-  def friend_list
-    @friends = User.joins(:tips).select("users.*, count(tips.id) as c").where("tips.user_id = ? AND tips.recipient_id = ?",@user.id,"users.id").group("users.id").order("c DESC")  
   end
 end
