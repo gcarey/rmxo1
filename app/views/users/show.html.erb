@@ -6,7 +6,7 @@
 		<%= link_to "Add Friend", friendships_path(:friend_id => @user), class: "btn btn-primary", :method => :post %>
 	<% end %>
 
-	<% unless current_user == @user %>
+	<% unless current_user == @user || @friendship = nil %>
 		<%= render '/tips/form' %>
 	<% end %>
 

@@ -37,10 +37,6 @@ class UsersController < ApplicationController
   end
 
   def friend_list
-    @friends = User.find_by_sql("SELECT users.*, 
-    COUNT(tips.id) AS c FROM users, tips 
-    WHERE tips.recipient_id = users.id 
-    AND tips.user_id = 3
-    GROUP BY users.id ORDER BY c DESC")
+    @friends = User.joins(:tips).select("users.*, count(tips.id) as c").where("tips.user_id = ? AND tips.recipient_id = ?",@user.id,"users.id").group("users.id").order("c DESC")  
   end
 end
