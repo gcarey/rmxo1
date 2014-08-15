@@ -264,5 +264,5 @@ Devise.setup do |config|
     Devise::PasswordsController.layout "index"        
   end
 
-  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]
+  config.omniauth :google_oauth2, '37721039452-oi2gb2kequ6ljqtfs80u61dmthkfaffk.apps.googleusercontent.com', ENV["GOOGLE_CLIENT_SECRET"]
 end
