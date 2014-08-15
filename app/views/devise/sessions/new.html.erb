@@ -21,6 +21,8 @@
 		  <div class="form-group"><%= f.submit "Log In", class: "btn btn-primary" %></div> 
 		<% end %>
 
+		<%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
+
 		<p><%= render "devise/shared/links" %></p>
 	</div>
 	<img src="/assets/boxes-left.jpg" class="boxes">
