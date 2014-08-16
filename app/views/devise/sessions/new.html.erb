@@ -1,10 +1,10 @@
 <div class="userforms-container">
-  <div class="userform">
+  <div class="userform loginform">
     <img src="/assets/logotype-sm.png" class="logotype">
 		<h2>Log In</h2>
 
 		<%= link_to user_omniauth_authorize_path(:google_oauth2) do %>
-		<div class="google-signin"></div>
+			<div class="google-signin"></div>
 		<% end %>
 
 		<%= image_tag "or.png", class: "or"  %>

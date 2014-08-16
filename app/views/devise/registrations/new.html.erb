@@ -4,6 +4,12 @@
     <img src="/assets/logotype-sm.png" class="logotype">
     <h2>Sign Up</h2>
 
+    <%= link_to user_omniauth_authorize_path(:google_oauth2) do %>
+      <div class="google-signup"></div>
+    <% end %>
+
+    <%= image_tag "or.png", class: "or"  %>
+
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 

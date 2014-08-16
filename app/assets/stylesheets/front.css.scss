@@ -55,7 +55,7 @@ $font-family-sans-serif: 'Muli', sans-serif;
 	width: 480px;
 	height: 480px;
 	text-align: center;
-	padding: 42px 100px 5px;
+	padding: 11px 100px 5px;
 	float: left;
 }
 
@@ -115,6 +115,10 @@ $font-family-sans-serif: 'Muli', sans-serif;
 	.or {
 		margin: 20px auto 22px;
 	}
+
+.loginform {
+	padding-top: 42px;
+}
 
 .boxes {
 	float: left;
