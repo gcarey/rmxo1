@@ -55,7 +55,7 @@ $font-family-sans-serif: 'Muli', sans-serif;
 	width: 480px;
 	height: 480px;
 	text-align: center;
-	padding: 55px 100px 5px;
+	padding: 42px 100px 5px;
 	float: left;
 }
 
@@ -88,6 +88,32 @@ $font-family-sans-serif: 'Muli', sans-serif;
 
 	.userform-group {
 		height: 50px
+	}
+
+	.google-signin {
+		width: 216px;
+		height: 42px;
+		overflow: hidden;
+		background: #ffffff url("/assets/gsi.png") no-repeat left top;
+		margin: 0 auto;
+	}
+
+	.google-signin:hover { background-position: right -42px; }
+	.google-signin:active { background-position: right -84px; }
+
+	.google-signup {
+		width: 216px;
+		height: 42px;
+		overflow: hidden;
+		background: #ffffff url("/assets/gsu.png") no-repeat left top;
+		margin: 0 auto;
+	}
+
+	.google-signup:hover { background: #ffffff url("/assets/gsu.png") no-repeat right -42px; }
+	.google-signup:active { background: #ffffff url("/assets/gsu.png") no-repeat right -84px; }
+
+	.or {
+		margin: 20px auto 22px;
 	}
 
 .boxes {
