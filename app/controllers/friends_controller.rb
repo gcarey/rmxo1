@@ -4,6 +4,6 @@ class FriendsController < ApplicationController
   # GET /tips.json
   def callback
 	  @contacts = request.env['omnicontacts.contacts']
-	  @user = request.env['omnicontacts.user']
+	  @user = current_user
   end
 end
