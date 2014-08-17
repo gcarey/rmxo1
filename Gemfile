@@ -35,7 +35,7 @@ gem "paperclip", "~> 4.1"
 gem 'aws-sdk', '~> 1.20.0'
 gem 'grabbit', '~> 1.0.0'
 gem 'omniauth-google-oauth2'
-gem 'omnicontacts', '~> 0.3.5'
+gem 'omnicontacts'
 
 group :development, :test do 
 	gem 'sqlite3'
