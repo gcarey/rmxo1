@@ -1,4 +1,4 @@
-class FriendsController < ApplicationController
+class InvitesController < ApplicationController
 
   # GET /tips
   # GET /tips.json
