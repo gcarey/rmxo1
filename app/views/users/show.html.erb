@@ -4,35 +4,43 @@
 
 	<div class="tips-counts">
 		<span class="count"><%= @user.tips.count %></span>
-		<p>Tips</p>
+		<p class="count-label">Tips</p>
 	</div>
 
-	<div class="friends-display">
-		<% @user.friends.last(1).each do |friend| %>
-	      <%= link_to profile_path(friend) do %> 
-	      	<%= image_tag friend.avatar.url(:thumb) %>
-	      <% end %>
-	  <% end %>
-		<div class="friends-count">
-			<span class="count"><%= @user.friends.count %></span>
-			<p>Friends</p>
+	<% if @user.friends.count == 0 && @user == current_user %>
+		<div class="nofriends"><p>No friends yet. <a href="/contacts/gmail">Find some?</a><p></div>
+	<% elsif @user.friends.count == 0 %>
+		<div class="nofriends"><p>No friends yet.<p></div>
+	<% else %>
+		<div class="friends-display">
+			<% @user.friends.last(1).each do |friend| %>
+		      <%= link_to profile_path(friend) do %> 
+		      	<%= image_tag friend.avatar.url(:thumb) %>
+		      <% end %>
+		  <% end %>
+			<div class="friends-count">
+				<span class="count"><%= @user.friends.count %></span>
+				<p class="count-label">Friend<% unless @user.friends.count == 1 %>s<% end %></p>
+			</div>
+			<% @user.friends.last(5).reverse.drop(1).each do |friend| %>
+		      <%= link_to profile_path(friend) do %> 
+		      	<%= image_tag friend.avatar.url(:thumb) %>
+		      <% end %>
+		  <% end %>
 		</div>
-		<% @user.friends.last(5).reverse.drop(1).each do |friend| %>
-	      <%= link_to profile_path(friend) do %> 
-	      	<%= image_tag friend.avatar.url(:thumb) %>
-	      <% end %>
-	  <% end %>
-	</div>
-
-	<% unless current_user == @user || @friendship != nil %>
-		<%= link_to "Add Friend", friendships_path(:friend_id => @user), class: "btn btn-primary", :method => :post %>
 	<% end %>
 
-	<% unless current_user == @user || @friendship = nil %>
+	<% if @user != current_user && @friendship == nil && @requested_friendship == nil %>
+		<%= link_to "Add Friend", friendships_path(:friend_id => @user), class: "btn btn-primary", :method => :post %>
+	<% elsif @user != current_user && @friendship == nil && @requested_friendship != nil %>
+		<a class="btn btn-default" disabled="disabled">Friend Requested.</a>
+	<% end %>
+
+	<% if @user != current_user && @friendship != nil %>
 		<%= render '/tips/form' %>
 	<% end %>
 
-	<% if current_user == @user %>
+	<% if current_user == @user && @user.requested_friendships.last %>
 		<h2>Friend Requests</h2>
 		<ul>
 			<% @user.requested_friendships.each do |request| %>

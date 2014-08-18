@@ -73,7 +73,7 @@ body {
 		font-size: 26px;
 	}
 
-	#profile-sidebar p {
+	#profile-sidebar .count-label {
 		font-size: 12px;
 		margin-top: -8px;
 	}
@@ -82,9 +82,13 @@ body {
 		display: inline-block
 	}
 
+	.nofriends {
+		margin: 10px 0;
+	}
+
 	.friends-display {
 		width: 145px;
-		margin: 0 auto;
+		margin: 0 auto 10px;
 	}
 
 		.friends-display img {

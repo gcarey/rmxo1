@@ -22,7 +22,8 @@ class UsersController < ApplicationController
 	private
   # Check if @user is current_user's friend
   def is_friend
-  	@friendship = Friendship.where(friend_id: [current_user, params[:id]]).where(user_id: [current_user, params[:id]]).last
+  	@friendship = Friendship.where(friend_id: [current_user, params[:id]]).where(user_id: [current_user, params[:id]]).where(approved: true).last
+    @requested_friendship = Friendship.where(friend_id: params[:id]).where(user_id: current_user).where(approved: false).last
   end
 
 	# Create new tip from profile
