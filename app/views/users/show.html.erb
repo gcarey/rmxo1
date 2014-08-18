@@ -33,7 +33,7 @@
 	<% if @user != current_user && @friendship == nil && @requested_friendship == nil %>
 		<%= link_to "Add Friend", friendships_path(:friend_id => @user), class: "btn btn-primary", :method => :post %>
 	<% elsif @user != current_user && @friendship == nil && @requested_friendship != nil %>
-		<a class="btn btn-default" disabled="disabled">Friend Requested.</a>
+		<%= link_to "Friend Requested.", "#", class: "btn btn-default", :"disabled" => "disabled" %>
 	<% end %>
 
 	<% if @user != current_user && @friendship != nil %>

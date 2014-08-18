@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Tipster</title>
-  <%= stylesheet_link_tag    'front', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'front', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='http://fonts.googleapis.com/css?family=Muli:300,400' rel='stylesheet' type='text/css'>
   <%= favicon_link_tag 'favicon.ico' %>
@@ -18,5 +18,17 @@
 	<%= yield %>
 </div>
 
+<script type="text/javascript">
+  function popupCenter(url, width, height, name) {
+    var left = (screen.width/2)-(width/2);
+    var top = (screen.height/2)-(height/2);
+    return window.open(url, name, "menubar=no,toolbar=no,status=no,width="+width+",height="+height+",toolbar=no,left="+left+",top="+top);
+  }
+
+  $("a.popup").click(function(e) {
+    popupCenter($(this).attr("href"), $(this).attr("data-width"), $(this).attr("data-height"), "authPopup");
+    e.stopPropagation(); return false;
+  });
+</script>
 </body>
 </html>
