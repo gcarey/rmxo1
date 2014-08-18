@@ -10,7 +10,7 @@
 	<% if @user.friends.count == 0 && @user == current_user %>
 		<div class="nofriends"><p>No friends yet. <a href="/contacts/gmail">Find some?</a><p></div>
 	<% elsif @user.friends.count == 0 %>
-		<div class="nofriends"><p>No friends yet.<p></div>
+		<div class="nofriends"><p>No friends yet. <% if @requested_friendship == nil %>You should fix that.<% end %><p></div>
 	<% else %>
 		<div class="friends-display">
 			<% @user.friends.last(1).each do |friend| %>
