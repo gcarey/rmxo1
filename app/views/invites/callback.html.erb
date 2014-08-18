@@ -1,3 +1,9 @@
+	<a>List of contacts from Gmail</a>
+	<ul>
+	<% @contacts.each do |contact| %>
+	  <li><%= contact.first_name %></li>
+	<% end %>
+	</ul>
 
 	<table>
 	<th>key</th>
