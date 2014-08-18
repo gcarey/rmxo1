@@ -5,7 +5,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
       if @user.persisted?
         flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
-        sign_in_and_redirect @user, :event => :authentication
+        sign_in_and_redirect "devise/shared/dismiss", :event => :authentication
       else
         session["devise.google_data"] = request.env["omniauth.auth"]
         flash.notice = "Dang it! Something went wrong."
