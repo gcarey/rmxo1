@@ -4,9 +4,9 @@
 	  <li>
 	  	<%= contact[:name] %> <%= contact[:email] %>
 	  	<%= if User.where(email: contact[:email]).last != nil %>
-	  		<%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
+	  		Add Friend
 	  	<% else %>
-	  		Invite? (Coming soon)
+	  		Invite
 	  	<% end %>
 	  </li>
 	<% end %>
