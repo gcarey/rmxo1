@@ -3,7 +3,7 @@
 	<% @contacts.each do |contact| %>
 	  <li>
 	  	<%= contact[:name] %> <%= contact[:email] %>
-	  	<% if User.where(email: contact[:email]).last != nil %>
+	  	<% if User.where(email: contact[:email]).first %>
 	  		<%= link_to "Add Friend", friendships_path(:friend_id => User.where(email: contact[:email]).last.id, :omnicontact => true), :method => :post %>
 	  	<% else %>
 	  		Invite
