@@ -3,7 +3,7 @@
 	<% @contacts.each do |contact| %>
 	  <li>
 	  	<%= contact[:name] %> <%= contact[:email] %>
-	  	<%= if User.where(email: contact[:email]).last != nil %>
+	  	<% if User.where(email: contact[:email]).last != nil %>
 	  		Add Friend
 	  	<% else %>
 	  		Invite
