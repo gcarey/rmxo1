@@ -1,11 +1,4 @@
-<% if !@contacts.nil? %>
-	<a>List of <%= @user.first_name %>'s contacts from Gmail</a>
-	<ul>
-	<% @contacts.each do |contact| %>
-	  <li><%= contact.first_name contact.email %>
-	<% end %>
-	</ul>
-<% else %>
+
 	<table>
 	<th>key</th>
 	<th>Value</th>
@@ -16,4 +9,3 @@
 	</tr>
 	<% end %>
 	</table>
-<% end %>
