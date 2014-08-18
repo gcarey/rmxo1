@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   get 'users/:id' => 'users#show', as: :profile
   get 'inbox' => 'inbox#index'
-  get 'contacts/gmail/callback' => 'invites#callback'
+  get 'findfriends' => 'invites#callback'
   get 'contacts/failure' => 'invites#failure'
 
   # The priority is based upon order of creation: first created -> highest priority.

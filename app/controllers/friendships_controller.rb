@@ -5,7 +5,7 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id], approved: "false")
     if @friendship.save && params[:omnicontact]
-      redirect_to contacts_gmail_callback_path
+      redirect_to findfriends_path
     elsif @friendship.save
       flash[:notice] = "Friend requested."
       redirect_to :back
