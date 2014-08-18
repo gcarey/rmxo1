@@ -1,5 +1,5 @@
 <% if !@contacts.nil? %>
-	<a>List of <%= @user.name %>'s contacts from Gmail</a>
+	<a>List of <%= @user.first_name %>'s contacts from Gmail</a>
 	<ul>
 	<% @contacts.each do |contact| %>
 	  <li><%= contact.first_name contact.email %>
