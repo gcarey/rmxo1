@@ -1,4 +1,4 @@
-class InvitesController < ApplicationController
+class OmniController < ApplicationController
 
   # GET /tips
   # GET /tips.json
