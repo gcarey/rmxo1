@@ -3,9 +3,9 @@
 	<% @contacts.each do |contact| %>
 	  <li>
 	  	<%= contact[:name] %> <%= contact[:email] %>
-	  	<% if User.where(email: contact[:email]).first && Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last == nil %>
+	  	<% if User.where(email: contact[:email]).last && Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last %>
 	  		Added as friend.
-	  	<% elsif User.where(email: contact[:email]).first %>
+	  	<% elsif User.where(email: contact[:email]).last %>
 	  		<%= link_to "Add Friend", friendships_path(:friend_id => User.where(email: contact[:email]).last.id, :omnicontact => true), :method => :post %>
 	  	<% else %>
 	  		Invite
