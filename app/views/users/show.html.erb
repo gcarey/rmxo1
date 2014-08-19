@@ -9,13 +9,12 @@
 
 	<% if @user.friends.count == 0 && @user == current_user %>
 		<div class="nofriends">
-			<p>
-			No friends yet. 
-			<%= link_to "Find Friends", "contacts/gmail", :class => "popup", :"data-width" => 500, :"data-height" => 500 %>
-			<p>
+			<p> No friends yet. <%= link_to "Find some?", "contacts/gmail", :class => "popup", :"data-width" => 500, :"data-height" => 500 %><p>
 		</div>
 	<% elsif @user.friends.count == 0 %>
-		<div class="nofriends"><p>No friends yet.<br><% if @requested_friendship == nil %>You should fix that.<% end %><p></div>
+		<div class="nofriends">
+			<p>No friends yet.<br><% if @requested_friendship == nil %>You should fix that.<% end %><p>
+		</div>
 	<% else %>
 		<div class="friends-display">
 			<% @user.friends.last(1).each do |friend| %>
