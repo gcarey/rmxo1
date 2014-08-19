@@ -8,7 +8,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         sign_in @user, :event => :authentication
         @after_sign_in_url = after_sign_in_path_for(@user)
         if request.env['omniauth.params']['popup']
-          render 'pages/callback', :layout => false
+          render 'omni/callback', :layout => false
         else
           redirect_to @after_sign_in_url
         end
