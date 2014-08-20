@@ -3,28 +3,28 @@
 	<h1>Find Friends</h1>
 	<p>Add friends from your Gmail contacts</p>
 	<% @contacts.each do |contact| %>
-		<div class="contact">
-			<% if User.where(email: contact[:email]).last && Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last == nil %>
+		<% if User.where(email: contact[:email]).last && Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last == nil %>
+			<div class="contact">
 				<%= contact[:name] %> <%= contact[:email] %> 
-			  <%= link_to "Add Friend", friendships_path(:friend_id => User.where(email: contact[:email]).last.id, :omnicontact => true), :method => :post %>
-			<% end %>
-		</div>
+			  <span class="action"><%= link_to "Add Friend", friendships_path(:friend_id => User.where(email: contact[:email]).last.id, :omnicontact => true), class: "btn btn-primary", :method => :post %></span>
+		  </div>
+		<% end %>
 	<% end %>
 
 	<% @contacts.each do |contact| %>
-		<div class="contact">
-			<% if User.where(email: contact[:email]).last == nil %>
+		<% if User.where(email: contact[:email]).last == nil %>
+			<div class="contact">
 				<%= contact[:name] %> <%= contact[:email] %> 
-			  Invite
-			<% end %>
-		</div>
+			  <span class="action"><%= link_to "Invite", "#", class: "btn btn-primary" %></span>
+			</div>
+		<% end %>
 	<% end %>
 
 	<% @contacts.each do |contact| %>
 		<div class="contact">
 			<% if User.where(email: contact[:email]).last && Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last %>
 				<%= contact[:name] %> <%= contact[:email] %> 
-			  Added as friend.
+			  <span class="added">Added as friend.</span>
 			<% end %>
 		</div>
 	<% end %>
