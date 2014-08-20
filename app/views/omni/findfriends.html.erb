@@ -1,5 +1,27 @@
-	<a>Gmail Contacts</a>
-	<ul>
+<a>Gmail Contacts</a>
+<ul>
+	<% @contacts.each do |contact| %>
+		<%= contact[:name] %> <%= contact[:email] %>
+		<% if User.where(email: contact[:email]).last %>
+		  <%= link_to "Add Friend", friendships_path(:friend_id => User.where(email: contact[:email]).last.id, :omnicontact => true), :method => :post %>
+		<% end %>
+	<% end %>
+
+	<% @contacts.each do |contact| %>
+		<%= contact[:name] %> <%= contact[:email] %>
+		<% if User.where(email: contact[:email]).last == nil %>
+		  Invite
+		<% end %>
+	<% end %>
+
+	<% @contacts.each do |contact| %>
+		<%= contact[:name] %> <%= contact[:email] %>
+		<% if Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last %>
+		  Added as friend.
+		<% end %>
+	<% end %>
+
+
 	<% @contacts.each do |contact| %>
 	  <% unless contact[:email] == @user.email %>
 	  	<li>
@@ -14,4 +36,4 @@
 	  	</li>
 	  <% end %>
 	<% end %>
-	</ul>
+</ul>
