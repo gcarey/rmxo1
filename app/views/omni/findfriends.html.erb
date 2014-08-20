@@ -1,22 +1,22 @@
 <a>Gmail Contacts</a>
 <ul>
 	<% @contacts.each do |contact| %>
-		<%= contact[:name] %> <%= contact[:email] %>
 		<% if User.where(email: contact[:email]).last && Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last ==nil %>
+			<%= contact[:name] %> <%= contact[:email] %>
 		  <%= link_to "Add Friend", friendships_path(:friend_id => User.where(email: contact[:email]).last.id, :omnicontact => true), :method => :post %>
 		<% end %>
 	<% end %>
 
 	<% @contacts.each do |contact| %>
-		<%= contact[:name] %> <%= contact[:email] %>
 		<% if User.where(email: contact[:email]).last == nil %>
+			<%= contact[:name] %> <%= contact[:email] %>
 		  Invite
 		<% end %>
 	<% end %>
 
 	<% @contacts.each do |contact| %>
-		<%= contact[:name] %> <%= contact[:email] %>
 		<% if User.where(email: contact[:email]).last && Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last %>
+			<%= contact[:name] %> <%= contact[:email] %>
 		  Added as friend.
 		<% end %>
 	<% end %>
