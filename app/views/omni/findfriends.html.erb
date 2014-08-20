@@ -5,7 +5,7 @@
 	<% @contacts.each do |contact| %>
 		<% if User.where(email: contact[:email]).last && Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last == nil %>
 			<div class="contact">
-				<%= contact[:name] %> <%= contact[:email] %> 
+				<p><%= contact[:name] %> <span class="email"><%= contact[:email] %></span></p> 
 			  <span class="action"><%= link_to "Add Friend", friendships_path(:friend_id => User.where(email: contact[:email]).last.id, :omnicontact => true), class: "btn btn-primary", :method => :post %></span>
 		  </div>
 		<% end %>
@@ -14,8 +14,8 @@
 	<% @contacts.each do |contact| %>
 		<% if User.where(email: contact[:email]).last == nil %>
 			<div class="contact">
-				<%= contact[:name] %> <%= contact[:email] %> 
-			  <span class="action"><%= link_to "Invite", "#", class: "btn btn-primary" %></span>
+				<p><%= contact[:name] %> <span class="email"><%= contact[:email] %></span></p> 
+			  <span class="action"><%= link_to "Invite", "#", class: "btn btn-default" %></span>
 			</div>
 		<% end %>
 	<% end %>
@@ -23,7 +23,7 @@
 	<% @contacts.each do |contact| %>
 		<div class="contact">
 			<% if User.where(email: contact[:email]).last && Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last %>
-				<%= contact[:name] %> <%= contact[:email] %> 
+				<p><%= contact[:name] %> <span class="email"><%= contact[:email] %></span></p> 
 			  <span class="added">Added as friend.</span>
 			<% end %>
 		</div>

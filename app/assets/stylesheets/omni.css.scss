@@ -9,10 +9,19 @@ $link-color: #000cac;
 }
 
 .contact {
-	padding: 3px 5px;
+	padding: 3px 5px 5px;
 	border-top: 1px solid #ccc;
 	width: 100%;
 	text-align: left;
+}
+
+.contact p {
+	margin: 2px 0 0;
+}
+
+.email {
+	color: #999;
+	font-style: italic;
 }
 
 .action {
@@ -28,4 +37,9 @@ $link-color: #000cac;
 
 h1 {
 	margin-top: 10px;
+}
+
+.btn {
+	height: 20px;
+	padding: 0 12px;
 }
