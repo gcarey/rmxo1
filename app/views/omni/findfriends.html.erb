@@ -1,39 +1,31 @@
-<a>Gmail Contacts</a>
-<ul>
+<div class="container">
+	<img src="/assets/logotype-sm.png" class="logotype">
+	<h1>Find Friends</h1>
+	<p>Add friends from your Gmail contacts</p>
 	<% @contacts.each do |contact| %>
-		<% if User.where(email: contact[:email]).last && Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last ==nil %>
-			<%= contact[:name] %> <%= contact[:email] %>
-		  <%= link_to "Add Friend", friendships_path(:friend_id => User.where(email: contact[:email]).last.id, :omnicontact => true), :method => :post %>
-		<% end %>
+		<div class="contact">
+			<% if User.where(email: contact[:email]).last && Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last == nil %>
+				<%= contact[:name] %> <%= contact[:email] %> 
+			  <%= link_to "Add Friend", friendships_path(:friend_id => User.where(email: contact[:email]).last.id, :omnicontact => true), :method => :post %>
+			<% end %>
+		</div>
 	<% end %>
 
 	<% @contacts.each do |contact| %>
-		<% if User.where(email: contact[:email]).last == nil %>
-			<%= contact[:name] %> <%= contact[:email] %>
-		  Invite
-		<% end %>
+		<div class="contact">
+			<% if User.where(email: contact[:email]).last == nil %>
+				<%= contact[:name] %> <%= contact[:email] %> 
+			  Invite
+			<% end %>
+		</div>
 	<% end %>
 
 	<% @contacts.each do |contact| %>
-		<% if User.where(email: contact[:email]).last && Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last %>
-			<%= contact[:name] %> <%= contact[:email] %>
-		  Added as friend.
-		<% end %>
+		<div class="contact">
+			<% if User.where(email: contact[:email]).last && Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last %>
+				<%= contact[:name] %> <%= contact[:email] %> 
+			  Added as friend.
+			<% end %>
+		</div>
 	<% end %>
-
-
-	<% @contacts.each do |contact| %>
-	  <% unless contact[:email] == @user.email %>
-	  	<li>
-		  	<%= contact[:name] %> <%= contact[:email] %>
-		  	<% if User.where(email: contact[:email]).last && Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last %>
-		  			Added as friend.
-		  	<% elsif User.where(email: contact[:email]).last %>
-		  			<%= link_to "Add Friend", friendships_path(:friend_id => User.where(email: contact[:email]).last.id, :omnicontact => true), :method => :post %>
-		  	<% else %>
-		  			Invite
-		  	<% end %>
-	  	</li>
-	  <% end %>
-	<% end %>
-</ul>
+</div>
