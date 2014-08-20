@@ -17,6 +17,10 @@ $link-color: #000cac;
 
 .contact p {
 	margin: 2px 0 0;
+	text-overflow: ellipsis;
+	width: 200px;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .email {

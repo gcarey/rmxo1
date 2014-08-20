@@ -5,11 +5,14 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id], approved: "false")
     if @friendship.save && params[:omnicontact]
-      redirect_to "/contacts/gmail", :notice => "Friend requested."
+      flash[:notice] = "Friend requested."
+      redirect_to "/contacts/gmail"
     elsif @friendship.save
-      redirect_to :back, :notice => "Friend requested."
+      flash[:notice] = "Friend requested."
+      redirect_to :back
     else
-      redirect_to :back, :error => "Unable to request friendship."
+      flash[:error] = "Unable to request friendship."
+      redirect_to :back
     end
   end
 
