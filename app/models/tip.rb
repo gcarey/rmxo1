@@ -9,8 +9,6 @@ class Tip < ActiveRecord::Base
   has_attached_file :image, :styles => { :full => "225x225#"}
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-
-
   private
 
   # Scrape images, title, description
@@ -24,20 +22,34 @@ class Tip < ActiveRecord::Base
     if data
       self.title = data.title
       self.description = data.description
-      # Only runs if images were returned by Grabbit 
+      # Only run if images were returned by Grabbit 
       unless data.images.nil?
         $offset = 0
-        # Runs until an image is saved
+        # Run until an image is saved
         while self.image_file_name == nil
-          # Checks and conditionally sets file with offset of 0, 1, 2, etc.
-          geometry = Paperclip::Geometry.from_file(data.images.drop($offset).first)
-          if geometry.width.to_i >= 225 && geometry.height.to_i >= 225
-            self.image = URI.parse(data.images.drop($offset).first)
+          # Check if image exists by looking for HTTP success code
+          begin
+            url = URI.parse(data.images.drop($offset).first)
+            req = Net::HTTP.new(url.host, url.port)
+            res = req.request_head(url.path) 
+          rescue
+            # If no code at all, return false instead of erroring out
+            false
+          else
+            # Run only if success code
+            if req.request_head(url.path).code == "200"
+              # Check and conditionally set file with offset of 0, 1, 2, etc.
+              geometry = Paperclip::Geometry.from_file(data.images.drop($offset).first)
+              if geometry.width.to_i >= 225 && geometry.height.to_i >= 225
+                self.image = url
+              end
+            end
           end
+          # Move on to next image
           $offset +=1
-          # If no more images to check, just use first
+          # If no more images to check, stop checking ("use first image" commented out)
           if data.images.drop($offset).first == nil
-            self.image = URI.parse(data.images.first)
+            #self.image = URI.parse(data.images.first)
             break
           end
         end 
