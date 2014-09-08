@@ -3,7 +3,7 @@
 </div>
 
 <div id="inbox-content" class="js-isotope content" data-isotope-options='{ "layoutMode": "masonryHorizontal", "itemSelector": ".tip", "rowHeight": 240, "gutter": 10 }'>
-	<% @tips.each do |tip| %>
+	<% current_user.received_tips.each do |tip| %>
 		<div class="tip">
 			<% unless tip.image_file_name.nil? %>
 				<%= image_tag "tip-aro.png", class: "aro" %>

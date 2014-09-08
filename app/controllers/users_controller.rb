@@ -11,7 +11,6 @@ class UsersController < ApplicationController
 		end
 		is_friend
 		new_tip
-		user_tips
 	end
 
 	def create
@@ -29,10 +28,5 @@ class UsersController < ApplicationController
 	# Create new tip from profile
 	def new_tip
   	@tip = current_user.tips.build
-  end
-
-  # List tips sent by a user on his profile
-  def user_tips
-  	@tips = Tip.where(user_id: @user).all.order("created_at DESC")
   end
 end

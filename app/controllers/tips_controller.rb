@@ -13,10 +13,15 @@ class TipsController < ApplicationController
     @tip = current_user.tips.build(tip_params)
     @tip.recipient_id = params[:recipient_id]
 
-    #Check if the tip being saved is a reshare, add reshare to original tip
+    #Check if the tip being saved is a reshare
     if Tip.exists?(recipient_id: current_user, link: params[:tip][:link])
-      @received_tip = Tip.where(recipient_id: current_user).where(link: params[:tip][:link]).last
-      @received_tip.increment!("reshares", by = 1)
+      #Add reshare to original tip
+      @original_tip = Tip.where(recipient_id: current_user).where(link: params[:tip][:link]).last
+      @original_tip.increment!("reshares", by = 1)
+      #Record origin
+      @tip.originator_id = @original_tip.user_id
+    else
+      @tip.originator_id = current_user.id
     end
 
     respond_to do |format|

@@ -99,9 +99,6 @@ body {
 			width: 130px;
 		}
 
-		.tip .count {
-		}
-
 		.box {
 			width: 460px;
 			padding: 17px 25px;
@@ -133,11 +130,16 @@ body {
 				color: #b5b5b5;
 				top: 0;
 				left: 5px;
-				display: none;
 			}
 
 			.box .count {
 				color: black;
+			}
+
+			img.origin {
+				width: 18px;
+				margin: 2px 10px 2px 2px;
+				border-radius: 2px;
 			}
 
 .modal-body {

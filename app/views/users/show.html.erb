@@ -37,23 +37,32 @@
 			<% end %>
 		</div>
 
-		<% if @tips.count == 0 && @user == current_user %>
+		<% if @user.tips.count == 0 && @user == current_user %>
 			<p>You haven't sent any tips yet. Why don't you try? All the cool kids are doing it.</p>
-		<% elsif @tips.count == 0  %>
+			<p>Tips can be sent via the Chrome extension or from a friend's profile page.</p>
+		<% elsif @user.tips.count == 0  %>
 			<%= @user.first_name %> hasn't sent any tips yet.
 		<% else %>
-			<h2>Stuff <%= @user.first_name %> has shared.</h2>
+			<h2>Stuff <%= @user.first_name %> has shared:</h2>
 		<% end %>
 	</div>
 
-	<% @tips.each do |tip| %>
-		<div class="tip"
-				<%= link_to image_tag(tip.image.url(:full)), tip.link %>
+	<!-- Tips -->
+	<% @user.tips.order("created_at DESC").each do |tip| %>
+		<div class="tip">
+			<%= link_to image_tag(tip.image.url(:full)), tip.link %>
 			<div class="box">
 		    <h3><%= link_to tip.title, tip.link %></h3>
 		    <p><%= tip.description %></p>
 		    <p>
 		    	<span class="count"><%= tip.reshares %></span>
+		    	<% if tip.originator == current_user %>
+	    			<%= image_tag "discovery.png",  class: "origin" %>
+		    	<% elsif tip.originator != nil %>
+		    		<%= link_to profile_path(tip.originator.id) do %>
+		    			<%= image_tag tip.originator.avatar.url(:thumb), class: "origin" %>
+		    		<% end %>
+		    	<% end %>
 		    	<% if current_user == @user %>
 		    		<%= link_to tip, method: :delete, data: { confirm: 'Are you sure?' } do %>
 		    			<span class="glyphicon glyphicon-trash"></span>
@@ -66,7 +75,10 @@
 
 </div>
 
-<!-- Tip Modal -->
+
+
+
+<!-- Send Tip Modal -->
 <div class="modal fade" id="sendTip" tabindex="-1" role="dialog" aria-labelledby="sendTipLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

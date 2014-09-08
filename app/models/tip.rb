@@ -1,6 +1,7 @@
 class Tip < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :recipient, :class_name => "User"
+  belongs_to :originator, :class_name => "User"
 
   validates :link, presence: true, :format => URI::regexp(%w(http https))
   before_save :scrape_with_grabbit
