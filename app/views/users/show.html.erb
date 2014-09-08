@@ -1,4 +1,4 @@
-<div id="profile-page" class="js-isotope" data-isotope-options='{ "layoutMode": "masonryHorizontal", "itemSelector": ".tip", "stamp": "#stamp", "gutter": 10 }'>
+<div id="profile-page" class="js-isotope" data-isotope-options='{ "layoutMode": "masonryHorizontal", "itemSelector": ".tip", "stamp": "#stamp" }'>
 
 	<div id="stamp">
 		<div id="profile">
@@ -6,9 +6,9 @@
 
 			<h1><%= @user.full_name %></h1>
 
-				<%= @user.tips.count %><span class="count-label">Tips</span> 
+				<%= @user.tips.count %><span class="count-label">Tip<% if @user.tips.count != 1 %>s<% end %></span> 
 
-				<%= @user.originated_tips.count %><span class="count-label">Discoveries</span> 
+				<%= @user.discoveries.count %><span class="count-label"><% if @user.discoveries.count != 1 %>Discoveries<% else %>Discovery<% end %></span> 
 
 				<% if @user.friends.count == 0 && @user == current_user %>
 					<div class="nofriends">
@@ -19,7 +19,7 @@
 						<p>No friends yet.<% if @requested_friendship == nil %> You should fix that.<% end %><p>
 					</div>
 				<% else %>
-					<%= @user.friends.count %><span class="count-label">Friends</span> 
+					<%= @user.friends.count %><span class="count-label">Friend<% if @user.friends.count != 1 %>s<% end %></span> 
 				<% end %>
 
 				<% if @user != current_user && @friendship == nil && @requested_friendship == nil %>
@@ -41,7 +41,7 @@
 			<p>You haven't sent any tips yet. Why don't you try? All the cool kids are doing it.</p>
 			<p>Tips can be sent via the Chrome extension or from a friend's profile page.</p>
 		<% elsif @user.tips.count == 0  %>
-			<%= @user.first_name %> hasn't sent any tips yet.
+			<h3><%= @user.first_name %> hasn't sent any tips yet.</h3>
 		<% else %>
 			<h2>Stuff <%= @user.first_name %> has shared:</h2>
 		<% end %>
@@ -54,7 +54,6 @@
 			<div class="box">
 		    <h3><%= link_to tip.title, tip.link %></h3>
 		    <p><%= tip.description %></p>
-		    <p>
 		    	<span class="count"><%= tip.reshares %></span>
 		    	<% if tip.originator == @user %>
 	    			<%= image_tag "discovery.png",  class: "origin discovery" %>
@@ -68,7 +67,6 @@
 		    			<span class="glyphicon glyphicon-trash"></span>
 		    		<% end %>
 		    	<% end %>
-	    	</p>
 		  </div>
 		</div>
 	<% end %>

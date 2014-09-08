@@ -129,23 +129,24 @@ body {
 			.box .glyphicon {
 				font-size: 12px;
 				color: #b5b5b5;
-				top: 0;
+				top: 1px;
 				left: 5px;
 			}
 
 			.box .count {
+				font-size: 16px;
 				color: black;
 			}
 
 			img.origin {
 				width: 19px;
-				margin: 2px 10px 2px 2px;
+				margin: 1px 10px 2px 2px;
 				border-radius: 2px;
 			}
 
 			img.discovery {
 				width: 17px;
-				margin-left: 3px;
+				margin: 2px 10px 2px 3px;
 			}
 
 .modal-body {
