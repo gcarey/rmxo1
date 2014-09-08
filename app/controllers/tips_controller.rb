@@ -26,7 +26,7 @@ class TipsController < ApplicationController
 
     respond_to do |format|
       if @tip.valid? && @tip.save
-        format.html { redirect_to root_url, notice: 'Tip was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Tip sent!' }
         format.json { render :show, status: :created, location: @tip }
       elsif !@tip.valid?
         format.html { redirect_to root_url, notice: "That doesn't seem to be a real URL. Did you include http:// at the beginning?" }
@@ -42,7 +42,7 @@ class TipsController < ApplicationController
   # DELETE /tips/1.json
   def destroy
     @tip.destroy
-    redirect_to :back, notice: 'Tip was successfully destroyed.'
+    redirect_to :back, notice: 'That tip will never hurt you again.'
   end
 
 

@@ -1,40 +1,40 @@
-<div id="profile-page" class="js-isotope" data-isotope-options='{ "layoutMode": "masonryHorizontal", "itemSelector": ".tip", "stamp": "#profile", "gutter": 10 }'>
+<div id="profile-page" class="js-isotope" data-isotope-options='{ "layoutMode": "masonryHorizontal", "itemSelector": ".tip", "stamp": "#stamp", "gutter": 10 }'>
 
-	<div id="profile">
-		<%= image_tag @user.avatar.url(:medium), class: "avatar" %>
+	<div id="stamp">
+		<div id="profile">
+			<%= image_tag @user.avatar.url(:medium), class: "avatar" %>
 
-		<h1><%= @user.full_name %></h1>
+			<h1><%= @user.full_name %></h1>
 
-		<div class="profile-body">
-			<%= @user.tips.count %><span class="count-label">Tips</span> 
+				<%= @user.tips.count %><span class="count-label">Tips</span> 
 
-			0<span class="count-label">Discoveries</span> 
+				<%= @user.originated_tips.count %><span class="count-label">Discoveries</span> 
 
-			<% if @user.friends.count == 0 && @user == current_user %>
-				<div class="nofriends">
-					<p> No friends yet. <%= link_to "Find some?", "contacts/gmail", :class => "popup", :"data-width" => 500, :"data-height" => 500 %><p>
-				</div>
-			<% elsif @user.friends.count == 0 %>
-				<div class="nofriends">
-					<p>No friends yet.<% if @requested_friendship == nil %> You should fix that.<% end %><p>
-				</div>
-			<% else %>
-				<%= @user.friends.count %><span class="count-label">Friends</span> 
-			<% end %>
+				<% if @user.friends.count == 0 && @user == current_user %>
+					<div class="nofriends">
+						<p> No friends yet. <%= link_to "Find some?", "contacts/gmail", :class => "popup", :"data-width" => 500, :"data-height" => 500 %><p>
+					</div>
+				<% elsif @user.friends.count == 0 %>
+					<div class="nofriends">
+						<p>No friends yet.<% if @requested_friendship == nil %> You should fix that.<% end %><p>
+					</div>
+				<% else %>
+					<%= @user.friends.count %><span class="count-label">Friends</span> 
+				<% end %>
 
-			<% if @user != current_user && @friendship == nil && @requested_friendship == nil %>
-				<%= link_to "Add Friend", friendships_path(:friend_id => @user), class: "btn btn-primary", :method => :post %>
-			<% elsif @user != current_user && @friendship == nil && @requested_friendship != nil %>
-				<%= link_to "Friend Requested.", "#", class: "btn btn-default", :"disabled" => "disabled" %>
-			<% end %>
+				<% if @user != current_user && @friendship == nil && @requested_friendship == nil %>
+					<%= link_to "Add Friend", friendships_path(:friend_id => @user), class: "btn btn-primary", :method => :post %>
+				<% elsif @user != current_user && @friendship == nil && @requested_friendship != nil %>
+					<%= link_to "Friend Requested.", "#", class: "btn btn-default", :"disabled" => "disabled" %>
+				<% end %>
 
-			<% if @user != current_user && @friendship != nil %>
-				<div class="tipbutton">
-					<button class="btn btn-primary" data-toggle="modal" data-target="#sendTip">
-					  Send Tip
-					</button>
-				</div>
-			<% end %>
+				<% if @user != current_user && @friendship != nil %>
+					<div class="tipbutton">
+						<button class="btn btn-primary" data-toggle="modal" data-target="#sendTip">
+						  Send Tip
+						</button>
+					</div>
+				<% end %>
 		</div>
 
 		<% if @user.tips.count == 0 && @user == current_user %>
@@ -56,8 +56,8 @@
 		    <p><%= tip.description %></p>
 		    <p>
 		    	<span class="count"><%= tip.reshares %></span>
-		    	<% if tip.originator == current_user %>
-	    			<%= image_tag "discovery.png",  class: "origin" %>
+		    	<% if tip.originator == @user %>
+	    			<%= image_tag "discovery.png",  class: "origin discovery" %>
 		    	<% elsif tip.originator != nil %>
 		    		<%= link_to profile_path(tip.originator.id) do %>
 		    			<%= image_tag tip.originator.avatar.url(:thumb), class: "origin" %>
