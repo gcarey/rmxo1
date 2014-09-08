@@ -24,7 +24,7 @@ class TipsController < ApplicationController
         format.html { redirect_to root_url, notice: 'Tip was successfully created.' }
         format.json { render :show, status: :created, location: @tip }
       elsif !@tip.valid?
-        format.html { redirect_to root_url, notice: "That doesn't seem to be a real URL." }
+        format.html { redirect_to root_url, notice: "That doesn't seem to be a real URL. Did you include http:// at the beginning?" }
         format.json { render :show, status: :created, location: @tip }
       else
         format.html { render :new }

@@ -1,6 +1,6 @@
 $btn-primary-bg: #2e8300;
 $link-color: #000cac;
-$font-family-sans-serif: 'Muli', sans-serif;
+$font-family-sans-serif: 'Montserrat', sans-serif;
 
 #boxes-container {
 	width: 1448px;
@@ -75,7 +75,8 @@ $font-family-sans-serif: 'Muli', sans-serif;
 
 	.userform .form-control {
 		height: 40px;
-		padding: 8px 16px 6px;
+		padding: 6px 16px 6px;
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 
 	.userform .btn {

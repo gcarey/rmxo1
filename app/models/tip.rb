@@ -6,7 +6,7 @@ class Tip < ActiveRecord::Base
   before_save :scrape_with_grabbit
 	serialize :images   # Store images array as YAML in the database  
 
-  has_attached_file :image, :styles => { :full => "225x225#"}
+  has_attached_file :image, :styles => { :full => "130x130#"}, :default_url => "paperclip-defaults/:style/missing.png"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   private
@@ -22,7 +22,6 @@ class Tip < ActiveRecord::Base
     if data
       self.title = data.title
       self.description = data.description
-      # Only run if images were returned by Grabbit 
       unless data.images.nil?
         $offset = 0
         # Run until an image is saved
@@ -33,9 +32,9 @@ class Tip < ActiveRecord::Base
           rescue
             false
           else
-            # Set file as image if dimensions fit
-            if geometry.width.to_i >= 225 && geometry.height.to_i >= 225
-              self.image = url
+            # Set file as image if dimensions meet reqs
+            if geometry.width.to_i >= 130 && geometry.height.to_i >= 130
+              self.image = URI.parse(data.images.drop($offset).first)
             end
           end
           # Move on to next image

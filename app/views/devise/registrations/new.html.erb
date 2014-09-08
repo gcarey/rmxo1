@@ -1,7 +1,9 @@
 <div class="userforms-container">
   <img src="/assets/boxes-right.jpg" class="boxes">
   <div class="userform">
-    <img src="/assets/logotype-sm.png" class="logotype">
+    <%= link_to root_path do %>
+      <img src="/assets/logotype-sm.png" class="logotype">
+    <% end %>
     <h2>Sign Up</h2>
 
     <%= link_to user_omniauth_authorize_path(:google_oauth2), :class => "popup", :"data-width" => 500, :"data-height" => 500 do %>

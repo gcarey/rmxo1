@@ -1,13 +1,14 @@
-$body-bg: #f4f4f4;
-$font-family-sans-serif: 'Muli', sans-serif;
+$font-family-sans-serif: 'Montserrat', sans-serif;
 $navbar-height: 60px;
 $navbar-default-bg: white;
 $brand-primary: #ff6600;
 $link-color: #000cac;
 $btn-success-bg: #2e8300;
-$font-size-h1: 24px;
-$font-size-h2: 18px;
-$font-size-h3: 16px;
+$font-size-h1: 48px;
+$font-size-h2: 36px;
+$font-size-h3: 30px;
+$navbar-default-border: none;
+$body-bg: #fbfbfb;
 
 body, html {
   height: 100%;
@@ -37,8 +38,113 @@ body {
 }
 
 .alert {
-	margin: 0 5px 0 325px;
+	margin: 0 5px 0 5px;
 }
+
+
+
+#profile-page {
+	padding: 25px 30px 60px;
+	position: relative;
+	height: 100%;
+}
+
+	#profile {
+		position: absolute;
+		top: 25px;
+		left: 30px;
+		width: 690px;
+		height: 260px;
+		margin: 10px;
+		font-size: 24px;
+		color: #282828;
+	}
+
+		.avatar {
+			float: left;
+			margin: 0 20px 0 0;
+		}
+
+		#profile h1 {
+			margin: 10px 0 3px 0;
+		}
+
+		#profile h2 {
+			color: #111
+		}
+
+		#profile p {
+			font-size: 14px;
+		}
+
+		.profile-body {
+			height: 125px;
+			padding: 0 0 0 215px;
+			margin: 0 0 35px;
+		}
+
+			.count-label {
+				font-size: 14px;
+				color: #444;
+			}
+
+	.tip {
+		display: inline;
+		margin: 10px 110px 10px 10px;
+		box-shadow: 1px 1px 1px #eee;
+	}
+
+		.tip img {
+			float: left;
+			width: 130px;
+		}
+
+		.tip .count {
+		}
+
+		.box {
+			width: 460px;
+			padding: 17px 25px;
+			display: inline-block;
+			float: left;
+			background-color: white;
+			height: 130px;
+		}
+
+			.box h3 {
+				text-overflow: ellipsis;
+				width: 100%;
+				white-space: nowrap;
+				overflow: hidden;
+				margin: 0 0 3px;
+				color: #000cac;
+			}
+
+			.box p {
+				font-size: 16px;
+				height: 42px;
+				overflow: hidden;
+				color: #111;
+				margin: 0 0 3px 0;
+			}
+
+			.box .glyphicon {
+				font-size: 12px;
+				color: #b5b5b5;
+				top: 0;
+				left: 5px;
+				display: none;
+			}
+
+			.box .count {
+				color: black;
+			}
+
+.modal-body {
+	background-color: #fbfbfb;
+}
+
+
 
 
 
@@ -52,123 +158,9 @@ body {
 	bottom: 0;
 }
 
-#profile-sidebar {
-	width: 320px;
-	padding: 50px 50px 0;
-}
-
-	.avatar {
-		border: 4px solid white;
-	}
-
-	.app-sidebar .field {
-		margin-bottom: 5px;
-	}
-
-	.spacer {
-		height: 70px;
-	}
-
-	#profile-sidebar .count {
-		font-size: 26px;
-	}
-
-	#profile-sidebar .count-label {
-		font-size: 12px;
-		margin-top: -8px;
-	}
-
-	.tips-counts {
-		display: inline-block
-	}
-
-	.nofriends {
-		margin: 10px 0;
-	}
-
-	.friends-display {
-		width: 145px;
-		margin: 0 auto 10px;
-	}
-
-		.friends-display img {
-			border-radius: 5px;
-			margin: 2px 0;
-		}
-
-		.friends-count {
-			display: inline-block;
-			width: 45px;
-			height: 45px;
-			overflow: hidden;
-			margin-bottom: -18px;
-		}
-
 #inbox-sidebar {
 	width: 280px;
 }
-
-
-
-.content {
-	padding: 40px 20px 60px 50px;
-	height: 100%;
-}
-
-#profile-content {
-	margin: 0 0 0 320px;
-}
-
-	.tip {
-		display: inline;
-		margin: 10px;
-		width: 450px;
-		box-shadow: 1px 1px 1px #eee;
-	}
-
-	.tip img {
-		float: left;
-	}
-
-	.tip .count {
-		font-size: 18px;
-		color: #b5b5b5;
-		font-family: 'Lato', sans-serif;
-	}
-
-	.tip .aro {
-		position: absolute;
-		top: 105px;
-		left: 215px;
-	}
-
-	.box {
-		width: 225px;
-		height: 225px;
-		padding: 20px;
-		background-color: white;
-		display: inline-block;
-		float: left;
-	}
-
-		.box h3 {
-			margin-top: 10px;
-			height: 35px;
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
-
-		.box p {
-			height: 100px;
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
-
-		.box .glyphicon {
-			color: #b5b5b5;
-			top: 0;
-			left: 5px;
-		}
 
 #inbox-content {
 	margin: 0 0 0 280px;
@@ -189,7 +181,11 @@ body {
 
 /* Temporary styles for testing, etc. */
 #tips-index {height:100%;padding-bottom:70px}
-
+#sendTip .field {margin: -23px 0 7px}
+#sendTip p {padding: 0 3px}
+.tipbutton {margin-top: 5px}
+.nophoto {width: 590px}
+.nophoto .box {width:590px}
 
 
 @import 'bootstrap';

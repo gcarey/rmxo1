@@ -1,72 +1,54 @@
-<div id="profile-sidebar" class="sidebar">
-	<%= image_tag @user.avatar.url(:medium), class: "avatar" %>
-	<h1><%= @user.full_name %></h1>
+<div id="profile-page" class="js-isotope" data-isotope-options='{ "layoutMode": "masonryHorizontal", "itemSelector": ".tip", "stamp": "#profile", "gutter": 10 }'>
 
-	<div class="tips-counts">
-		<span class="count"><%= @user.tips.count %></span>
-		<p class="count-label">Tips</p>
+	<div id="profile">
+		<%= image_tag @user.avatar.url(:medium), class: "avatar" %>
+
+		<h1><%= @user.full_name %></h1>
+
+		<div class="profile-body">
+			<%= @user.tips.count %><span class="count-label">Tips</span> 
+
+			0<span class="count-label">Discoveries</span> 
+
+			<% if @user.friends.count == 0 && @user == current_user %>
+				<div class="nofriends">
+					<p> No friends yet. <%= link_to "Find some?", "contacts/gmail", :class => "popup", :"data-width" => 500, :"data-height" => 500 %><p>
+				</div>
+			<% elsif @user.friends.count == 0 %>
+				<div class="nofriends">
+					<p>No friends yet.<% if @requested_friendship == nil %> You should fix that.<% end %><p>
+				</div>
+			<% else %>
+				<%= @user.friends.count %><span class="count-label">Friends</span> 
+			<% end %>
+
+			<% if @user != current_user && @friendship == nil && @requested_friendship == nil %>
+				<%= link_to "Add Friend", friendships_path(:friend_id => @user), class: "btn btn-primary", :method => :post %>
+			<% elsif @user != current_user && @friendship == nil && @requested_friendship != nil %>
+				<%= link_to "Friend Requested.", "#", class: "btn btn-default", :"disabled" => "disabled" %>
+			<% end %>
+
+			<% if @user != current_user && @friendship != nil %>
+				<div class="tipbutton">
+					<button class="btn btn-primary" data-toggle="modal" data-target="#sendTip">
+					  Send Tip
+					</button>
+				</div>
+			<% end %>
+		</div>
+
+		<% if @tips.count == 0 && @user == current_user %>
+			<p>You haven't sent any tips yet. Why don't you try? All the cool kids are doing it.</p>
+		<% elsif @tips.count == 0  %>
+			<%= @user.first_name %> hasn't sent any tips yet.
+		<% else %>
+			<h2>Stuff <%= @user.first_name %> has shared.</h2>
+		<% end %>
 	</div>
 
-	<% if @user.friends.count == 0 && @user == current_user %>
-		<div class="nofriends">
-			<p> No friends yet. <%= link_to "Find some?", "contacts/gmail", :class => "popup", :"data-width" => 500, :"data-height" => 500 %><p>
-		</div>
-	<% elsif @user.friends.count == 0 %>
-		<div class="nofriends">
-			<p>No friends yet.<br><% if @requested_friendship == nil %>You should fix that.<% end %><p>
-		</div>
-	<% else %>
-		<div class="friends-display">
-			<% @user.friends.last(1).each do |friend| %>
-		      <%= link_to profile_path(friend) do %> 
-		      	<%= image_tag friend.avatar.url(:thumb), alt: friend.full_name %>
-		      <% end %>
-		  <% end %>
-			<div class="friends-count">
-				<span class="count"><%= @user.friends.count %></span>
-				<p class="count-label">Friend<% unless @user.friends.count == 1 %>s<% end %></p>
-			</div>
-			<% @user.friends.last(5).reverse.drop(1).each do |friend| %>
-		      <%= link_to profile_path(friend) do %> 
-		      	<%= image_tag friend.avatar.url(:thumb) %>
-		      <% end %>
-		  <% end %>
-		</div>
-	<% end %>
-
-	<% if @user != current_user && @friendship == nil && @requested_friendship == nil %>
-		<%= link_to "Add Friend", friendships_path(:friend_id => @user), class: "btn btn-primary", :method => :post %>
-	<% elsif @user != current_user && @friendship == nil && @requested_friendship != nil %>
-		<%= link_to "Friend Requested.", "#", class: "btn btn-default", :"disabled" => "disabled" %>
-	<% end %>
-
-	<% if @user != current_user && @friendship != nil %>
-		<%= render '/tips/form' %>
-	<% end %>
-
-	<% if current_user == @user && @user.requested_friendships.last %>
-		<h2>Friend Requests</h2>
-		<ul>
-			<% @user.requested_friendships.each do |request| %>
-				<li>
-		      <%= request.email %> 
-		      <%= link_to "Accept", friendship_path(:id => request), :method => "put" %> 
-		      <%= link_to "Decline", friendship_path(:id => request), :method => :delete %>
-		    </li>
-		  <% end %>
-		</ul>
-	<% end %>
-
-	<div class="spacer"></div>
-</div>
-
-<div id="profile-content" class="js-isotope content" data-isotope-options='{ "layoutMode": "masonryHorizontal", "itemSelector": ".tip", "rowHeight": 240, "gutter": 10 }'>
 	<% @tips.each do |tip| %>
-		<div class="tip">
-			<% unless tip.image_file_name.nil? %>
-				<%= image_tag "tip-aro.png", class: "aro" %>
+		<div class="tip"
 				<%= link_to image_tag(tip.image.url(:full)), tip.link %>
-			<% end %>
 			<div class="box">
 		    <h3><%= link_to tip.title, tip.link %></h3>
 		    <p><%= tip.description %></p>
@@ -81,4 +63,48 @@
 		  </div>
 		</div>
 	<% end %>
+
+</div>
+
+<!-- Tip Modal -->
+<div class="modal fade" id="sendTip" tabindex="-1" role="dialog" aria-labelledby="sendTipLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Send Tip</h4>
+      </div>
+			<%= form_for(@tip) do |f| %>
+				<div class="modal-body">
+			  	<% if @tip.errors.any? %>
+				    <div id="error_explanation">
+				      <h2><%= pluralize(@tip.errors.count, "error") %> prohibited this tip from being saved:</h2>
+
+				      <ul>
+				      <% @tip.errors.full_messages.each do |message| %>
+				        <li><%= message %></li>
+				      <% end %>
+				      </ul>
+				    </div>
+				  <% end %>
+
+				  <p>Enter the URL of the tip you want to send below:<p>
+
+				  <div class="field">
+				    <%= f.label :link, class: "sr-only" %><br>
+				    <%= f.text_field :link, class: "form-control", placeholder: "e.g., http://www.google.com"  %>
+				    <%= hidden_field_tag(:recipient_id, @user.id) %>
+				  </div>
+
+				  <p><strong>Note:</strong> This is a temporary UI for sending tips. This function will be carried out by the Chrome extension when it is available.<p>
+				</div>
+				<div class="modal-footer">
+				  <div class="actions">
+				  	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				    <%= f.submit "Send", class: "btn btn-primary" %>
+				  </div>
+				</div>
+			<% end %>
+    </div>
+  </div>
 </div>
