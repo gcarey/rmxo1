@@ -34,5 +34,13 @@
     e.stopPropagation(); return false;
   });
 </script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  setTimeout(function(){
+    $('.alert').fadeOut(500, function() { $(this).remove(); });
+  }, 3000);
+ })
+</script>
 </body>
 </html>
