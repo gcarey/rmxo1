@@ -12,7 +12,7 @@
 
 				<%= @user.tips.count %><span class="count-label">Tip<% if @user.tips.count != 1 %>s<% end %></span> 
 
-				<%= @user.discoveries.count %><span class="count-label"><% if @user.discoveries.count != 1 %>Discoveries<% else %>Discovery<% end %></span> 
+				<%= @discoveries.count %><span class="count-label"><% if @discoveries.count != 1 %>Discoveries<% else %>Discovery<% end %></span> 
 
 				<% if @user.friends.count == 0 && @user == current_user %>
 					<div class="nofriends">

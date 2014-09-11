@@ -30,8 +30,8 @@ class User < ActiveRecord::Base
 
   # Tips
   has_many :tips
-  has_many :received_tips, :class_name => "Tip", :foreign_key => "recipient_id"
-  has_many :discoveries, :class_name => "Tip", :foreign_key => "originator_id"
+  has_and_belongs_to_many :received_tips, :class_name => "Tip"
+  has_many :originated_tips, :class_name => "Tip", :foreign_key => "originator_id"
 
 
   # Display

@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 		end
 		is_friend
 		new_tip
+		discoveries
 	end
 
 	def create
@@ -28,5 +29,9 @@ class UsersController < ApplicationController
 	# Create new tip from profile
 	def new_tip
   	@tip = current_user.tips.build
+  end
+
+  def discoveries
+  	@discoveries = @user.originated_tips.where(user_id: @user)
   end
 end
