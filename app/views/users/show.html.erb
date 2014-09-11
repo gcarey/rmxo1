@@ -43,16 +43,15 @@
 				<% end %>
 
 				<% if current_user == @user && @user.requested_friendships.last %>
-					<p>Friend Requests</p>
-					<ul>
+					<h4>Friend Requests</h4>
+					<p>
 						<% @user.requested_friendships.each do |request| %>
-							<li>
 					      <%= request.full_name %> 
-					      <%= link_to "Accept", friendship_path(:id => request), :method => "put" %> 
+					      <%= link_to "Accept", friendship_path(:id => request), :method => "put" %> / 
 					      <%= link_to "Decline", friendship_path(:id => request), :method => :delete %>
-					    </li>
+					      <br>
 					  <% end %>
-					</ul>
+					</p>
 				<% end %>
 		</div>
 
