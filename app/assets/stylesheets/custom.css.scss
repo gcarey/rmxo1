@@ -89,6 +89,14 @@ body {
 				color: #444;
 			}
 
+			.nofriends {
+				margin: 0;
+			}
+
+			.addfriend {
+				margin: 10px 0 0 0;
+			}
+
 	.tip {
 		display: inline;
 		margin: 10px 110px 10px 10px;
@@ -176,9 +184,19 @@ body {
 }
 
 
-
+/* Smaller screens */
 @media (max-width: 767px) {
 	.wide {display:none !important;}
+
+	#stamp {width:635px}
+	#profile {margin-right:55px;}
+	.tip {margin-right:55px}
+	.box {width:215px;padding:19px 25px;}
+	.box h3 {font-size:16px;}
+	.box p {font-size:12px;height:50px;}
+	.box .count {font-size:14px;}
+	.box img.discovery {width:15px;margin-top:3px}
+	.box img.origin {width:17px;margin-top:3px}
 }
 
 @media (min-width: 768px) {
