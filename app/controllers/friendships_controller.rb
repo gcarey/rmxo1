@@ -33,7 +33,7 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendship = Friendship.where(friend_id: [current_user, params[:id]]).where(user_id: [current_user, params[:id]]).last
     @friendship.destroy
-    flash[:notice] = "Removed friendship."
+    flash[:notice] = "We never liked them anyway."
     redirect_to :back
   end
 end

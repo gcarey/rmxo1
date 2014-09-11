@@ -111,7 +111,7 @@ body {
 
 		.box {
 			width: 460px;
-			padding: 17px 25px;
+			padding: 15px 25px;
 			display: inline-block;
 			float: left;
 			background-color: white;
@@ -136,20 +136,20 @@ body {
 			}
 
 			.box .glyphicon {
-				font-size: 12px;
+				font-size: 14px;
 				color: #b5b5b5;
 				top: 1px;
 				left: 5px;
 			}
 
 			.box .count {
-				font-size: 16px;
+				font-size: 18px;
 				color: black;
 			}
 
 			img.origin {
 				width: 19px;
-				margin: 1px 10px 2px 2px;
+				margin: 2px 10px 2px 2px;
 				border-radius: 2px;
 			}
 
@@ -189,15 +189,21 @@ body {
 @media (max-width: 767px) {
 	.wide {display:none !important;}
 
-	#stamp {width:635px}
-	#profile {margin-right:55px;}
-	.tip {margin:10px 55px 0 10px}
-	.box {width:215px;padding:19px 25px;}
+	#profile-page {padding:20px 20px 60px;}
+	#stamp {top:20px;left:20px;height:255px;width:345px;margin-right:30px;}
+	#profile {margin-right:40px;margin-bottom:26px;font-size:16px}
+	.avatar {width:100px}
+	#stamp h1 {font-size:30px}
+	#stamp h2 {font-size:24px}
+	.count-label {font-size:12px}
+	.tip {margin-right:30px;margin-bottom:0;}
+	.box {width:215px;padding:19px 22px;}
 	.box h3 {font-size:16px;}
 	.box p {font-size:12px;height:50px;}
-	.box .count {font-size:14px;}
+	.box .count {font-size:15px;}
 	.box img.discovery {width:15px;margin-top:3px}
 	.box img.origin {width:17px;margin-top:3px}
+	.box .glyphicon {top:3px;}
 }
 
 @media (min-width: 768px) {
