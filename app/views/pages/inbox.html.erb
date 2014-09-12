@@ -2,26 +2,47 @@
   <title>Tipster / Inbox</title>
 <% end %>
 
-<div id="inbox-sidebar" class="sidebar">
-	<h1>Inbox</h1>
-</div>
+<div id="page" class="inbox-page js-isotope" data-isotope-options='{ "layoutMode": "masonryHorizontal", "itemSelector": ".tip", "stamp": "#stamp" }'>
 
-<div id="inbox-content" class="js-isotope content" data-isotope-options='{ "layoutMode": "masonryHorizontal", "itemSelector": ".tip" }'>
-	<% current_user.received_tips.each do |tip| %>
-		<div class="tip">
+	<div id="stamp">
+		<h1>Inbox</h1>
+		<p>Find stuff you've received here. You know the drill.</p>
+		<h4>Filters</h4>
+		<p>Status:</p>
+		<p><span class="filter">New</span> <span class="filter">Visited</span></p>
+		<p>Sender:</p>
+		<div id="filters">
+			<% current_user.received_tips.order("created_at DESC").pluck(:user_id).uniq.each do |id| %>
+				<div class="filter">
+					<button data-filter=".<%= id %>">
+		    		<%= image_tag User.find(id).avatar.url(:thumb) %>
+						<%= User.find(id).full_name %>
+					</button>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+	<!-- Tips -->
+	<% current_user.received_tips.order("created_at DESC").each do |tip| %>
+		<div class="tip <%= tip.user_id %>">
 			<%= link_to image_tag(tip.image.url(:full)), tip.link %>
 			<div class="box">
 		    <h3><%= link_to tip.title, tip.link %></h3>
 		    <p><%= tip.description %></p>
-	    		<%= link_to profile_path(tip.user_id) do %>
+		    	<span class="count"><%= tip.reshares %></span>
+		    	<%= link_to profile_path(tip.user_id) do %>
 	    			<%= image_tag tip.user.avatar.url(:thumb), class: "origin" %>
 	    		<% end %>
-		    	<% if current_user == @user %>
-		    		<%= link_to tip, method: :delete, data: { confirm: 'Are you sure?' } do %>
-		    			<span class="glyphicon glyphicon-trash"></span>
-		    		<% end %>
-		    	<% end %>
 		  </div>
-
+		</div>
 	<% end %>
-</div> 
+
+</div>
+
+<script type="text/javascript">
+$('#filters').on( 'click', 'button', function() {
+  var filterValue = $(this).attr('data-filter');
+  $container.isotope({ filter: filterValue });
+});
+</script>
