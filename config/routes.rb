@@ -13,9 +13,14 @@ Rails.application.routes.draw do
   resources :friendships
 
   get 'users/:id' => 'users#show', as: :profile
+
   get 'inbox' => 'inbox#index'
+
   get 'contacts/gmail/callback' => 'omni#findfriends'
   get 'contacts/failure' => 'omni#failure'
+
+  get 'visit_link/:id', to: 'shares#visit_link', as: 'visit_link'
+  get 'delete_share/:id', to: 'shares#destroy', as: 'delete_share'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

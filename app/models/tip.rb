@@ -1,6 +1,7 @@
 class Tip < ActiveRecord::Base
 	belongs_to :user
-	has_and_belongs_to_many :recipients, :class_name => "User"
+  has_many :shares, dependent: :destroy
+	has_many :recipients, :through => :shares, :source => :user
   belongs_to :originator, :class_name => "User"
 
   validates :link, presence: true, :format => URI::regexp(%w(http https))

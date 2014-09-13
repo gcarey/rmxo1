@@ -10,17 +10,25 @@
 		<h4>Filters</h4>
 		<% if current_user.received_tips.last != nil %>
 			<p>Status:</p>
-			<div class="filters">
-				<div class="filter">New</div> <div class="filter">Visited</div>
+			<div class="filters btn-group" data-toggle="buttons">
+				<label class="btn btn-default filter" data-filter=".new">
+					<input type="radio" name="options">New
+				</label>
+				<label class="btn btn-default filter" data-filter=".visited">
+					<input type="radio" name="options">Visited
+				</label>
 			</div>
 			<p>Sender:</p>
-			<div class="filters">
-				<div class="filter" data-filter="*">All</div>
-				<% current_user.received_tips.order("created_at DESC").pluck(:user_id).uniq.each do |id| %>
-					<div class="filter sender-filter" data-filter=".<%= id %>">
+			<div class="filters btn-group" data-toggle="buttons">
+				<label class="btn btn-default filter active" data-filter="*">
+					<input type="radio" name="options">All
+				</label>
+				<% current_user.received_tips.order("shares.created_at DESC").pluck(:user_id).uniq.each do |id| %>
+					<label class="btn btn-default filter sender-filter" data-filter=".<%= id %>">
+		    		<input type="radio" name="options" id="option1" checked>
 		    		<%= image_tag User.find(id).avatar.url(:thumb) %>
 						<%= User.find(id).full_name %>
-					</div>
+					</label>
 				<% end %>
 			</div>
 		<% else %>
@@ -30,14 +38,17 @@
 
 	<!-- Tips -->
 	<% current_user.received_tips.order("created_at DESC").each do |tip| %>
-		<div class="tip <%= tip.user_id %>">
-			<%= link_to image_tag(tip.image.url(:full)), tip.link %>
+		<% share = tip.shares.where(user_id: current_user.id).last %>
+		<div class="tip <%= tip.user_id %> <% if share.visited == true %>visited<% else %>new<% end %>">
+			<%= link_to image_tag(tip.image.url(:full)), visit_link_path(tip, link: tip.link), target: '_blank' %>
 			<div class="box">
-		    <h3><%= link_to tip.title, tip.link %></h3>
+		    <h3><%= link_to tip.title, visit_link_path(tip, link: tip.link), target: '_blank' %></h3>
 		    <p><%= tip.description %></p>
-		    	<span class="count"><%= tip.reshares %></span>
 		    	<%= link_to profile_path(tip.user_id) do %>
 	    			<%= image_tag tip.user.avatar.url(:thumb), class: "origin" %>
+	    		<% end %>
+    			<%= link_to delete_share_path(tip, link: tip.link) do %>
+	    			<span class="glyphicon glyphicon-trash"></span>
 	    		<% end %>
 		  </div>
 		</div>

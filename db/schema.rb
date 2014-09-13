@@ -11,12 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140911155823) do
+ActiveRecord::Schema.define(version: 20140913162100) do
 
   create_table "friendships", force: true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
     t.boolean  "approved"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "shares", force: true do |t|
+    t.integer  "tip_id"
+    t.integer  "user_id"
+    t.boolean  "visited"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,11 +42,6 @@ ActiveRecord::Schema.define(version: 20140911155823) do
     t.datetime "image_updated_at"
     t.integer  "reshares"
     t.integer  "originator_id"
-  end
-
-  create_table "tips_users", id: false, force: true do |t|
-    t.integer "tip_id"
-    t.integer "user_id"
   end
 
   create_table "users", force: true do |t|

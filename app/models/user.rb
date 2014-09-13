@@ -30,7 +30,8 @@ class User < ActiveRecord::Base
 
   # Tips
   has_many :tips
-  has_and_belongs_to_many :received_tips, :class_name => "Tip"
+  has_many :shares
+  has_many :received_tips, :through => :shares, :source => :tip
   has_many :originated_tips, :class_name => "Tip", :foreign_key => "originator_id"
 
 
