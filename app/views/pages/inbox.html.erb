@@ -9,15 +9,16 @@
 		<p>Find stuff you've received here. You know the drill.</p>
 		<h4>Filters</h4>
 		<p>Status:</p>
-		<p><span class="filter">New</span> <span class="filter">Visited</span></p>
+		<div class="filters">
+			<div class="filter">New</div> <div class="filter">Visited</div>
+		</div>
 		<p>Sender:</p>
-		<div id="filters">
+		<div class="filters">
+			<div class="filter" data-filter="*">All</div>
 			<% current_user.received_tips.order("created_at DESC").pluck(:user_id).uniq.each do |id| %>
-				<div class="filter">
-					<button data-filter=".<%= id %>">
-		    		<%= image_tag User.find(id).avatar.url(:thumb) %>
-						<%= User.find(id).full_name %>
-					</button>
+				<div class="filter sender-filter" data-filter=".<%= id %>">
+	    		<%= image_tag User.find(id).avatar.url(:thumb) %>
+					<%= User.find(id).full_name %>
 				</div>
 			<% end %>
 		</div>
@@ -39,10 +40,3 @@
 	<% end %>
 
 </div>
-
-<script type="text/javascript">
-$('#filters').on( 'click', 'button', function() {
-  var filterValue = $(this).attr('data-filter');
-  $container.isotope({ filter: filterValue });
-});
-</script>

@@ -43,5 +43,13 @@ $(document).ready(function(){
   }, 3000);
  })
 </script>
+
+<script type="text/javascript">
+var $container = $('#page')
+$('.filters').on( 'click', 'div', function() {
+  var filterValue = $(this).attr('data-filter');
+  $container.isotope({ filter: filterValue });
+});
+</script>
 </body>
 </html>

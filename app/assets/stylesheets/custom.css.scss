@@ -165,25 +165,32 @@ body {
 }
 
 .inbox-page h4 {
-	margin: 20px 0 15px;
+	margin: 20px 0 10px;
 }
+
+.inbox-page p {
+	margin: 0 0 5px;
+}
+
+	.filters {
+		overflow: scroll;
+		height: 30px;
+		padding: 4px 0 0 0;
+		margin: 0 0 10px;
+		width: 590px;
+	}
 
 	.filter {
 		background-color: white;
 		padding: 5px 10px;
-		margin: 3px;
+		margin: 5px;
 		box-shadow: 1px 1px 1px #eee;
-	}
-
-	span.filter {
-		padding: 5px 15px;
-	}
-
-	div.filter {
 		display: inline;
+	}
+
+	.sender-filter {
 		padding: 5px 10px 5px 38px;
 		position: relative;
-		margin: 5px;
 	}
 
 	div.filter img {
