@@ -68,10 +68,10 @@
 	<!-- Tips -->
 	<% @user.tips.order("created_at DESC").each do |tip| %>
 		<div class="tip">
-			<%= link_to image_tag(tip.image.url(:full)), tip.link %>
+			<%= link_to image_tag(tip.image.url(:full)), tip.link, target: '_blank' %>
 			<div class="box">
-		    <h3><%= link_to tip.title, tip.link %></h3>
-		    <p><%= tip.description %></p>
+		    <h3><%= link_to tip.link, target: '_blank' do %><%= raw tip.title %><%end%></h3>
+		    <p><%= raw tip.description %></p>
 		    	<span class="count"><%= tip.reshares %></span>
 		    	<% if tip.originator == @user %>
 	    			<%= image_tag "discovery.png",  class: "origin discovery" %>
