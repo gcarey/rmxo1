@@ -37,6 +37,7 @@ gem 'grabbit', '~> 1.0.0'
 gem 'omniauth-google-oauth2'
 gem "omnicontacts", '~> 0.3.4'
 gem 'doorkeeper', '~> 1.4.0'
+gem 'kaminari'
 
 group :development, :test do 
 	gem 'sqlite3'
