@@ -1,11 +1,11 @@
 module Api
   class FriendsController < ApplicationController
+		doorkeeper_for :all  
     protect_from_forgery with: :null_session
     respond_to :json
 
     def index
-      u=User.find(6)
-      @friends=u.friends
+      @friends = current_user.friends
     end
   end
 end
