@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get 'delete_share/:id', to: 'shares#destroy', as: 'delete_share'
 
   namespace :api do
-    resources :users, :tips
+    resources :tips
     get 'friends', to: 'friends#index', as: 'friends'
   end
 
