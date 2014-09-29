@@ -3,12 +3,12 @@ class Tip < ActiveRecord::Base
 
   has_many :shares, dependent: :destroy
 	has_many :recipients, :through => :shares, :source => :user
-  
+
   belongs_to :originator, :class_name => "User"
 
   validates :link, presence: true, :format => URI::regexp(%w(http https))
   before_save :scrape_with_grabbit
-	serialize :images   # Store images array as YAML in the database  
+	serialize :images
 
   has_attached_file :image, :styles => { :full => "130x130#"}, :default_url => "paperclip-defaults/:style/missing.png"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
@@ -17,10 +17,6 @@ class Tip < ActiveRecord::Base
 
   # Scrape images, title, description
   def scrape_with_grabbit
-    ### I highly recommend passing the following call off to a Resque worker, or Delayed Job queue.
-    ### The reason is that Grabbit will attempt to access the remote URL. If there is a network problem,
-    ### or the remote URL is unavailable, the following line could hang up your Rails process.
-
     data = Grabbit.url(link)
 
     if data

@@ -36,13 +36,10 @@ class TipsController < ApplicationController
     respond_to do |format|
       if @tip.valid? && @tip.save
         format.html { redirect_to root_url, notice: 'Tip sent!' }
-        format.json { render :show, status: :created, location: @tip }
       elsif !@tip.valid?
         format.html { redirect_to root_url, notice: "That doesn't seem to be a real URL. Did you include http:// at the beginning?" }
-        format.json { render :show, status: :created, location: @tip }
       else
         format.html { render :new }
-        format.json { render json: @tip.errors, status: :unprocessable_entity }
       end
     end
   end
