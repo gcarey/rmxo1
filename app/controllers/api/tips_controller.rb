@@ -4,7 +4,7 @@ module Api
     private
 
       def tip_params
-        params.require(:link).require(:user_id).permit()
+        params.require(:tip).permit(:link, :user_id)
       end
 
       def query_params
