@@ -7,7 +7,7 @@ module Api
 
     # POST /api/{plural_resource_name}
     def create
-      set_resource(resource_class.new(tip_params))
+      set_resource(resource_class.new(resource_params))
 
       if get_resource.save
         render :show, status: :created
