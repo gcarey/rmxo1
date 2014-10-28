@@ -3,7 +3,7 @@
 	<h1>Find Friends</h1>
 	<p>Add friends from your Gmail contacts</p>
 	<% @contacts.each do |contact| %>
-		<% if User.where(email: contact[:email]).last && User.where(email: contact[:email]) != current_user.email &&Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last == nil %>
+		<% if User.where(email: contact[:email]).last && contact[:email] != current_user.email && Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last == nil %>
 			<div class="contact">
 			  <span class="action" id="<%= contact[:email]%>">
 			  	<%= link_to "Add Friend", friendships_path(:friend_id => User.where(email: contact[:email]).last.id, :omnicontact => true, :email => contact[:email]), class: "btn btn-primary", :method => :post, :remote => true %>
@@ -23,7 +23,7 @@
 	<% end %>
 
 	<% @contacts.each do |contact| %>
-		<% if User.where(email: contact[:email]).last && User.where(email: contact[:email]) != current_user.email &&Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last %>
+		<% if User.where(email: contact[:email]).last && contact[:email] != current_user.email && Friendship.where(friend_id: [current_user, User.where(email: contact[:email]).last.id]).where(user_id: [current_user, User.where(email: contact[:email]).last.id]).last %>
 			<div class="contact">
 				<span class="added">Already added.</span>
 				<p><span class="name"><%= contact[:name] %></span> <%= contact[:email]%></span></p> 
