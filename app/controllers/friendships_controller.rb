@@ -5,7 +5,7 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id], approved: "false")
     if @friendship.save && params[:omnicontact]
-      render :js => "document.getElementById('"+params[:email]+"').innerHTML = 'Friend requested.'" 
+      render :js => "document.getElementById('"+params[:email]+"').innerHTML = 'Friend requested.'; document.getElementById('"+params[:email]+"').className = 'added'" 
     elsif @friendship.save
       flash[:notice] = "Friend requested."
       redirect_to :back
