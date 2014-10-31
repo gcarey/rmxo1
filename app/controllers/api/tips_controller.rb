@@ -12,8 +12,8 @@ module Api
         @tip = Tip.new(tip_params)
       end
       @received_tip = @tip
-      @recipient = User.find(params[:recipient_id])
-      @received_tip.recipients << @recipient
+      @recipients = User.find(params[:recipient_ids].split(','))
+      @received_tip.recipients << @recipients 
 
       #Check if the tip being saved is a reshare
       if User.find(params[:user_id]).received_tips.where(link: params[:tip][:link]).last != nil
