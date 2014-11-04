@@ -4,6 +4,18 @@ module Api
     protect_from_forgery with: :null_session
     respond_to :json
 
+    # GET /tips
+    # GET /tips.json
+    def index
+      @received_tips = current_user.received_tips
+      @received_tips.each do |tip|
+        share = tip.shares.where(user_id: current_user.id).last
+        if share.visited == false
+          @tips += tip
+        end
+      end
+    end
+
     # POST /api/tips
     def create
       if Tip.exists?(user_id: params[:tip][:user_id], link: params[:tip][:link])
