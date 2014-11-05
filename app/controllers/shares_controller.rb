@@ -1,8 +1,8 @@
  class SharesController < ApplicationController
   def visit_link
     t = Tip.find(params[:id])
-    s = t.shares.where(user_id: current_user.id).last
-    s.update_attribute(:visited, true)
+    s = t.shares.where(user_id: current_user.id)
+    s.update_all(visited: true)
     redirect_to params[:link]
   end
 

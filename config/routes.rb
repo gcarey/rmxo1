@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   namespace :api do
     resources :tips
     get 'friends', to: 'friends#index', as: 'friends'
+    put 'shares/:id/serve', to: 'shares#serve_link'
+    put 'shares/:id/visit', to: 'shares#visit_link'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
