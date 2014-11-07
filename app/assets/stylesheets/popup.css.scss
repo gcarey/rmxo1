@@ -3,6 +3,11 @@ $font-size-h1: 24px;
 $brand-primary: #ff6600;
 $link-color: #000cac;
 
+@import 'bootstrap';
+
+
+
+/* Omni: Find Friends */
 .container {
 	padding: 5px;
 	text-align: center;
@@ -40,13 +45,42 @@ $link-color: #000cac;
 	margin-top: 2px;
 }
 
-@import 'bootstrap';
-
 h1 {
 	margin-top: 10px;
 }
 
-.btn {
+a.btn {
 	height: 21px;
 	padding: 0 12px;
 }
+
+
+/* API Login */
+
+#api-login {
+	font-family: 'Montserrat', sans-serif;
+	width: 350px;
+	margin: 100px auto 0;
+	text-align: center;
+}
+
+input.btn {
+	padding: 7px 30px;
+	font-size: 16px;
+	margin: 10px;
+}
+
+.form-control {
+	height: 40px;
+	padding: 6px 16px 6px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.userform-group {
+	height: 50px
+}
+
+
+
+
+

@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     put 'shares/:id/visit', to: 'shares#visit_link'
   end
 
+  get '/api_login', to: 'popups#api_login', as: 'api_login'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

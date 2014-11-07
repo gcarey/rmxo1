@@ -1,5 +1,5 @@
 class OmniController < ApplicationController
-  layout "omni"
+  layout "popup"
 
   # GET /tips
   # GET /tips.json
