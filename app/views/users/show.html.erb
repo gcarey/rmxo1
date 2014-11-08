@@ -10,53 +10,55 @@
 
 			<h1><%= @user.full_name %></h1>
 
-				<%= @user.tips.count %><span class="count-label">Tip<% if @user.tips.count != 1 %>s<% end %></span> 
+			<div class="btn-group counts">
+			  <button type="button" class="btn btn-default filter active" data-filter="*">
+			  	<%= @user.tips.count %><br><span class="count-label">Tip<% if @user.tips.count != 1 %>s<% end %></span>
+			  </button>
+			  <button type="button" class="btn btn-default filter" data-filter=".disc">
+				  <%= @discoveries.count %><br><span class="count-label"><% if @discoveries.count != 1 %>Discoveries<% else %>Discovery<% end %></span>
+				</button>
+			  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#viewFriends">
+			  	<%= @user.friends.count %><br><span class="count-label">Friend<% if @user.friends.count != 1 %>s<% end %></span>
+			  </button>
+			</div>
 
-				<%= @discoveries.count %><span class="count-label"><% if @discoveries.count != 1 %>Discoveries<% else %>Discovery<% end %></span> 
-
-				<% if @user.friends.count == 0 && @user == current_user %>
-					<div class="nofriends">
-						<p> No friends yet. <%= link_to "Find some?", "contacts/gmail", :class => "popup", :"data-width" => 500, :"data-height" => 500 %><p>
-					</div>
-				<% elsif @user.friends.count == 0 %>
-					<div class="nofriends">
-						<p>No friends yet.<% if @requested_friendship == nil %> You should fix that.<% end %><p>
-					</div>
-				<% else %>
-					<%= @user.friends.count %><span class="count-label">Friend<% if @user.friends.count != 1 %>s<% end %></span> 
-				<% end %>
-
-				<% if current_user == @user %>
-				 <div><% @user.friends.each do |f| %><%= link_to profile_path(f) do %><%= image_tag f.avatar.url(:thumb), class: "fpreview" %><% end %><% end %></div>
-				<% end %>
-
-				<div class="addfriend">
-					<% if @user != current_user && @friendship == nil && @requested_friendship == nil %>
-						<%= link_to "Add Friend", friendships_path(:friend_id => @user), class: "btn btn-primary", :method => :post %>
-					<% elsif @user != current_user && @friendship == nil && @requested_friendship != nil %>
-						<%= link_to "Friend Requested.", "#", class: "btn btn-default", :"disabled" => "disabled" %>
-					<% end %>
+			<% if @user.friends.count == 0 && @user == current_user %>
+				<div class="nofriends">
+					<p> No friends yet. <%= link_to "Find some?", "contacts/gmail", :class => "popup", :"data-width" => 500, :"data-height" => 500 %><p>
 				</div>
+			<% elsif @user.friends.count == 0 %>
+				<div class="nofriends">
+					<p>No friends yet.<% if @requested_friendship == nil %> You should fix that.<% end %><p>
+				</div>
+			<% end %>
 
-				<% if @user != current_user && @friendship != nil %>
-					<div class="tipbutton">
-						<button class="btn btn-primary" data-toggle="modal" data-target="#sendTip">
-						  Send Tip
-						</button>
-					</div>
+			<div class="addfriend">
+				<% if @user != current_user && @friendship == nil && @requested_friendship == nil %>
+					<%= link_to "Add Friend", friendships_path(:friend_id => @user), class: "btn btn-primary", :method => :post %>
+				<% elsif @user != current_user && @friendship == nil && @requested_friendship != nil %>
+					<%= link_to "Friend Requested.", "#", class: "btn btn-default", :"disabled" => "disabled" %>
 				<% end %>
+			</div>
 
-				<% if current_user == @user && @user.requested_friendships.last %>
-					<h4>Friend Requests</h4>
-					<p>
-						<% @user.requested_friendships.each do |request| %>
-					      <%= request.full_name %> 
-					      <%= link_to "Accept", friendship_path(:id => request), :method => "put" %> / 
-					      <%= link_to "Decline", friendship_path(:id => request), :method => :delete %>
-					      <br>
-					  <% end %>
-					</p>
-				<% end %>
+			<% if @user != current_user && @friendship != nil %>
+				<div class="tipbutton">
+					<button class="btn btn-primary" data-toggle="modal" data-target="#sendTip">
+					  Send Tip
+					</button>
+				</div>
+			<% end %>
+
+			<% if current_user == @user && @user.requested_friendships.last %>
+				<h4>Friend Requests</h4>
+				<p>
+					<% @user.requested_friendships.each do |request| %>
+				      <%= request.full_name %> 
+				      <%= link_to "Accept", friendship_path(:id => request), :method => "put" %> / 
+				      <%= link_to "Decline", friendship_path(:id => request), :method => :delete %>
+				      <br>
+				  <% end %>
+				</p>
+			<% end %>
 		</div>
 
 		<% if @user.tips.count == 0 && @user == current_user %>
@@ -71,7 +73,7 @@
 
 	<!-- Tips -->
 	<% @user.tips.order("created_at DESC").each do |tip| %>
-		<div class="tip">
+		<div class="tip <% if tip.originator == @user %>disc<% end %>">
 			<%= link_to image_tag(tip.image.url(:full)), tip.link, target: '_blank' %>
 			<div class="box">
 		    <h3><%= link_to tip.link, target: '_blank' do %><%= raw tip.title %><%end%></h3>
@@ -104,7 +106,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Send Tip</h4>
+        <h4 class="modal-title" id="sendTipLabel">Send Tip</h4>
       </div>
 			<%= form_for(@tip) do |f| %>
 				<div class="modal-body">
@@ -140,3 +142,35 @@
     </div>
   </div>
 </div>
+
+
+<!-- Friends Modal -->
+<div class="modal fade" id="viewFriends" tabindex="-1" role="dialog" aria-labelledby="viewFriendsLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="viewFriendsLabel"><%= @user.full_name %>'s Friends</h4>
+      </div>
+			<div class="modal-body">
+				<% @user.friends.each do |f| %>
+					<%= link_to profile_path(f) do %>
+						<%= image_tag f.avatar.url(:thumb) %>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="modal-footer">
+			</div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+var $container = $('#page')
+$('.counts').on( 'click', '.filter', function() {
+  var filterValue = $(this).attr('data-filter');
+  $container.isotope({ filter: filterValue });
+  $('.filter').toggleClass("active");
+});
+</script>

@@ -85,13 +85,28 @@ body {
 				font-size: 14px;
 			}
 
+			.counts {
+				margin: 5px 0 0 -3px;
+			}
+
+			.counts .btn {
+				font-size: 20px;
+				padding: 8px 20px;
+				line-height: 0.7;
+			}
+
+			.counts .btn-default.active {
+				background-color: #fdfdfd;
+			}
+
+
 			.count-label {
-				font-size: 14px;
+				font-size: 12px;
 				color: #444;
 			}
 
 			.nofriends {
-				margin: 0;
+				margin: 10px 0 0;
 			}
 
 			.addfriend {
@@ -265,9 +280,6 @@ body {
 #sendTip .field {margin: -23px 0 7px}
 #sendTip p {padding: 0 3px}
 .tipbutton {margin-top: 5px}
-.nophoto {width: 590px}
-.nophoto .box {width:590px}
-.fpreview {width:25px;margin:0 2px 0 0;}
 
 
 
