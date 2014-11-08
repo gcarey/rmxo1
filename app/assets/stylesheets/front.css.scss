@@ -125,6 +125,10 @@ $font-family-sans-serif: 'Montserrat', sans-serif;
 	float: left;
 }
 
+@media (max-height: 510px) {
+	#boxes-container { top:0; }
+}
+
 
 
 
