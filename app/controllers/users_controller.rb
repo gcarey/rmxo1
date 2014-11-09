@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  after_create :send_welcome
+  after_create :send_welcome_email
 
 	def show
 		# Figure out own profile page if ID is passed in by URL or no; used to set profile as authenticated root
