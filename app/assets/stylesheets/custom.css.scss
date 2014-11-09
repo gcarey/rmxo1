@@ -93,10 +93,12 @@ body {
 				font-size: 20px;
 				padding: 8px 20px;
 				line-height: 0.7;
+				border-color: #eee;
 			}
 
-			.counts .btn-default.active {
+			.counts .btn.active {
 				background-color: #fdfdfd;
+				border-color: #eee;
 			}
 
 
