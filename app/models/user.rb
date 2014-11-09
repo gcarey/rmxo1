@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  # Welcome Email
+  after_create :send_welcome_email
 
   # Profile Photos
   has_attached_file :avatar, :styles => { :medium => "190x190#", :small => "85x85#", :thumb => "45x45#" }, :default_url => "paperclip-defaults/:style/missing.png"
@@ -56,4 +58,10 @@ class User < ActiveRecord::Base
      end
     user
   end
+
+
+  private
+    def send_welcome_email
+      Notifications.welcome(self).deliver
+    end
 end
