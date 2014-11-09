@@ -4,6 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
+    <%= image_tag attachments['logo.png'].url %>
     <p>Hey <%= @user.first_name %>,</p>
     <p>
       This is just a note to let you know that you have successfully signed up for Tipster! I know this is a big moment, and you might be feeling a bit overwhelmed. Don't worry, I'm emotional about it too.
@@ -21,7 +22,7 @@
       Thanks for trying Tipster, I hope you enjoy it.
     </p>
     <p>
-      Garrett from Tipster
+      Garrett, from Tipster
     </p>
   </body>
 </html>
