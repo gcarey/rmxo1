@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  after_create :send_welcome
 
 	def show
 		# Figure out own profile page if ID is passed in by URL or no; used to set profile as authenticated root
@@ -12,11 +13,6 @@ class UsersController < ApplicationController
 		is_friend
 		new_tip
 		discoveries
-	end
-
-	def create
-	  @user = User.create(user_params)
-    Notifications.welcome(@user).deliver
 	end
 
 
@@ -34,5 +30,9 @@ class UsersController < ApplicationController
 
   def discoveries
   	@discoveries = @user.originated_tips.where(user_id: @user)
+  end
+
+  def send_welcome_email
+    Notifications.welcome(@user).deliver
   end
 end
