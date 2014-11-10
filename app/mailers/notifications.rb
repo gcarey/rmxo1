@@ -4,8 +4,7 @@ class Notifications < ActionMailer::Base
   def welcome(user)
     @user = user
     @url  = 'http://www.tipster.to/users/sign_in'
-    @image = 'logo.png'
-		attachments.inline['logo.png'] = File.read("#{Rails.root}/public/assets/#{@image}")
+		attachments.inline['logo.png'] = File.read("assets/logo.png")
     mail(to: @user.email, subject: 'Tipster — Thanks for signing up!')
   end
 end
