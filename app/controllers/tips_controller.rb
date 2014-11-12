@@ -17,11 +17,7 @@ class TipsController < ApplicationController
     end
     @received_tip = @tip
     @recipient = User.find(params[:recipient_id])
-    @received_tip.recipients << @recipient
-
-    @share = @tip.share.where(user_id: @recipient.id).last
-    Notifications.tip(@recipient, @share, current_user).deliver
-    
+    @received_tip.recipients << @recipient    
 
     #Check if the tip being saved is a reshare
     if current_user.received_tips.where(link: params[:tip][:link]).last != nil
@@ -38,6 +34,8 @@ class TipsController < ApplicationController
 
     respond_to do |format|
       if @tip.valid? && @tip.save
+        @share = @tip.share.where(user_id: @recipient.id).last
+        Notifications.tip(@recipient, @share, current_user).deliver
         format.html { redirect_to root_url, notice: 'Tip sent!' }
       elsif !@tip.valid?
         format.html { redirect_to root_url, notice: "That doesn't seem to be a real URL. Did you include http:// at the beginning?" }
