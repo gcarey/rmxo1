@@ -3,9 +3,16 @@ class Notifications < ActionMailer::Base
 
   def welcome(user)
     @user = user
-    @url  = 'http://www.tipster.to/users/sign_in'
 		attachments.inline['logo.png'] = File.read('app/assets/images/logo.png')
 		attachments.inline['header.jpg'] = File.read('app/assets/images/welcome-header.jpg')
     mail(to: @user.email, subject: 'Tipster — Thanks for signing up!')
+  end
+
+  def tip(user, link)
+    @user = user
+    @link  = link
+		attachments.inline['logo.png'] = File.read('app/assets/images/logo.png')
+		attachments.inline['header.jpg'] = File.read('app/assets/images/welcome-header.jpg')
+    mail(to: @user.email, subject: 'You have a new tip!')
   end
 end
