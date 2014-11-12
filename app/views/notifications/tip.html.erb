@@ -27,7 +27,7 @@
             <% end %>
           </td>
           <td align="right">
-            <a href="http://www.tipster.to/users/sign_in" target="_blank">Log in to Tipster</a>
+            <a href="http://www.tipster.to/users/sign_in" target="_blank">Log In</a>
           </td>
         </tr>
       </tbody></table>
@@ -50,11 +50,15 @@
 <p><%= @sender.full_name %> has sent you a tip!</p>
 
 <p>
-  <%= link_to @link do %>
-    <a style="border:none;padding:5px 50px;margin:15px 0 5px;color:white;background-color:#f60000;text-align:center;vertical-align:middle;cursor:pointer;white-space:nowrap;border-radius:4px;">
+  <%= link_to 'http://www.tipster.to/api/shares/@share.id/visit' do %>
+    <a style="border:none;padding:10px 50px;margin:15px 0 5px;color:white;background-color:#000cac;text-align:center;vertical-align:middle;cursor:pointer;white-space:nowrap;border-radius:4px;">
       Click here to check it out!
     </a>
   <% end %>
+</p>
+
+<p>
+  Or view it in your <a href="http://www.tipster.to/inbox" target="_blank">Inbox</a>
 </p>
 
                     </td>
@@ -75,10 +79,10 @@
             <tr>
               <td>
                 <p style="font-size:9pt;color:#8b959e;text-decoration:none;text-align:center">
-                  You're receiving this because you signed up for a Tipster account with this email.<br>Wasn't you? <a href="mailto:garrett@tipster.to">Let me know</a>.               
+                  You're receiving this because you signed up for a Tipster account with this email.<br>Wasn't you? <a style="font-size:9pt;color:#8b959e;text-decoration:none;" href="mailto:garrett@tipster.to">Let me know</a>.               
                 </p>
                 <p style="font-size:9pt;color:#8b959e;text-decoration:none;text-align:center">
-                  Want to get rid of these emails? <a href="#" target="_blank">Manage your email preferences</a>.
+                  Want to get rid of these emails? <a href="#" style="font-size:9pt;color:#8b959e;text-decoration:none;" target="_blank">Manage your email preferences</a>.
                 </p>
               </td>
             </tr>

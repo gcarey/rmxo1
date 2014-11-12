@@ -1,4 +1,5 @@
  class SharesController < ApplicationController
+
   def visit_link
     t = Tip.find(params[:id])
     s = t.shares.where(user_id: current_user.id)

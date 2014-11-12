@@ -8,9 +8,8 @@ class Notifications < ActionMailer::Base
     mail(to: @user.email, subject: 'Tipster — Thanks for signing up!')
   end
 
-  def tip(user, link, sender)
-    @user = user
-    @link  = link
+  def tip(share, sender)
+    @share  = share
     @sender  = sender
 		attachments.inline['logo.png'] = File.read('app/assets/images/logo.png')
 		attachments.inline['header.jpg'] = File.read('app/assets/images/welcome-header.jpg')
