@@ -20,7 +20,7 @@ class TipsController < ApplicationController
     @received_tip.recipients << @recipient
 
     @share = @tip.share.where(user_id: @recipient.id).last
-    Notifications.tip(@share, current_user).deliver
+    Notifications.tip(@recipient, @share, current_user).deliver
     
 
     #Check if the tip being saved is a reshare
