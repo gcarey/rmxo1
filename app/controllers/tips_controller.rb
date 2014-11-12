@@ -18,7 +18,7 @@ class TipsController < ApplicationController
     @received_tip = @tip
     @recipient = User.find(params[:recipient_id])
     @received_tip.recipients << @recipient
-    Notifications.tip(@recipient, params[:tip][:link]).deliver
+    Notifications.tip(@recipient, params[:tip][:link], current_user).deliver
     
 
     #Check if the tip being saved is a reshare
