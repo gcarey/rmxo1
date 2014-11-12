@@ -82,7 +82,7 @@ Rails.application.configure do
 
 
   # Devise
-  config.action_mailer.default_url_options = { :host => 'hidden-spire-6456.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'www.tipster.to' }
 
   config.paperclip_defaults = {
   :storage => :s3,

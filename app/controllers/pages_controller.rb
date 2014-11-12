@@ -3,10 +3,6 @@ class PagesController < ApplicationController
   	render layout: "index"
   end
 
-  def api_login
-  	render layout: "index"
-  end
-
   def inbox
   end
 end

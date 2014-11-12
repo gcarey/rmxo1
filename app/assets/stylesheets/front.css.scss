@@ -117,10 +117,6 @@ $font-family-sans-serif: 'Montserrat', sans-serif;
 		margin: 20px auto 22px;
 	}
 
-.loginform {
-	padding-top: 42px;
-}
-
 .boxes {
 	float: left;
 }
@@ -128,6 +124,11 @@ $font-family-sans-serif: 'Montserrat', sans-serif;
 @media (max-height: 510px) {
 	#boxes-container { top:0; }
 }
+
+.loginform { padding-top: 42px; }
+.resetform { padding-top: 85px; }
+.passform { padding-top: 60px; }
+
 
 
 
