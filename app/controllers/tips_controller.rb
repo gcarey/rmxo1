@@ -34,8 +34,7 @@ class TipsController < ApplicationController
 
     respond_to do |format|
       if @tip.valid? && @tip.save
-        @share = @tip.shares.where(user_id: @recipient.id).last
-        Notifications.tip(@recipient, @share, current_user).deliver
+        Notifications.tip(@recipient, @tip, current_user).deliver
         format.html { redirect_to root_url, notice: 'Tip sent!' }
       elsif !@tip.valid?
         format.html { redirect_to root_url, notice: "That doesn't seem to be a real URL. Did you include http:// at the beginning?" }

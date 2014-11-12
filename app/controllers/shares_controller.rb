@@ -4,7 +4,7 @@
     t = Tip.find(params[:id])
     s = t.shares.where(user_id: current_user.id)
     s.update_all(visited: true)
-    redirect_to params[:link]
+    redirect_to t.link
   end
 
   def destroy

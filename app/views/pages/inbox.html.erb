@@ -42,7 +42,7 @@
 		<div class="tip <%= tip.user_id %> <% if share.visited == true %>visited<% else %>new<% end %>">
 			<%= link_to image_tag(tip.image.url(:full)), visit_link_path(tip, link: tip.link), target: '_blank' %>
 			<div class="box">
-		    <h3><%= link_to visit_link_path(tip, link: tip.link), target: '_blank' do %><%= raw tip.title %><%end%></h3>
+		    <h3><%= link_to visit_link_path(tip), target: '_blank' do %><%= raw tip.title %><%end%></h3>
 		    <p><%= raw tip.description %></p>
 		    	<%= link_to profile_path(tip.user_id) do %>
 	    			<%= image_tag tip.user.avatar.url(:thumb), class: "origin" %>
