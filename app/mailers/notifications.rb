@@ -13,7 +13,7 @@ class Notifications < ActionMailer::Base
     @tip  = tip
     @sender  = sender
 		attachments.inline['logo.png'] = File.read('app/assets/images/logo.png')
-		attachments.inline['header.jpg'] = File.read('app/assets/images/welcome-header.jpg')
+		attachments.inline['header.jpg'] = File.read('app/assets/images/tip-header.jpg')
     mail(to: @user.email, subject: 'You have a new tip!')
   end
 end

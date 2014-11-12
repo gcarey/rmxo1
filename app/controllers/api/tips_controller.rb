@@ -36,6 +36,9 @@ module Api
 
       if @tip.save
         render :show, status: :created
+        @recipients.each do |r|
+          Notifications.tip(r, @tip, current_user).deliver
+        end
       else
         render json: @tip.errors, status: :unprocessable_entity
       end
