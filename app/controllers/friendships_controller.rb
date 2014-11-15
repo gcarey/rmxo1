@@ -4,14 +4,20 @@ class FriendshipsController < ApplicationController
   # POST /friendships.json
   def create
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id], approved: false)
+    @recipient = User.find(params[:friend_id])
+
     if @friendship.save && params[:omnicontact]
-      render js: "document.getElementById('"+params[:email]+"').innerHTML = 'Friend requested.'; document.getElementById('"+params[:email]+"').className = 'added';" 
+      render js: "document.getElementById('"+params[:email]+"').innerHTML = 'Friend requested.'; document.getElementById('"+params[:email]+"').className = 'added';"
     elsif @friendship.save
       flash[:notice] = "Friend requested."
       redirect_to :back
     else
       flash[:error] = "Unable to request friendship."
       redirect_to :back
+    end
+
+    if @friendship.save
+      Notifications.friend_request(@recipient, current_user).deliver 
     end
   end
 
