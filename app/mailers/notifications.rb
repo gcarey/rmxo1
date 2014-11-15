@@ -21,7 +21,7 @@ class Notifications < ActionMailer::Base
     @recipient  = recipient
     @sender  = sender
     attachments.inline['logo.png'] = File.read('app/assets/images/logo.png')
-    attachments.inline['header.jpg'] = File.read('app/assets/images/tip-header.jpg')
+    attachments.inline['header.jpg'] = File.read('app/assets/images/friend-header.jpg')
     mail(to: @recipient.email, subject: 'You have a friend request!')
   end
 end

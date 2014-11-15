@@ -22,7 +22,7 @@
       <table cellspacing="0" align="center" width="600" cellpadding="0"><tbody>
         <tr>
           <td valign="middle" width="40" height="50">
-            <%= link_to 'http://www.tipster.to', :target => "_blank", :style => "border:1px solid #eee;" do %>
+            <%= link_to 'http://www.tipster.to', :target => "_blank" do %>
               <%= image_tag attachments['logo.png'].url %>
             <% end %>
           </td>
@@ -42,12 +42,12 @@
             <tr>
               <td>
                 <table cellpadding="0" cellspacing="0" border="0" align="center" width="550"><tbody>
-                  <tr><td valign="top" colspan="2" height="30">&nbsp;</td></tr>
+                  <tr><td valign="top" colspan="2" height="25">&nbsp;</td></tr>
                   <tr>
                     <td width="30">&nbsp;</td>
                     <td valign="top" colspan="2" style="text-align:center;">
 
-<p style="font-size:18px;"><strong><%= @sender.full_name %></strong> has sent you a tip! Hit the button below to check it out:</p>
+<p style="font-size:18px;"><strong><%= @sender.full_name %></strong> has sent you a tip!<br>Hit the button below to check it out:</p>
 
 <p style="margin: 20px 0;">
   <a href="http://www.tipster.to/visit_link/<%= @tip.id %>" style="border:none;padding:10px 50px;margin:15px 0 5px;color:white;background-color:#ff6600;text-align:center;vertical-align:middle;cursor:pointer;white-space:nowrap;border-radius:4px;">
