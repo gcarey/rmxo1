@@ -26,9 +26,9 @@
 				<div class="nofriends">
 					<p> No friends yet. <%= link_to "Find some?", "contacts/gmail", :class => "popup", :"data-width" => 500, :"data-height" => 500 %><p>
 				</div>
-			<% elsif @user.friends.count == 0 %>
+			<% elsif @user.friends.count == 0 && @requested_friendship == nil %>
 				<div class="nofriends">
-					<p>No friends yet.<% if @requested_friendship == nil %> You should fix that.<% end %><p>
+					<p>No friends yet. You should fix that.<p>
 				</div>
 			<% end %>
 
@@ -49,15 +49,7 @@
 			<% end %>
 
 			<% if current_user == @user && @user.requested_friendships.last %>
-				<h4>Friend Requests</h4>
-				<p>
-					<% @user.requested_friendships.each do |request| %>
-				      <%= request.full_name %> 
-				      <%= link_to "Accept", friendship_path(:id => request), :method => "put" %> / 
-				      <%= link_to "Decline", friendship_path(:id => request), :method => :delete %>
-				      <br>
-				  <% end %>
-				</p>
+				<p>You have <a data-toggle="modal" data-target="#viewFriends"><%= @user.requested_friendships.count %> friend requests</a>.</p>
 			<% end %>
 		</div>
 
@@ -157,6 +149,18 @@
 					<%= link_to profile_path(f) do %>
 						<%= image_tag f.avatar.url(:thumb) %>
 					<% end %>
+				<% end %>
+
+				<% if current_user == @user && @user.requested_friendships.last %>
+					<h4>Friend Requests</h4>
+					<p>
+						<% @user.requested_friendships.each do |request| %>
+					      <%= request.full_name %> 
+					      <%= link_to "Accept", friendship_path(:id => request), :method => "put" %> / 
+					      <%= link_to "Decline", friendship_path(:id => request), :method => :delete %>
+					      <br>
+					  <% end %>
+					</p>
 				<% end %>
 			</div>
 			<div class="modal-footer">
