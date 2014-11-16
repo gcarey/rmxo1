@@ -6,6 +6,7 @@ class Tip < ActiveRecord::Base
 
   belongs_to :originator, :class_name => "User"
 
+  before_validation :add_url_protocol
   validates :link, presence: true, :format => URI::regexp(%w(http https))
   before_save :scrape_with_grabbit
 	serialize :images
@@ -47,6 +48,12 @@ class Tip < ActiveRecord::Base
           end
         end 
       end
+    end
+  end
+
+  def add_url_protocol
+    unless self.link[/\Ahttp:\/\//] || self.link[/\Ahttps:\/\//]
+      self.link = "http://#{self.link}"
     end
   end
 end
