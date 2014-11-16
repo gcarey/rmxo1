@@ -17,6 +17,3 @@
 
 # User photo upload.
 /public/system/*
-
-# Local Mandrill key
-.env

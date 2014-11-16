@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   		# Show the currently logged in user
   		@user = current_user
 		end
+    @shares = Share.where(user_id: current_user.id).where(visited: nil)
 		is_friend
 		new_tip
 		discoveries

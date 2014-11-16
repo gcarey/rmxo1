@@ -54,8 +54,17 @@
 		</div>
 
 		<% if @user.tips.count == 0 && @user == current_user %>
-			<p>You haven't sent any tips yet. Why don't you try? All the cool kids are doing it.</p>
-			<p>Tips can be sent via the Chrome extension or from a friend's profile page.</p>
+			<!-- For testing -->
+			<div style="width:500px;">
+				<h4>Hi there! Welcome to the Tipster alpha.</h4>
+				<p>Here is where you'll see tips that you've sent, as soon as you send some.</p>
+				<p>First, you'll need some friends. If you're just starting, you should see a "Find Friends" link above. That'll let you track down any Google contacts you have that are already on the site.</p>
+				<p>Because we're still in early testing, I haven't activated the option to invite friends who are not already on the service. That will open up as soon as we move to beta.</p>
+				<p>If you don't have any other friends on yet, feel free to <%= link_to "click this link", friendships_path(friend_id: 2, og: true), :method => :post %> to automatically add <%= link_to "Garrett", profile_path(2) %> as a friend, so that you can try out the features fully.</p>
+				<p>Enjoy!</p>
+			</div>
+			<!--<p>You haven't sent any tips yet. Why don't you try? All the cool kids are doing it.</p>
+			<p>Tips can be sent via the Chrome extension or from a friend's profile page.</p>-->
 		<% elsif @user.tips.count == 0  %>
 			<h3><%= @user.first_name %> hasn't sent any tips yet.</h3>
 		<% else %>

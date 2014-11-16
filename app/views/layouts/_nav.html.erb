@@ -31,14 +31,24 @@
             </button>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li><%= link_to "Inbox", inbox_path %></li>
+            <li>
+              <% if @shares.count > 0 %>
+                <%= link_to "Inbox (#{@shares.count})", inbox_path %>
+              <% else %>
+                <%= link_to "Inbox", inbox_path %>
+              <% end %>
+            </li>
             <li><%= link_to "Find Friends", "/contacts/gmail", :class => "popup", :"data-width" => 500, :"data-height" => 500 %></li>
             <li><%= link_to "Account Settings", edit_user_registration_path %></li>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>
         <li><%= link_to "My Profile", root_path, class: "narrow" %></li>
-        <li><%= link_to "Inbox", inbox_path, class: "narrow" %></li>
+        <% if @shares %>
+          <%= link_to "Inbox (#{@shares.count})", inbox_path, :class => "narrow" %>
+        <% else %>
+          <%= link_to "Inbox", inbox_path %>
+        <% end %>
         <li><%= link_to "Find Friends", "/contacts/gmail", :class => "popup narrow", :"data-width" => 500, :"data-height" => 500 %></li>
         <li><%= link_to "Account Settings", edit_user_registration_path, class: "narrow" %></li>
         <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "narrow" %></li>

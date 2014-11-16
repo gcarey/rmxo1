@@ -3,7 +3,7 @@ class FriendshipsController < ApplicationController
   # POST /friendships
   # POST /friendships.json
   def create
-    @friendship = current_user.friendships.build(:friend_id => params[:friend_id], approved: false)
+    @friendship = current_user.friendships.build(:friend_id => params[:friend_id], approved: params[:og])
     @recipient = User.find(params[:friend_id])
 
     if @friendship.save && params[:omnicontact]

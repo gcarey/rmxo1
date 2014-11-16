@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get 'users/:id' => 'users#show', as: :profile
 
-  get 'inbox' => 'inbox#index'
+  get 'inbox' => 'pages#inbox'
 
   get 'contacts/gmail/callback' => 'omni#findfriends'
   get 'contacts/failure' => 'omni#failure'
