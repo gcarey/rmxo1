@@ -17,6 +17,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li class="wide">
+          <% if @newtips.count > 0 %>
+            <%= link_to inbox_path, :class => "nav-alert" do %>
+             <span class='glyphicon glyphicon-comment'></span> You have <%= @newtips.count %> new tip!
+            <% end %>
+          <% end %>
+        </li>
+        <li class="wide">
           <%= link_to root_path, class: "thumb" do %>
             <%= image_tag current_user.avatar.url(:thumb), width: "30px" %>
           <% end %>
@@ -32,8 +39,8 @@
           </a>
           <ul class="dropdown-menu" role="menu">
             <li>
-              <% if @shares.count > 0 %>
-                <%= link_to "Inbox (#{@shares.count})", inbox_path %>
+              <% if @newtips.count > 0 %>
+                <%= link_to "Inbox (#{@newtips.count})", inbox_path %>
               <% else %>
                 <%= link_to "Inbox", inbox_path %>
               <% end %>
@@ -44,11 +51,13 @@
           </ul>
         </li>
         <li><%= link_to "My Profile", root_path, class: "narrow" %></li>
-        <% if @shares %>
-          <%= link_to "Inbox (#{@shares.count})", inbox_path, :class => "narrow" %>
-        <% else %>
-          <%= link_to "Inbox", inbox_path %>
-        <% end %>
+        <li>
+          <% if @newtips.count > 0 %>
+            <%= link_to "Inbox (#{@newtips.count})", inbox_path, :class => "narrow" %>
+          <% else %>
+            <%= link_to "Inbox", inbox_path, :class => "narrow" %>
+          <% end %>
+        </li>
         <li><%= link_to "Find Friends", "/contacts/gmail", :class => "popup narrow", :"data-width" => 500, :"data-height" => 500 %></li>
         <li><%= link_to "Account Settings", edit_user_registration_path, class: "narrow" %></li>
         <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "narrow" %></li>

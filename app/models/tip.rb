@@ -8,8 +8,9 @@ class Tip < ActiveRecord::Base
 
   before_validation :add_url_protocol
   validates :link, presence: true, :format => URI::regexp(%w(http https))
-  before_save :scrape_with_grabbit
-	serialize :images
+  before_save :scrape_link
+
+  serialize :images
 
   has_attached_file :image, :styles => { :full => "130x130#"}, :default_url => "paperclip-defaults/:style/missing.png"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
@@ -17,38 +18,49 @@ class Tip < ActiveRecord::Base
   private
 
   # Scrape images, title, description
-  def scrape_with_grabbit
+  def scrape_link
     data = Grabbit.url(link)
 
-    if data
-      self.title = data.title
-      self.description = data.description
-      unless data.images.nil?
-        $offset = 0
-        # Run until an image is saved
-        while self.image_file_name == nil
-          # Attempt to extract file dimensions
-          begin
-            geometry = Paperclip::Geometry.from_file(data.images.drop($offset).first)
-          rescue
-            false
-          else
-            # Set file as image if dimensions meet reqs
-            if geometry.width.to_i >= 130 && geometry.height.to_i >= 130
-              self.image = URI.parse(data.images.drop($offset).first)
+    if ((File.extname(link) =~/^(.png|.gif|.jpg)$/ )||(link =~ /^#{URI::regexp}$/))
+      uri = URI.parse(link)
+      self.image = uri
+      self.title  = File.basename(uri.path)
+      self.description = "This tip links to an image."
+    else
+      data = Grabbit.url(link)
+
+      if data
+        self.title = data.title
+        self.description = data.description
+        unless data.images.nil?
+          $offset = 0
+          # Run until an image is saved
+          while self.image_file_name == nil
+            # Attempt to extract file dimensions
+            begin
+              geometry = Paperclip::Geometry.from_file(data.images.drop($offset).first)
+            rescue
+              false
+            else
+              # Set file as image if dimensions meet reqs
+              if geometry.width.to_i >= 130 && geometry.height.to_i >= 130
+                self.image = URI.parse(data.images.drop($offset).first)
+              end
             end
-          end
-          # Move on to next image
-          $offset +=1
-          # If no more images to check, stop checking
-          if data.images.drop($offset).first == nil
-            ## And use first image
-            #self.image = URI.parse(data.images.first)
-            break
-          end
-        end 
+            # Move on to next image
+            $offset +=1
+            # If no more images to check, stop checking
+            if data.images.drop($offset).first == nil
+              ## And use first image
+              #self.image = URI.parse(data.images.first)
+              break
+            end
+          end 
+        end
       end
     end
+
+
   end
 
   def add_url_protocol
