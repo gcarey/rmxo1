@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   use_doorkeeper
-  devise_for :users, :controllers => {registrations: "registrations", omniauth_callbacks: "users/omniauth_callbacks"}
+  devise_for :users, :skip => [:sessions], :controllers => {registrations: "registrations", omniauth_callbacks: "users/omniauth_callbacks"}
+
+  as :user do
+    get '/login' => 'devise/sessions#new', :as => :new_user_session
+    post '/login' => 'devise/sessions#create', :as => :user_session
+    delete '/logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+    get '/api_login', to: 'popups#api_login', as: 'api_login'
+  end
 
   unauthenticated :user do
     root "pages#front"
@@ -29,8 +36,6 @@ Rails.application.routes.draw do
     put 'shares/:id/serve', to: 'shares#serve_link'
     put 'shares/:id/visit', to: 'shares#visit_link'
   end
-
-  get '/api_login', to: 'popups#api_login', as: 'api_login'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -22,12 +22,12 @@
       <table cellspacing="0" align="center" width="600" cellpadding="0"><tbody>
         <tr>
           <td valign="middle" width="40" height="50">
-            <%= link_to 'http://www.tipster.to', :target => "_blank" do %>
+            <%= link_to root_path, :target => "_blank" do %>
               <%= image_tag attachments['logo.png'].url %>
             <% end %>
           </td>
           <td align="right">
-            <a href="http://www.tipster.to/users/sign_in" target="_blank">Log In</a>
+            <%= link_to "Log In", new_user_session_path, :target => "_blank" do %>
           </td>
         </tr>
       </tbody></table>
