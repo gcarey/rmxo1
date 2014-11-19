@@ -19,13 +19,12 @@ class Tip < ActiveRecord::Base
 
   # Scrape images, title, description
   def scrape_link
-    data = Grabbit.url(link)
+    uri = URI.parse(link)
 
-    if ((File.extname(link) =~/^(.png|.gif|.jpg)$/ )||(link =~ /^#{URI::regexp}$/))
-      uri = URI.parse(link)
+    if File.extname(uri.path) =~ /^(.png|.gif|.jpg)$/
       self.image = uri
       self.title  = File.basename(uri.path)
-      self.description = "This tip links to an image."
+      self.description = "Image link"
     else
       data = Grabbit.url(link)
 
