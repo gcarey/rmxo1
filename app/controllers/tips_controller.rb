@@ -1,12 +1,6 @@
 class TipsController < ApplicationController
   before_action :set_tip, only: [:show, :edit, :update, :destroy]
 
-  # GET /tips
-  # GET /tips.json
-  def index
-    @tips = Tip.all
-  end
-
   # POST /tips
   # POST /tips.json
   def create

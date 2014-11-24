@@ -58,16 +58,3 @@
 	<% end %>
 
 </div>
-
-<script type="text/javascript">
-var $container = $('#page')
-$('.filters').on( 'click', 'label', function() {
-  var filterValue = $(this).attr('data-filter');
-  $container.isotope({ filter: filterValue });
-  $(this).toggleClass("active");
-});
-
-$('.tip').on( 'click', 'h3, img', function() {
-  location.reload();
-});
-</script>

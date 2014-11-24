@@ -186,6 +186,19 @@ body {
 				margin: 3px 10px 2px 3px;
 			}
 
+	#sendTip .field {
+		margin: -23px 0 7px
+	}
+
+	#sendTip p {
+		padding: 0 3px
+	}
+
+	.tipbutton {
+		margin-top: 5px
+	}
+
+
 
 
 
@@ -201,7 +214,7 @@ body {
 	margin: 0 0 5px;
 }
 
-	.filters {
+	.inbox-page .filters {
 		overflow-x: scroll;
 		white-space: nowrap;
 		margin: 0 0 10px;
@@ -262,7 +275,7 @@ body {
 	.wide {display:none !important;}
 
 	#page {padding:20px 20px 60px;}
-	#stamp {top:20px;left:20px;width:200px;margin-right:30px;height:85%}
+	#stamp {top:20px;left:20px;margin-right:30px;}
 	#profile {margin-right:40px;margin-bottom:26px;font-size:16px;width:100%;text-align:center;}
 	.avatar {width:150px;height:150px;float:none;margin:0;}
 	#stamp h1 {font-size:30px}
@@ -284,13 +297,6 @@ body {
 }
 
 
-
-
-/* Temporary styles for testing, etc. */
-#tips-index {height:100%;padding-bottom:70px}
-#sendTip .field {margin: -23px 0 7px}
-#sendTip p {padding: 0 3px}
-.tipbutton {margin-top: 5px}
 
 
 
