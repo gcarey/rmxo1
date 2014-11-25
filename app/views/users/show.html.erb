@@ -55,9 +55,9 @@
 
 		<% if @user.tips.count == 0 && @user == current_user %>
 			<!-- For testing -->
-			<div style="width:500px;">
+			<div class="alpha-msg">
 				<h4>Hi there! Welcome to the Tipster alpha.</h4>
-				<p>Here is where you'll see tips that you've sent, as soon as you send some.</p>
+				<p>This area is where you'll see any tips that you've sent.</p>
 				<p>First, you'll need some friends. If you're just starting, you should see a "Find Friends" link above. That'll let you track down any Google contacts you have that are already on the site.</p>
 				<p>Because we're still in early testing, I haven't activated the option to invite friends who are not already on the service. That will open up as soon as we move to beta.</p>
 				<p>If you don't have any other friends on yet, feel free to <%= link_to "click this link", friendships_path(friend_id: 2, og: true), :method => :post %> to automatically add <%= link_to "Garrett", profile_path(2) %> as a friend, so that you can try out the features fully.</p>
@@ -130,6 +130,8 @@
 				    <%= f.text_field :link, class: "form-control", placeholder: "e.g., http://www.google.com"  %>
 				    <%= hidden_field_tag(:recipient_id, @user.id) %>
 				  </div>
+
+				  <p>Pro tip: Use the <a href="#">Chrome extension</a> to send tips instantly, no URL needed.</p>
 
 				</div>
 				<div class="modal-footer">

@@ -19,7 +19,7 @@
         <li class="wide">
           <% if @newtips.count > 0 %>
             <%= link_to inbox_path, :class => "nav-alert" do %>
-             <span class='glyphicon glyphicon-comment'></span> You have <%= @newtips.count %> new tip!
+             <span class='glyphicon glyphicon-comment'></span> You have <%= @newtips.count %> new tip<%= "s" if @newtips.count != 1 %>!
             <% end %>
           <% end %>
         </li>

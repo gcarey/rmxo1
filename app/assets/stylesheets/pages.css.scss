@@ -1,3 +1,59 @@
-// Place all the styles related to the pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// Inbox
+
+.inbox-page h1 {
+	margin: 5px 0;
+}
+
+.inbox-page h4 {
+	margin: 20px 0 10px;
+}
+
+.inbox-page p {
+	margin: 0 0 5px;
+}
+
+	.inbox-page .filters {
+		overflow-x: scroll;
+		white-space: nowrap;
+		margin: 0 0 10px;
+		width: 590px;
+		height: 30px;
+	}
+
+	label.filter {
+		padding: 5px 15px;
+		margin: 0 3px;
+		box-shadow: 1px 1px 1px #eee;
+		display: inline-block;
+		height: 28px;
+		border:none;
+		border-radius:none;
+	}
+
+	label.filter.active, label.filter:active {
+		box-shadow: none;
+		background-color: white;
+		color: #bbb;
+	}
+
+	label.filter:hover {
+		background-color: #eee;
+	}
+
+
+	label.sender-filter {
+		padding: 5px 10px 5px 38px;
+		position: relative;
+	}
+
+	.filter img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 28px;
+	}
+
+	.inbox-page .glyphicon {
+		top: 4px;
+		left: 1px;
+	}
