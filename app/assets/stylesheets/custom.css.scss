@@ -281,8 +281,8 @@ body {
 	.avatar {max-width:150px;height:150px;float:none;margin:0;}
 	#stamp h1 {font-size:30px}
 	.count-label {font-size:12px}
-	.tip {display:block;margin: 10px auto;width:100%;max-width:590px;}
-	.box {padding:17px 30px 17px 170px;}
+	.tip {display:block;margin: 10px auto;width:100%;max-width:590px;position:relative}
+	.box {padding:17px 20px 17px 150px;}
 	.box h3 {font-size:18px;}
 	.box p {font-size:12px;height:50px;}
 	.box .count {font-size:15px;}

@@ -44,7 +44,7 @@ $font-family-sans-serif: 'Montserrat', sans-serif;
 
 
 
-.userforms-container {
+#userforms-container {
 	width: 960px;
 	margin: 100px auto 0;
   height: 480px;
@@ -121,15 +121,19 @@ $font-family-sans-serif: 'Montserrat', sans-serif;
 	float: left;
 }
 
-@media (max-height: 510px) {
-	#boxes-container { top:0; }
-}
-
 .loginform { padding-top: 42px; }
 .resetform { padding-top: 85px; }
 .passform { padding-top: 82px; }
 
 
+
+/* Mobile Styles*/
+@media (max-width: 767px) {
+	#boxes-container, #userforms-container {width:100%;margin:-240px 0 0 0;left:0;position:absolute;top:50%;}
+	.head {width:100%;}
+	.userform {width: 100%; padding-left:50px;padding-right:50px;}
+	.boxes {display:none;}
+}
 
 
 
