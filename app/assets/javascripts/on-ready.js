@@ -15,6 +15,14 @@ $(document).ready(function(){
     e.stopPropagation(); return false;
   });
 
+  // Tips Pages
+  var $container = $('#page');
+	$container.isotope({
+	  itemSelector: '.tip',
+	  layoutMode: 'masonryHorizontal',
+	  stamp: '#stamp'
+	});
+
   // Profile
   var $profile = $('.profile-page')
 	$('.counts').on( 'click', '.filter', function() {

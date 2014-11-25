@@ -21,7 +21,7 @@ class Tip < ActiveRecord::Base
   def scrape_link
     uri = URI.parse(link)
 
-    if File.extname(uri.path) =~ /^(.png|.gif|.jpg)$/
+    if File.extname(uri.path) =~ /^(.png|.gif|.jpg|.jpeg|.tiff)$/
       self.image = uri
       self.title  = File.basename(uri.path)
       self.description = "Image link"
