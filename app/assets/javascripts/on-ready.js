@@ -55,4 +55,9 @@ $(document).ready(function(){
 	$('.tip').on( 'click', 'h3, img', function() {
 	  location.reload();
 	});
+
+	// Omni
+  $( '.closer' ).click(function() {
+		window.close()
+  });
  })
