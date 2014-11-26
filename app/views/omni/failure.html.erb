@@ -1,12 +1,15 @@
 <div class="container">
 	<img src="/assets/logo-sm.png">
 	<h1>Find Friends</h1>
-	<p>Well, that didn't work.</p>
-	<% if @error == "not_authorized" %>
-		<p>Google needs to know that you've given Tipster permission to get your contact list. Make sure to press the "Approve" button when asked if Tipster is allowed to:<br>"Manage your contacts"</p>
-		<p>If you'd rather not pull your contact list from Google, you can always add friends the old fashioned way. Just have them give you a link to their profile and click the "Add Friend" button, or they can add you.
-	<% else %>
-		<p>@importer.titleize returned the following error:</p>
-		<p>@error</p>
-	<% end %>
+	<div class="error-notification">
+		<h3>Well, that didn't work.</h3>
+		<% if @error == "not_authorized" %>
+			<p>Google needs to know that you've given Tipster permission to get your contact list. Make sure to press the "Approve" button when asked if Tipster is allowed to:</p>
+			<p>"Manage your contacts"</p>
+			<p>If you'd rather not pull your contact list from Google, you can always add friends the old fashioned way. Just have them give you a link to their profile and click the "Add Friend" button, or they can add you.
+		<% else %>
+			<p>@importer.titleize returned the following error:</p>
+			<p>@error</p>
+		<% end %>
+	</div>
 </div>
