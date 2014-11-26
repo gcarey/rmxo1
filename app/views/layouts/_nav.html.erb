@@ -47,6 +47,7 @@
             </li>
             <li><%= link_to "Find Friends", "/contacts/gmail", :class => "popup", :"data-width" => 500, :"data-height" => 500 %></li>
             <li><%= link_to "Account Settings", edit_user_registration_path %></li>
+            <li><%= link_to "Settings", settings_path, remote: true, data: { toggle: "modal", target: "#settings-modal" } %></li>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>
@@ -65,3 +66,5 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<%= render 'popups/settings' %>

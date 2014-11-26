@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   devise_for :users, :skip => [:sessions], :controllers => {registrations: "registrations", omniauth_callbacks: "users/omniauth_callbacks"}
 
   as :user do
-    get '/login' => 'devise/sessions#new', :as => :new_user_session
-    post '/login' => 'devise/sessions#create', :as => :user_session
-    delete '/logout' => 'devise/sessions#destroy', :as => :destroy_user_session
-    get '/api_login', to: 'popups#api_login', as: 'api_login'
+    get 'login' => 'devise/sessions#new', :as => :new_user_session
+    post 'login' => 'devise/sessions#create', :as => :user_session
+    delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+    
+    get 'api_login', to: 'popups#api_login', as: 'api_login'
   end
 
   unauthenticated :user do
@@ -20,12 +21,13 @@ Rails.application.routes.draw do
   resources :tips
   resources :friendships
 
-  get 'users/:id' => 'users#show', as: :profile
+  get 'users/:id', to: 'users#show', as: 'profile'
+  get 'settings', to: 'popups#settings', as: 'settings'
 
-  get 'inbox' => 'pages#inbox'
+  get 'inbox', to: 'pages#inbox'
 
-  get 'contacts/gmail/callback' => 'omni#findfriends'
-  get 'contacts/failure' => 'omni#failure'
+  get 'contacts/gmail/callback', to: 'omni#findfriends'
+  get 'contacts/failure', to: 'omni#failure'
 
   get 'visit_link/:id', to: 'shares#visit_link', as: 'visit_link'
   get 'delete_share/:id', to: 'shares#destroy', as: 'delete_share'
