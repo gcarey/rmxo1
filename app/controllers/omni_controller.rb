@@ -7,4 +7,8 @@ class OmniController < ApplicationController
 	  @contacts = request.env['omnicontacts.contacts']
 	  @user = current_user
   end
+
+  def failure
+  	@error = params[:error]
+  end
 end

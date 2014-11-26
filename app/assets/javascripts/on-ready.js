@@ -32,23 +32,25 @@ $(document).ready(function(){
 	});
 
   // Profile
-  var $profile = $('.profile-page')
-	$('.counts').on( 'click', '.filter', function() {
-	  var filterValue = $(this).attr('data-filter');
-	  $profile.isotope({ filter: filterValue });
-	  $('.filter').toggleClass("active");
-	  console.dir("profile");
-	});
+  if ( $(window).width() > 768) {     
+	  var $profile = $('.profile-page')
+		$('.counts').on( 'click', '.filter', function() {
+		  var filterValue = $(this).attr('data-filter');
+		  $profile.isotope({ filter: filterValue });
+		  $('.filter').toggleClass("active");
+		});
+	}
 
   // Inbox
-  var $inbox = $('.inbox-page')
-	$('.filters').on( 'click', 'label', function() {
-	  var filterValue = $(this).attr('data-filter');
-	  $inbox.isotope({ filter: filterValue });
-	  $('.active').removeClass("active");
-	  $(this).toggleClass("active");
-	  console.dir("inbox");
-	});
+  if ( $(window).width() > 768) { 
+	  var $inbox = $('.inbox-page')
+		$('.filters').on( 'click', 'label', function() {
+		  var filterValue = $(this).attr('data-filter');
+		  $inbox.isotope({ filter: filterValue });
+		  $('.active').removeClass("active");
+		  $(this).toggleClass("active");
+		});
+	}
 
 	$('.tip').on( 'click', 'h3, img', function() {
 	  location.reload();
