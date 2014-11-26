@@ -9,6 +9,7 @@ class OmniController < ApplicationController
   end
 
   def failure
-  	@error = params[:error]
+  	@error = params[:error_message]
+  	@importer = params[:importer]
   end
 end
