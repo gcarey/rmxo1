@@ -1,16 +1,24 @@
  class SharesController < ApplicationController
 
   def visit_link
-    t = Tip.find(params[:id])
-    s = t.shares.where(user_id: current_user.id)
-    s.update_all(visited: true)
-    redirect_to t.link
+    tip = Tip.find(params[:id])
+    shares = tip.shares.where(user_id: current_user.id)
+    if shares.count > 0
+      shares.update_all(visited: true)
+      redirect_to tip.link
+    else
+      redirect_to root_path, notice: "That tip was meant for someone else."
+    end
   end
 
   def destroy
-    t = Tip.find(params[:id])
-    s = t.shares.where(user_id: current_user.id).last
-    s.delete
-    redirect_to :back, notice: 'Tip removed.'
+    tip = Tip.find(params[:id])
+    shares = tip.shares.where(user_id: current_user.id)
+    if shares.count > 0
+      shares.delete_all
+      redirect_to :back, notice: 'Tip removed.'
+    else
+      redirect_to root_path, notice: "That tip was meant for someone else."
+    end
   end
 end

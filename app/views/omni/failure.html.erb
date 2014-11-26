@@ -6,7 +6,7 @@
 		<% if @error == "not_authorized" %>
 			<p>Google needs to know that you've given Tipster permission to get your contact list. Make sure to press the "Approve" button when asked if Tipster is allowed to:</p>
 			<p>"Manage your contacts"</p>
-			<p>If you'd rather not pull your contact list from Google, you can always add friends the old fashioned way. Just have them give you a link to their profile and click the "Add Friend" button, or they can add you.</p>
+			<p>If you'd rather not pull your contact list from Google, you can always add friends the old fashioned way. Just go to their profile and click the "Add Friend" button.</p>
 			<p><%= link_to "Back", :back %> | <%= link_to "Close this window", "#", class: "closer" %>
 		<% else %>
 			<p>@importer.titleize returned the following error:</p>
