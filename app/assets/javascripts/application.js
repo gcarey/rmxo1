@@ -15,4 +15,5 @@
 //= require bootstrap-sprockets
 //= require isotope.pkgd
 //= require masonry-horizontal
+//= require dropzone.min
 //= require_tree .

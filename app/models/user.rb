@@ -13,7 +13,11 @@ class User < ActiveRecord::Base
 
   # Profile Photos
   has_attached_file :avatar, :styles => { :medium => "190x190#", :small => "85x85#", :thumb => "45x45#" }, :default_url => "paperclip-defaults/:style/missing.png"
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
+  validates_attachment  :avatar, 
+                        :presence => true,
+                        :content_type => { :content_type => /\Aimage\/.*\Z/ },
+                        :size => { :less_than => 10.megabyte }
 
 
   # Friendships

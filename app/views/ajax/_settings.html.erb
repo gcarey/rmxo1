@@ -34,7 +34,14 @@
 			    <div><%= f.submit "Update", class: "btn btn-primary" %></div>
 			  <% end %>
     </div>
-    <div role="tabpanel" class="tab-pane" id="profile-photo">...</div>
+    <div role="tabpanel" class="tab-pane" id="profile-photo">
+    	<%= form_for(:user, :url => registration_path(:user), :html => { multipart: true, :method => :put, class: "dropzone" }) do |f| %>
+			  <div class="fallback">
+			    <%= f.file_field :avatar %><br>
+			    <%= f.submit "Upload", class: "btn btn-primary" %>
+			  </div>
+			<% end %>
+    </div>
     <div role="tabpanel" class="tab-pane" id="notifications">...</div>
     <div role="tabpanel" class="tab-pane" id="friends">
 				<% if current_user.requested_friendships.count > 0 %>
