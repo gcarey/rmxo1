@@ -3,9 +3,7 @@
   def visit_link
     tip = Tip.find(params[:id])
     shares = tip.shares.where(user_id: current_user.id)
-    if shares.count > 0
-      shares.update_all(visited: true)
-    end
+    shares.update_all(visited: true)
     redirect_to tip.link
   end
 

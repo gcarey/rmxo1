@@ -13,21 +13,27 @@
       <% end %>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        <!-- Alert Notifications -->
         <li class="wide">
           <% if @newtips.count > 0 %>
             <%= link_to inbox_path, :class => "nav-alert" do %>
              <span class='glyphicon glyphicon-comment'></span> You have <%= @newtips.count %> new tip<%= "s" if @newtips.count != 1 %>!
             <% end %>
+          <% elsif current_user.requested_friendships.count > 0 %>
+            <%= link_to settings_path(tab: "friends"), remote: true, data: { toggle: "modal", target: "#settings" }, :class => "nav-alert" do %>
+              <span class='glyphicon glyphicon-comment'></span> You have <%= current_user.requested_friendships.count %> friend request<%= "s" if current_user.requested_friendships.count != 1 %>!
+            <% end %>
           <% end %>
         </li>
+        <!-- Profile Photo -->
         <li class="wide">
           <%= link_to root_path, class: "thumb" do %>
             <%= image_tag current_user.avatar.url(:thumb), width: "30px" %>
           <% end %>
         </li>
+        <!-- Menu -->
         <li class="dropdown wide">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <button type="button" class="navbar-toggle">
@@ -39,28 +45,23 @@
           </a>
           <ul class="dropdown-menu" role="menu">
             <li>
-              <% if @newtips.count > 0 %>
-                <%= link_to "Inbox (#{@newtips.count})", inbox_path %>
-              <% else %>
-                <%= link_to "Inbox", inbox_path %>
+              <%= link_to inbox_path do %>
+                Inbox <%= "(#{@newtips.count})" if @newtips.count > 0 %>
               <% end %>
             </li>
             <li><%= link_to "Find Friends", "/contacts/gmail", :class => "popup", :"data-width" => 500, :"data-height" => 500 %></li>
-            <li><%= link_to "Account Settings", edit_user_registration_path %></li>
-            <li><%= link_to "Settings", settings_path, remote: true, data: { toggle: "modal", target: "#settings" } %></li>
+            <li><%= link_to "Settings", settings_path(tab: "account"), remote: true, data: { toggle: "modal", target: "#settings" } %></li>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>
         <li><%= link_to "My Profile", root_path, class: "narrow" %></li>
         <li>
-          <% if @newtips.count > 0 %>
-            <%= link_to "Inbox (#{@newtips.count})", inbox_path, :class => "narrow" %>
-          <% else %>
-            <%= link_to "Inbox", inbox_path, :class => "narrow" %>
+          <%= link_to inbox_path, :class => "narrow" do %>
+            Inbox <%= "(#{@newtips.count})" if @newtips.count > 0 %>
           <% end %>
         </li>
         <li><%= link_to "Find Friends", "/contacts/gmail", :class => "popup narrow", :"data-width" => 500, :"data-height" => 500 %></li>
-        <li><%= link_to "Account Settings", edit_user_registration_path, class: "narrow" %></li>
+        <li><%= link_to "Settings", edit_user_registration_path, class: "narrow" %></li>
         <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "narrow" %></li>
       </ul>
     </div><!-- /.navbar-collapse -->

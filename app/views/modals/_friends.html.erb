@@ -12,16 +12,8 @@
 					<% end %>
 				<% end %>
 
-				<% if current_user == @user && @user.requested_friendships.last %>
-					<h4>Friend Requests</h4>
-					<p>
-						<% @user.requested_friendships.each do |request| %>
-					      <%= request.full_name %> 
-					      <%= link_to "Accept", friendship_path(:id => request), :method => "put" %> / 
-					      <%= link_to "Decline", friendship_path(:id => request), :method => :delete %>
-					      <br>
-					  <% end %>
-					</p>
+				<% if current_user == @user %>
+					<div><%= link_to "Manage Friends", settings_path(tab: "friends"), remote: true, data: { toggle: "modal", target: "#settings", dismiss: "modal" }, class: "manage btn btn-default" %></div>
 				<% end %>
 			</div>
 			<div class="modal-footer">

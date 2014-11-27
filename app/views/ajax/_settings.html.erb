@@ -1,8 +1,8 @@
 <div role="tabpanel">
 
   <!-- Nav tabs -->
-  <ul class="nav nav-tabs settings-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#account" aria-controls="account" role="tab" data-toggle="tab">My Account</a></li>
+  <ul class="nav nav-pills" id="settings-nav" role="tablist">
+  	<li role="presentation" class="active"><a href="#account" aria-controls="account" role="tab" data-toggle="tab">My Account</a></li>
     <li role="presentation"><a href="#profile-photo" aria-controls="profile-photo" role="tab" data-toggle="tab">Profile Photo</a></li>
     <li role="presentation"><a href="#notifications" aria-controls="notifications" role="tab" data-toggle="tab">Notifications</a></li>
     <li role="presentation"><a href="#friends" aria-controls="friends" role="tab" data-toggle="tab">Friends</a></li>
@@ -11,7 +11,7 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="account">
+  	<div role="tabpanel" class="tab-pane active" id="account">
     		<h4>Basic Info</h4>
     	  <%= form_for(:user, :url => registration_path(:user), :html => { multipart: true, :method => :put }) do |f| %>
 
@@ -37,16 +37,20 @@
     <div role="tabpanel" class="tab-pane" id="profile-photo">...</div>
     <div role="tabpanel" class="tab-pane" id="notifications">...</div>
     <div role="tabpanel" class="tab-pane" id="friends">
-				<% if current_user == @user && @user.requested_friendships.last %>
+				<% if current_user.requested_friendships.count > 0 %>
 					<h4>Friend Requests</h4>
-					<p>
-						<% @user.requested_friendships.each do |request| %>
-					      <%= request.full_name %> 
-					      <%= link_to "Accept", friendship_path(:id => request), :method => "put" %> / 
-					      <%= link_to "Decline", friendship_path(:id => request), :method => :delete %>
-					      <br>
+					<div class="request-list">
+						<% current_user.requested_friendships.each do |request| %>
+							<div class="edit-friend">
+								<%= link_to profile_path(request) do %>
+									<%= image_tag request.avatar.url(:thumb) %>
+								<% end %>
+								<span class="name"><%= request.full_name %> </span>
+				    		<%= link_to "Accept", friendship_path(:id => request), :method => "put", class: "btn btn-default" %>
+					      <%= link_to "Decline", friendship_path(:id => request), :method => :delete, class: "btn btn-default" %>
+							</div>
 					  <% end %>
-					</p>
+					</div>
 				<% end %>
 
 				<h4>Edit Friends</h4>

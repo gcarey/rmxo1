@@ -1,3 +1,5 @@
 if ( $("#settingsModalBody").hasClass( "unloaded" ) ) {
 	$("#settingsModalBody").append('<%= escape_javascript(render "settings") %>').removeClass("unloaded");
 }
+
+$('#settings-nav a[href="#<%= escape_javascript(@tab) %>"]').tab('show');

@@ -133,7 +133,7 @@ body {
 		background-color: white;
 	}
 
-		.tip a {
+		.tip a.tip-image {
 			float: left;
 			position: relative;
 			z-index: 10;
@@ -172,7 +172,7 @@ body {
 			.box .glyphicon {
 				font-size: 14px;
 				color: #b5b5b5;
-				top: 1px;
+				top: 2px;
 				left: 5px;
 			}
 
@@ -183,13 +183,13 @@ body {
 
 			img.origin {
 				width: 19px;
-				margin: 2px 10px 2px 2px;
+				margin: 0px 5px 3px 2px;
 				border-radius: 2px;
 			}
 
 			img.discovery {
 				width: 17px;
-				margin: 3px 10px 2px 3px;
+				margin: 0px 6px 3px 1px;
 			}
 
 	#sendTip .field {

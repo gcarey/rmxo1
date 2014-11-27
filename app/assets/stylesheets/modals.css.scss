@@ -8,6 +8,29 @@
 
 // Settings
 
+#settings-nav li a {
+	border: 1px solid transparent;
+	color: #333;
+	padding: 8px 10px;
+}
+
+#settings-nav li.active a {
+	border: 1px solid #ccc;
+	background-color: white;
+	color: #333;
+}
+
+.settings-tabs li.active a, .settings-tabs li.active a:hover, , .settings-tabs li.active a:focus {
+	border: 1px solid #ccc;
+	background-color: white;
+	color: #333;
+}
+
+.tab-content div#friends {
+	height: 400px;
+	overflow: scroll;
+}
+
 .tab-pane {
 	padding: 10px 10px 0;
 }
@@ -18,7 +41,7 @@
 
 .tab-pane .btn-default {
 	float: right;
-	margin: 6px 15px;
+	margin: 6px 5px 0;
 }
 
 .tab-pane .btn-primary {
@@ -26,25 +49,18 @@
 	margin-top: 30px;
 }
 
-.settings-tabs {
-	border: none;
-	text-align: center;
+.request-list {
+	margin-bottom: 25px;
 }
 
-.settings-tabs li a {
-	color: #333;
-	padding: 8px 10px;
-}
-
-.settings-tabs li.active a, .nav-tabs li.active a:hover {
-	border: 1px solid #ccc;
+.edit-friend {
 	background-color: white;
-	border-radius: 3px;
-	color: #333;
+	margin-bottom: 2px;
+	padding: 0 15px
 }
 
-.settings-tabs li a:hover {
-	border: 1px solid transparent;
+span.name {
+	margin-left: 15px
 }
 
 a.delete {
@@ -54,11 +70,10 @@ a.delete {
 	margin-top: 38px;
 }
 
-.edit-friend {
-	background-color: white;
-	margin-bottom: 2px;
-}
+// friends
 
-span.name {
-	margin-left: 15px
+a.manage {
+	color: #666;
+	float: left;
+	margin-top: 29px;
 }

@@ -47,10 +47,6 @@
 					</button>
 				</div>
 			<% end %>
-
-			<% if current_user == @user && @user.requested_friendships.last %>
-				<p>You have <a data-toggle="modal" data-target="#viewFriends"><%= @user.requested_friendships.count %> friend requests</a>.</p>
-			<% end %>
 		</div>
 
 		<% if @user.tips.count == 0 && @user == current_user %>
@@ -71,11 +67,10 @@
 			<h2 class="wide">Stuff <%= @user.first_name %> has shared:</h2>
 		<% end %>
 	</div>
-
 	<!-- Tips -->
 	<% @user.tips.order("created_at DESC").each do |tip| %>
 		<div class="tip <% if tip.originator == @user %>disc<% end %>">
-			<%= link_to image_tag(tip.image.url(:full)), visit_link_path(tip), target: '_blank' %>
+			<%= link_to image_tag(tip.image.url(:full)), visit_link_path(tip), target: '_blank', class: "tip-image" %>
 			<div class="box">
 		    <h3><%= link_to visit_link_path(tip), target: '_blank' do %><%= raw tip.title %><%end%></h3>
 		    <p><%= raw tip.description %></p>

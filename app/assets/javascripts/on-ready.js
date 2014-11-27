@@ -4,16 +4,27 @@ $(document).ready(function(){
     $('.alert').fadeOut(500, function() { $(this).remove(); });
   }, 3000);
 
-  function popupCenter(url, width, height, name) {
-    var left = (screen.width/2)-(width/2);
-    var top = (screen.height/2)-(height/2);
-    return window.open(url, name, "menubar=no,toolbar=no,status=no,width="+width+",height="+height+",toolbar=no,left="+left+",top="+top);
-  }
+	  // Find Friends
+	  function popupCenter(url, width, height, name) {
+	    var left = (screen.width/2)-(width/2);
+	    var top = (screen.height/2)-(height/2);
+	    return window.open(url, name, "menubar=no,toolbar=no,status=no,width="+width+",height="+height+",toolbar=no,left="+left+",top="+top);
+	  }
 
-  $("a.popup").click(function(e) {
-    popupCenter($(this).attr("href")+"?popup=true", $(this).attr("data-width"), $(this).attr("data-height"), "authPopup");
-    e.stopPropagation(); return false;
-  });
+	  $("a.popup").click(function(e) {
+	    popupCenter($(this).attr("href")+"?popup=true", $(this).attr("data-width"), $(this).attr("data-height"), "authPopup");
+	    e.stopPropagation(); return false;
+	  });
+
+	  // Settings
+	  $('#settings').on('show.bs.modal', function (event) {
+		  var button = $(event.relatedTarget) // Button that triggered the modal
+		  var tab = button.data('tab') // Extract info from data-* attributes
+		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+		})
+
+
 
   // Tips Pages
   var $container = $('#page');
