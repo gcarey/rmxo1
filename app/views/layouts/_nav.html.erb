@@ -14,7 +14,7 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li class="wide">
           <% if @newtips.count > 0 %>
@@ -47,7 +47,7 @@
             </li>
             <li><%= link_to "Find Friends", "/contacts/gmail", :class => "popup", :"data-width" => 500, :"data-height" => 500 %></li>
             <li><%= link_to "Account Settings", edit_user_registration_path %></li>
-            <li><%= link_to "Settings", settings_path, remote: true, data: { toggle: "modal", target: "#settings-modal" } %></li>
+            <li><%= link_to "Settings", settings_path, remote: true, data: { toggle: "modal", target: "#settings" } %></li>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>
@@ -67,4 +67,4 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<%= render 'popups/settings' %>
+<%= render 'modals/settings' %>

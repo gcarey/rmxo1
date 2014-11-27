@@ -1,0 +1,31 @@
+<div class="modal fade" id="viewFriends" tabindex="-1" role="dialog" aria-labelledby="viewFriendsLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="viewFriendsLabel"><%= @user.full_name %>'s Friends</h4>
+      </div>
+			<div class="modal-body">
+				<% @user.friends.each do |f| %>
+					<%= link_to profile_path(f) do %>
+						<%= image_tag f.avatar.url(:thumb) %>
+					<% end %>
+				<% end %>
+
+				<% if current_user == @user && @user.requested_friendships.last %>
+					<h4>Friend Requests</h4>
+					<p>
+						<% @user.requested_friendships.each do |request| %>
+					      <%= request.full_name %> 
+					      <%= link_to "Accept", friendship_path(:id => request), :method => "put" %> / 
+					      <%= link_to "Decline", friendship_path(:id => request), :method => :delete %>
+					      <br>
+					  <% end %>
+					</p>
+				<% end %>
+			</div>
+			<div class="modal-footer">
+			</div>
+    </div>
+  </div>
+</div>

@@ -200,22 +200,12 @@ body {
 	}
 
 
-
-
-
-.modal-body {
-	background-color: #fbfbfb;
-}
-
-
-
-
-/* Temporary styles */
+// Temporary styles
 .alpha-msg {width:500px;}
 
 
 
-/* Smaller screens */
+// Smaller screens
 @media (max-width: 767px) {
 	.wide {display:none !important;}
 
@@ -236,11 +226,11 @@ body {
 	.box .glyphicon {top:3px;}
 	.filters {width:200px}
 
-	/* Temporary styles */
+	// Temporary styles
 	.alpha-msg {width:500px;max-width:90%;text-align:left;margin:25px auto 0;}
 }
 
-/* Exclusively on larger screens */
+// Exclusively on larger screens
 @media (min-width: 768px) {
 	.narrow {display:none !important;}
 }
@@ -252,7 +242,7 @@ body {
 
 @import 'bootstrap';
 
-/* Bootstrap overrides */
+// Bootstrap overrides
 .alert {
 	position: absolute;
 	top: 0;

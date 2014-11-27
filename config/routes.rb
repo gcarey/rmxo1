@@ -6,8 +6,7 @@ Rails.application.routes.draw do
     get 'login' => 'devise/sessions#new', :as => :new_user_session
     post 'login' => 'devise/sessions#create', :as => :user_session
     delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
-    
-    get 'api_login', to: 'popups#api_login', as: 'api_login'
+    get 'api_login', to: 'popups#api_login'
   end
 
   unauthenticated :user do
@@ -22,19 +21,17 @@ Rails.application.routes.draw do
   resources :friendships
 
   get 'users/:id', to: 'users#show', as: 'profile'
-  get 'settings', to: 'popups#settings', as: 'settings'
-
   get 'inbox', to: 'pages#inbox'
+  get 'settings', to: 'ajax#settings'
+  get 'visit_link/:id', to: 'shares#visit_link'
+  get 'delete_share/:id', to: 'shares#destroy'
 
   get 'contacts/gmail/callback', to: 'omni#findfriends'
   get 'contacts/failure', to: 'omni#failure'
 
-  get 'visit_link/:id', to: 'shares#visit_link', as: 'visit_link'
-  get 'delete_share/:id', to: 'shares#destroy', as: 'delete_share'
-
   namespace :api do
     resources :tips
-    get 'friends', to: 'friends#index', as: 'friends'
+    get 'friends', to: 'friends#index'
     put 'shares/:id/serve', to: 'shares#serve_link'
     put 'shares/:id/visit', to: 'shares#visit_link'
   end

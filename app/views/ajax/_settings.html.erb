@@ -1,0 +1,83 @@
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs settings-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#account" aria-controls="account" role="tab" data-toggle="tab">My Account</a></li>
+    <li role="presentation"><a href="#profile-photo" aria-controls="profile-photo" role="tab" data-toggle="tab">Profile Photo</a></li>
+    <li role="presentation"><a href="#notifications" aria-controls="notifications" role="tab" data-toggle="tab">Notifications</a></li>
+    <li role="presentation"><a href="#friends" aria-controls="friends" role="tab" data-toggle="tab">Friends</a></li>
+    <li role="presentation"><a href="#password" aria-controls="password" role="tab" data-toggle="tab">Change Password</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="account">
+    		<h4>Basic Info</h4>
+    	  <%= form_for(:user, :url => registration_path(:user), :html => { multipart: true, :method => :put }) do |f| %>
+
+			    <div class="form-group">
+			      <%= f.label :first_name %><br />
+			      <%= f.text_field :first_name, :autofocus => true, class: "form-control", value: current_user.first_name %>
+			    </div>
+
+			    <div class="form-group">
+			      <%= f.label :last_name %><br />
+			      <%= f.text_field :last_name, :autofocus => true, class: "form-control", value: current_user.last_name %>
+			    </div>
+			    
+			    <div class="form-group">
+			      <%= f.label :email %><br />
+			    <%= f.email_field :email, :autofocus => true, class: "form-control", value: current_user.email %></div>
+
+			    <p><%= link_to "Delete my account", registration_path(:user), :data => { :confirm => "Are you sure you want to delete your account? This cannot be undone." }, :method => :delete, class: "delete" %></p>
+
+			    <div><%= f.submit "Update", class: "btn btn-primary" %></div>
+			  <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="profile-photo">...</div>
+    <div role="tabpanel" class="tab-pane" id="notifications">...</div>
+    <div role="tabpanel" class="tab-pane" id="friends">
+				<% if current_user == @user && @user.requested_friendships.last %>
+					<h4>Friend Requests</h4>
+					<p>
+						<% @user.requested_friendships.each do |request| %>
+					      <%= request.full_name %> 
+					      <%= link_to "Accept", friendship_path(:id => request), :method => "put" %> / 
+					      <%= link_to "Decline", friendship_path(:id => request), :method => :delete %>
+					      <br>
+					  <% end %>
+					</p>
+				<% end %>
+
+				<h4>Edit Friends</h4>
+				<% current_user.friends.each do |f| %>
+					<% friendship = Friendship.where(friend_id: [current_user, f]).where(user_id: [current_user, f]).where(approved: true).last %>
+					<div class="edit-friend">
+						<%= link_to profile_path(f) do %>
+							<%= image_tag f.avatar.url(:thumb) %>
+						<% end %>
+						<span class="name"><%= f.full_name %></span>
+		    		<%= link_to "Remove friend", friendship, method: :delete, data: { confirm: "Are you sure you want to unfriend this person?" }, class: "btn btn-default" %>
+					</div>
+				<% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="password">
+    	<div class="settings-form">
+    		<h4>Change My Password</h4>
+    	  <%= form_for(:user, :url => registration_path(:user), :html => { multipart: true, :method => :put }) do |f| %>
+
+			    <div class="form-group">
+			      <%= f.label :password %><br />
+			    <%= f.password_field :password, :autocomplete => "off", class: "form-control" %></div>
+
+			    <div class="form-group">
+			      <%= f.label :current_password %><br />
+			    <%= f.password_field :current_password, class: "form-control" %></div>
+
+			    <div><%= f.submit "Update", class: "btn btn-primary" %></div>
+			  <% end %>
+			</div>
+    </div>
+  </div>
+
+</div>
