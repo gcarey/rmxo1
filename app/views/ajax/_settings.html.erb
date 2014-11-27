@@ -46,8 +46,8 @@
 									<%= image_tag request.avatar.url(:thumb) %>
 								<% end %>
 								<span class="name"><%= request.full_name %> </span>
-				    		<%= link_to "Accept", friendship_path(:id => request), :method => "put", class: "btn btn-default" %>
 					      <%= link_to "Decline", friendship_path(:id => request), :method => :delete, class: "btn btn-default" %>
+					      <%= link_to "Accept", friendship_path(:id => request), :method => "put", class: "btn btn-default" %>
 							</div>
 					  <% end %>
 					</div>
