@@ -5,10 +5,8 @@
     shares = tip.shares.where(user_id: current_user.id)
     if shares.count > 0
       shares.update_all(visited: true)
-      redirect_to tip.link
-    else
-      redirect_to root_path, notice: "That tip was meant for someone else."
     end
+    redirect_to tip.link
   end
 
   def destroy
@@ -18,7 +16,7 @@
       shares.delete_all
       redirect_to :back, notice: 'Tip removed.'
     else
-      redirect_to root_path, notice: "That tip was meant for someone else."
+      redirect_to root_path, notice: "That tip was sent to someone else."
     end
   end
 end

@@ -133,8 +133,13 @@ body {
 		background-color: white;
 	}
 
-		.tip img {
+		.tip a {
 			float: left;
+			position: relative;
+			z-index: 10;
+		}
+
+		.tip img {
 			width: 130px;
 		}
 
