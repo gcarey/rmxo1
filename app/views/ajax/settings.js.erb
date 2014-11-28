@@ -1,6 +1,11 @@
 if ( $("#settingsModalBody").hasClass( "unloaded" ) ) {
 	$("#settingsModalBody").append('<%= escape_javascript(render "settings") %>').removeClass("unloaded");
 
+	$(".btn-group").on( 'click', 'a', function() {
+		$(this).siblings().removeClass('active');
+		$(this).addClass('active');
+	});
+
 	var uploadPhoto = new Dropzone(".dropzone", {
 			maxFilesize: 2,
 			paramName: "user[avatar]",

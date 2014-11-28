@@ -66,35 +66,23 @@
     	<h5>Send me an email when:</h5>
     	<div class="row edit-notification">
     		<span>I recieve a new tip</span>
-    		<div class="btn-group" data-toggle="buttons">
-				  <label class="btn btn-default btn-sm active">
-				    <input type="radio" name="options" id="option1" autocomplete="off" checked> Yes
-				  </label>
-				  <label class="btn btn-default btn-sm">
-				    <input type="radio" name="options" id="option2" autocomplete="off"> No
-				  </label>
+    		<div class="btn-group">
+				  <%= link_to "Yes", set_notification_path(type: 'tip', setting: 'true'), class: "btn btn-default btn-sm #{'active' if current_user.settings(:email).tip == true}", :remote => true %>
+				  <%= link_to "No", set_notification_path(type: 'tip', setting: 'false'), class: "btn btn-default btn-sm #{'active' if current_user.settings(:email).tip == false}", :remote => true %>
 				</div>
     	</div>
     	<div class="row edit-notification">
     		<span>I have a friend request</span>
-    		<div class="btn-group" data-toggle="buttons">
-				  <label class="btn btn-default btn-sm active">
-				    <input type="radio" name="options" id="option1" autocomplete="off" checked> Yes
-				  </label>
-				  <label class="btn btn-default btn-sm">
-				    <input type="radio" name="options" id="option2" autocomplete="off"> No
-				  </label>
+    		<div class="btn-group">
+				  <%= link_to "Yes", set_notification_path(type: 'friend', setting: 'true'), class: "btn btn-default btn-sm #{'active' if current_user.settings(:email).friend == true}", :remote => true %>
+				  <%= link_to "No", set_notification_path(type: 'friend', setting: 'false'), class: "btn btn-default btn-sm #{'active' if current_user.settings(:email).friend == false}", :remote => true %>
 				</div>
     	</div>
     	<div class="row edit-notification">
     		<span>Occasional updates and announcements from Tipster</span>
-    		<div class="btn-group" data-toggle="buttons">
-				  <label class="btn btn-default btn-sm active">
-				    <input type="radio" name="options" id="option1" autocomplete="off" checked> Yes
-				  </label>
-				  <label class="btn btn-default btn-sm">
-				    <input type="radio" name="options" id="option2" autocomplete="off"> No
-				  </label>
+    		<div class="btn-group">
+				  <%= link_to "Yes", set_notification_path(type: 'news', setting: 'true'), class: "btn btn-default btn-sm #{'active' if current_user.settings(:email).news == true}", :remote => true %>
+				  <%= link_to "No", set_notification_path(type: 'news', setting: 'false'), class: "btn btn-default btn-sm #{'active' if current_user.settings(:email).news == false}", :remote => true %>
 				</div>
     	</div>
     </div>

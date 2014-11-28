@@ -23,8 +23,12 @@ Rails.application.routes.draw do
   get 'users/:id', to: 'users#show', as: 'profile'
   get 'inbox', to: 'pages#inbox'
   get 'settings', to: 'ajax#settings'
+
+  get 'set_notification', to: 'ajax#set_notification'
+
   get 'visit_link/:id', to: 'shares#visit_link', as: 'visit_link'
   get 'delete_share/:id', to: 'shares#destroy', as: 'delete_share'
+
   get 'contacts/gmail/callback', to: 'popups#findfriends'
   get 'contacts/failure', to: 'popups#failure'
 

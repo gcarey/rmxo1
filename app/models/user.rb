@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
                         :content_type => { :content_type => /\Aimage\/.*\Z/ },
                         :size => { :less_than => 10.megabyte }
 
+  # Settings
+  has_settings do |s|
+    s.key :email, :defaults => { :tip => true, :friend => true, :news => true }
+  end
 
   # Friendships
   has_many :friendships
