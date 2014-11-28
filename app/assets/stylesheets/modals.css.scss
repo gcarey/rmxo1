@@ -39,12 +39,12 @@
 	margin-bottom: 15px;
 }
 
-.tab-pane .btn-default {
+.edit-friend .btn {
 	float: right;
 	margin: 6px 2px 0;
 }
 
-.tab-pane .btn-primary {
+.form-pane .btn-primary {
 	float: right;
 	margin-top: 30px;
 }
@@ -71,7 +71,18 @@ a.delete {
 	margin-top: 38px;
 }
 
-// friends
+.success-msg {
+	float: right;
+	width: 250px;
+}
+
+.success-msg .btn {
+	position: relative;
+	z-index: 10;
+	margin-bottom: 15px;
+}
+
+// Friends
 
 a.manage {
 	color: #666;
