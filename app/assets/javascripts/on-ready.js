@@ -18,8 +18,11 @@ $(document).ready(function(){
 
 	  // Settings
 	  Dropzone.autoDiscover = false;
+})
 
-  // Tips Pages
+
+// Tips Pages
+$(".users.show,.pages.inbox").ready(function(){
   var $container = $('#page');
 
   if ( $(window).width() > 768) {     
@@ -34,8 +37,10 @@ $(document).ready(function(){
 			$container.isotope('destroy')
 		}
 	});
+});
 
-  // Profile
+// Profile
+$(".users.show").ready(function(){
   if ( $(window).width() > 768) {     
 	  var $profile = $('.profile-page')
 		$('.counts').on( 'click', '.filter', function() {
@@ -44,8 +49,11 @@ $(document).ready(function(){
 		  $('.filter').toggleClass("active");
 		});
 	}
+})
 
-  // Inbox
+
+// Inbox
+$(".pages.inbox").ready(function(){
   if ( $(window).width() > 768) { 
 	  var $inbox = $('.inbox-page')
 		$('.filters').on( 'click', 'label', function() {
@@ -59,9 +67,40 @@ $(document).ready(function(){
 	$('.tip').on( 'click', 'h3, img', function() {
 	  location.reload();
 	});
+})
 
-	// Omni
+
+// Mobile Settings
+$(".pages.mobile_settings").ready(function(){
+
+	var uploadPhoto = new Dropzone(".dropzone", {
+			maxFilesize: 2,
+			paramName: "user[avatar]",
+			maxFiles: 1,
+			thumbnailWidth: 190,
+			thumbnailHeight: 190,
+	});
+
+	uploadPhoto.on("success", function(file) {
+		$(".dropzone").prepend("<div class='success-msg'><h3>Looking Good!</h3><p>Here's your new profile photo. Happy with it?</p><%= escape_javascript(link_to 'Return to Profile', root_path, class: 'btn btn-primary') %><p>Want to try again?</p><a id='retry' class='btn btn-default'>Upload Another</a>");
+
+		$(".dropzone").on( 'click', '#retry', function() {
+			$('.success-msg').remove();
+		 	uploadPhoto.enable();
+			uploadPhoto.removeAllFiles();
+		});
+  });
+
+  $(".m-notification-toggle").on( 'click', 'a', function() {
+		$(this).siblings().removeClass('active');
+		$(this).addClass('active');
+	});
+})
+
+
+// Omni
+$(".popups.failure").ready(function(){
   $( '.closer' ).click(function() {
 		window.close()
   });
- })
+});

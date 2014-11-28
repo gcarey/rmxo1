@@ -5,4 +5,7 @@ class PagesController < ApplicationController
 
   def inbox
   end
+
+  def mobile_settings
+  end
 end

@@ -12,7 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
+//= require bootstrap/transition
+//= require bootstrap/modal
+//= require bootstrap/dropdown
+//= require bootstrap/tab
+//= require bootstrap/alert
+//= require bootstrap/button
+//= require bootstrap/collapse
+//= require jquery-readyselector
 //= require isotope.pkgd
 //= require masonry-horizontal
 //= require dropzone.min

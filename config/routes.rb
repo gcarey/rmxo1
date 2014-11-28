@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   get 'users/:id', to: 'users#show', as: 'profile'
   get 'inbox', to: 'pages#inbox'
+  get 'm_settings', to: 'pages#mobile_settings'
   get 'settings', to: 'ajax#settings'
 
   get 'set_notification', to: 'ajax#set_notification'

@@ -64,21 +64,21 @@
     <div role="tabpanel" class="tab-pane" id="notifications">
     	<h4>Email Preferences</h4>
     	<h5>Send me an email when:</h5>
-    	<div class="row edit-notification">
+    	<div class="settings-row edit-notification">
     		<span>I recieve a new tip</span>
     		<div class="btn-group">
 				  <%= link_to "Yes", set_notification_path(type: 'tip', setting: 'true'), class: "btn btn-default btn-sm #{'active' if current_user.settings(:email).tip == true}", :remote => true %>
 				  <%= link_to "No", set_notification_path(type: 'tip', setting: 'false'), class: "btn btn-default btn-sm #{'active' if current_user.settings(:email).tip == false}", :remote => true %>
 				</div>
     	</div>
-    	<div class="row edit-notification">
+    	<div class="settings-row edit-notification">
     		<span>I have a friend request</span>
     		<div class="btn-group">
 				  <%= link_to "Yes", set_notification_path(type: 'friend', setting: 'true'), class: "btn btn-default btn-sm #{'active' if current_user.settings(:email).friend == true}", :remote => true %>
 				  <%= link_to "No", set_notification_path(type: 'friend', setting: 'false'), class: "btn btn-default btn-sm #{'active' if current_user.settings(:email).friend == false}", :remote => true %>
 				</div>
     	</div>
-    	<div class="row edit-notification">
+    	<div class="settings-row edit-notification">
     		<span>Occasional updates and announcements from Tipster</span>
     		<div class="btn-group">
 				  <%= link_to "Yes", set_notification_path(type: 'news', setting: 'true'), class: "btn btn-default btn-sm #{'active' if current_user.settings(:email).news == true}", :remote => true %>
@@ -92,7 +92,7 @@
 					<h4>Friend Requests</h4>
 					<div class="request-list">
 						<% current_user.requested_friendships.each do |request| %>
-							<div class="row edit-friend">
+							<div class="settings-row edit-friend">
 								<%= link_to profile_path(request) do %>
 									<%= image_tag request.avatar.url(:thumb) %>
 								<% end %>
@@ -107,7 +107,7 @@
 				<h4>Edit Friends</h4>
 				<% current_user.friends.each do |f| %>
 					<% friendship = Friendship.where(friend_id: [current_user, f]).where(user_id: [current_user, f]).where(approved: true).last %>
-					<div class="row edit-friend">
+					<div class="settings-row edit-friend">
 						<%= link_to profile_path(f) do %>
 							<%= image_tag f.avatar.url(:thumb) %>
 						<% end %>
@@ -135,5 +135,4 @@
 			</div>
     </div>
   </div>
-
 </div>
