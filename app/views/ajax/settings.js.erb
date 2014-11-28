@@ -1,19 +1,23 @@
 if ( $("#settingsModalBody").hasClass( "unloaded" ) ) {
 	$("#settingsModalBody").append('<%= escape_javascript(render "settings") %>').removeClass("unloaded");
 
-	$(".dropzone").dropzone({
+	var uploadPhoto = new Dropzone(".dropzone", {
 			maxFilesize: 2,
 			paramName: "user[avatar]",
 			maxFiles: 1,
 			thumbnailWidth: 190,
 			thumbnailHeight: 190,
-		  init: function() {
-		    this.on("success", function(file) { 
-		    	$(".dropzone").prepend("<div class='success-msg'><h3>Looking Good!</h3><p>Here's your new profile photo. Happy with it?</p><%= escape_javascript(link_to 'Return to Profile', root_path, class: 'btn btn-primary') %><p>Want to try again?</p><a data-dz-remove class='btn btn-default'>Upload Another</a>");
-		    	this.disable();
-		    });
-		  }
-		});	
+	});
+
+	uploadPhoto.on("success", function(file) {
+		$(".dropzone").prepend("<div class='success-msg'><h3>Looking Good!</h3><p>Here's your new profile photo. Happy with it?</p><%= escape_javascript(link_to 'Return to Profile', root_path, class: 'btn btn-primary') %><p>Want to try again?</p><a id='retry' class='btn btn-default'>Upload Another</a>");
+
+		$(".dropzone").on( 'click', '#retry', function() {
+			$('.success-msg').remove();
+		 	uploadPhoto.enable();
+			uploadPhoto.removeAllFiles();
+		});
+  });
 }
 
 $('#settings-nav a[href="#<%= escape_javascript(@tab) %>"]').tab('show');

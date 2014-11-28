@@ -9,8 +9,8 @@
     <li role="presentation"><a href="#password" aria-controls="password" role="tab" data-toggle="tab">Change Password</a></li>
   </ul>
 
-  <!-- Tab panes -->
   <div class="tab-content">
+  	<!-- My Account -->
   	<div role="tabpanel" class="tab-pane form-pane active" id="account">
     		<h4>Basic Info</h4>
     	  <%= form_for(:user, :url => registration_path(:user), :html => { multipart: true, :method => :put }) do |f| %>
@@ -34,15 +34,26 @@
 			    <div><%= f.submit "Update", class: "btn btn-primary" %></div>
 			  <% end %>
     </div>
+    <!-- Profile Photo -->
     <div role="tabpanel" class="tab-pane" id="profile-photo">
     	<%= form_for(:user, :url => registration_path(:user), :html => { multipart: true, :method => :put, class: "dropzone" }) do |f| %>
+    		<div class="dz-message">
+    			<h4>Drag your image here to upload a new profile photo.</h4>
+    			<%= image_tag "drop3.png"  %>
+    			<p>Or just click to do it the old fashioned way.</p>
+    		</div>
 			  <div class="fallback">
-			    <%= f.file_field :avatar %><br>
+			  	<h3>Upload Photo</h3>
+			  	<span class="btn btn-default btn-file">
+					    Browse...<%= f.file_field :avatar %>
+					</span>
 			    <%= f.submit "Upload", class: "btn btn-primary" %>
 			  </div>
 			<% end %>
     </div>
+    <!-- Notifications -->
     <div role="tabpanel" class="tab-pane" id="notifications">...</div>
+    <!-- Friends -->
     <div role="tabpanel" class="tab-pane" id="friends">
 				<% if current_user.requested_friendships.count > 0 %>
 					<h4>Friend Requests</h4>
@@ -72,6 +83,7 @@
 					</div>
 				<% end %>
     </div>
+    <!-- Change Password -->
     <div role="tabpanel" class="tab-pane form-pane" id="password">
     	<div class="settings-form">
     		<h4>Change My Password</h4>
