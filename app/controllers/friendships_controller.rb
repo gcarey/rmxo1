@@ -17,7 +17,7 @@ class FriendshipsController < ApplicationController
     end
 
     if @friendship.save
-      Notifications.friend_request(@recipient, current_user).deliver if @recipient.settings(:email).friend = true
+      Notifications.friend_request(@recipient, current_user).deliver if @recipient.settings(:email).friend == true
     end
   end
 
