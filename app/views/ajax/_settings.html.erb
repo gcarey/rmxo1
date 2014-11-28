@@ -1,12 +1,21 @@
 <div role="tabpanel">
 
-  <!-- Nav tabs -->
   <ul class="nav nav-pills" id="settings-nav" role="tablist">
-  	<li role="presentation" class="active"><a href="#account" aria-controls="account" role="tab" data-toggle="tab">My Account</a></li>
-    <li role="presentation"><a href="#profile-photo" aria-controls="profile-photo" role="tab" data-toggle="tab">Profile Photo</a></li>
-    <li role="presentation"><a href="#notifications" aria-controls="notifications" role="tab" data-toggle="tab">Notifications</a></li>
-    <li role="presentation"><a href="#friends" aria-controls="friends" role="tab" data-toggle="tab">Friends</a></li>
-    <li role="presentation"><a href="#password" aria-controls="password" role="tab" data-toggle="tab">Change Password</a></li>
+  	<li role="presentation" class="active">
+  		<a href="#account" aria-controls="account" role="tab" data-toggle="tab">My Account</a>
+  	</li>
+    <li role="presentation">
+    	<a href="#profile-photo" aria-controls="profile-photo" role="tab" data-toggle="tab">Profile Photo</a>
+    </li>
+    <li role="presentation">
+    	<a href="#notifications" aria-controls="notifications" role="tab" data-toggle="tab">Notifications</a>
+    </li>
+    <li role="presentation">
+    	<a href="#friends" aria-controls="friends" role="tab" data-toggle="tab">Friends</a>
+    </li>
+    <li role="presentation">
+    	<a href="#password" aria-controls="password" role="tab" data-toggle="tab">Change Password</a>
+    </li>
   </ul>
 
   <div class="tab-content">
@@ -52,14 +61,50 @@
 			<% end %>
     </div>
     <!-- Notifications -->
-    <div role="tabpanel" class="tab-pane" id="notifications">...</div>
+    <div role="tabpanel" class="tab-pane" id="notifications">
+    	<h4>Email Preferences</h4>
+    	<h5>Send me an email when:</h5>
+    	<div class="row edit-notification">
+    		<span>I recieve a new tip</span>
+    		<div class="btn-group" data-toggle="buttons">
+				  <label class="btn btn-default btn-sm active">
+				    <input type="radio" name="options" id="option1" autocomplete="off" checked> Yes
+				  </label>
+				  <label class="btn btn-default btn-sm">
+				    <input type="radio" name="options" id="option2" autocomplete="off"> No
+				  </label>
+				</div>
+    	</div>
+    	<div class="row edit-notification">
+    		<span>I have a friend request</span>
+    		<div class="btn-group" data-toggle="buttons">
+				  <label class="btn btn-default btn-sm active">
+				    <input type="radio" name="options" id="option1" autocomplete="off" checked> Yes
+				  </label>
+				  <label class="btn btn-default btn-sm">
+				    <input type="radio" name="options" id="option2" autocomplete="off"> No
+				  </label>
+				</div>
+    	</div>
+    	<div class="row edit-notification">
+    		<span>Occasional updates and announcements from Tipster</span>
+    		<div class="btn-group" data-toggle="buttons">
+				  <label class="btn btn-default btn-sm active">
+				    <input type="radio" name="options" id="option1" autocomplete="off" checked> Yes
+				  </label>
+				  <label class="btn btn-default btn-sm">
+				    <input type="radio" name="options" id="option2" autocomplete="off"> No
+				  </label>
+				</div>
+    	</div>
+    </div>
     <!-- Friends -->
     <div role="tabpanel" class="tab-pane" id="friends">
 				<% if current_user.requested_friendships.count > 0 %>
 					<h4>Friend Requests</h4>
 					<div class="request-list">
 						<% current_user.requested_friendships.each do |request| %>
-							<div class="edit-friend">
+							<div class="row edit-friend">
 								<%= link_to profile_path(request) do %>
 									<%= image_tag request.avatar.url(:thumb) %>
 								<% end %>
@@ -74,7 +119,7 @@
 				<h4>Edit Friends</h4>
 				<% current_user.friends.each do |f| %>
 					<% friendship = Friendship.where(friend_id: [current_user, f]).where(user_id: [current_user, f]).where(approved: true).last %>
-					<div class="edit-friend">
+					<div class="row edit-friend">
 						<%= link_to profile_path(f) do %>
 							<%= image_tag f.avatar.url(:thumb) %>
 						<% end %>
