@@ -18,12 +18,9 @@ $(document).ready(function(){
 
 	  // Settings
 	  Dropzone.autoDiscover = false;
-})
 
 
-// Tips Pages
-$(".users.show,.pages.inbox").ready(function(){
-  var $container = $('#page');
+	var $container = $('#page');
 
   if ( $(window).width() > 768) {     
 		$container.isotope({itemSelector: '.tip', layoutMode: 'masonryHorizontal', stamp: '#stamp' });
@@ -37,6 +34,11 @@ $(".users.show,.pages.inbox").ready(function(){
 			$container.isotope('destroy')
 		}
 	});
+})
+
+
+// Tips Pages
+$(".users.show,.pages.inbox").ready(function(){
 });
 
 // Profile
