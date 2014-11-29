@@ -39,6 +39,7 @@ gem "omnicontacts", '~> 0.3.4'
 gem 'doorkeeper', '~> 1.4.0'
 gem 'kaminari'
 gem 'ledermann-rails-settings'
+gem 'unicorn'
 
 group :development, :test do 
 	gem 'sqlite3'

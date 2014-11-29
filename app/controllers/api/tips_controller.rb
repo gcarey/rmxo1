@@ -20,6 +20,7 @@ module Api
       @received_tip = @tip
       @recipients = User.find(params[:recipient_ids].split(','))
       @received_tip.recipients << @recipients 
+      @user = User.find(params[:tip][:user_id])
 
       #Check if the tip being saved is a reshare
       if User.find(params[:user_id]).received_tips.where(link: params[:tip][:link]).last != nil
@@ -37,7 +38,7 @@ module Api
       if @tip.save
         render :show, status: :created
         @recipients.each do |r|
-          Notifications.tip(r, @tip, current_user).deliver
+          Notifications.tip(r, @tip, @user).deliver if r.settings(:email).tip == true
         end
       else
         render json: @tip.errors, status: :unprocessable_entity
