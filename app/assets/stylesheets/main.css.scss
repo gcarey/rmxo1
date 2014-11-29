@@ -38,9 +38,12 @@ body {
 	margin-top: -7px;
 }
 
-.nav-alert{
+.nav-alert {
 	margin: 0 5px 0 0;
-	outline: none;
+}
+
+.nav-alert:focus {
+  outline-width: 0;
 }
 
 .nav-alert .glyphicon {
