@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :tips
     get 'friends', to: 'friends#index', via: [:options]
-    put 'shares/:id/serve', to: 'shares#serve_link'
-    put 'shares/:id/visit', to: 'shares#visit_link'
+    put 'shares/:id/serve', to: 'shares#serve_link', via: [:options]
+    put 'shares/:id/visit', to: 'shares#visit_link', via: [:options]
   end
 end

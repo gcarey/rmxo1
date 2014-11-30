@@ -72,7 +72,7 @@ $(".pages.inbox").ready(function(){
 $(".pages.mobile_settings").ready(function(){
 
 	var uploadPhoto = new Dropzone(".dropzone", {
-			maxFilesize: 2,
+			maxFilesize: 10,
 			paramName: "user[avatar]",
 			maxFiles: 1,
 			thumbnailWidth: 190,
