@@ -19,7 +19,7 @@ $(document).ready(function(){
 	  // Settings
 	  Dropzone.autoDiscover = false;
 
-
+	// Tips Pages  
 	var $container = $('#page');
 
   if ( $(window).width() > 768) {     
@@ -36,10 +36,6 @@ $(document).ready(function(){
 	});
 })
 
-
-// Tips Pages
-$(".users.show,.pages.inbox").ready(function(){
-});
 
 // Profile
 $(".users.show").ready(function(){

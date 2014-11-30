@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :set_tip_badge
 
   def after_sign_in_path_for(resource)
-  	if request.referer == 'http://localhost:3000/api_login'
+  	if request.referer == 'http://www.tipster.to/api_login'
 			'https://hngjgjponalciaofpdggekmlholcleok.chromiumapp.org/oce'
   	else
     	stored_location_for(resource) || root_path
