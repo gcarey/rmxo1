@@ -40,6 +40,7 @@ gem 'doorkeeper', '~> 1.4.0'
 gem 'kaminari'
 gem 'ledermann-rails-settings'
 gem 'unicorn'
+gem 'rack-cors'
 
 group :development, :test do 
 	gem 'sqlite3'
