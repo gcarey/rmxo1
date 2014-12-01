@@ -23,13 +23,18 @@ class Tip < ActiveRecord::Base
 
     if File.extname(uri.path) =~ /^(.png|.gif|.jpg|.jpeg|.tiff)$/
       self.image = uri
-      self.title  = File.basename(uri.path)
+      self.title = File.basename(uri.path)
       self.description = "Image link"
     else
       data = Grabbit.url(link)
 
       if data
-        self.title = data.title
+        if data.title
+          self.title = data.title
+        else
+          displaylink = link.sub(/^https?\:\/\//, '')
+          self.title = displaylink
+        end
         self.description = data.description
         unless data.images.nil?
           $offset = 0
@@ -56,6 +61,8 @@ class Tip < ActiveRecord::Base
             end
           end 
         end
+      else
+        self.title = "shu"
       end
     end
 
