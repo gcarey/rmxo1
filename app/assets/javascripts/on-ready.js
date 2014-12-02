@@ -1,8 +1,8 @@
 $(document).ready(function(){
 	// Site-wide
-  setTimeout(function(){
-    $('.alert').fadeOut(500, function() { $(this).remove(); });
-  }, 3000);
+  //setTimeout(function(){
+  //  $('.alert').fadeOut(500, function() { $(this).remove(); });
+  //}, 3000);
 
 	  // Find Friends
 	  function popupCenter(url, width, height, name) {
