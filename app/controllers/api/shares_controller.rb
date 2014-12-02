@@ -9,11 +9,5 @@ module Api
       @share.update(served: true)
       render nothing: true
     end
-
-    def visit_link
-      @share = Share.find(params[:id])
-      @share.update(visited: true)
-      render nothing: true
-    end
   end
 end
