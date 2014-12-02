@@ -55,6 +55,8 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    domain_name (0.5.22)
+      unf (>= 0.0.5, < 1.0.0)
     doorkeeper (1.4.0)
       railties (>= 3.1)
     erubis (2.7.0)
@@ -66,6 +68,8 @@ GEM
       nokogiri
     hashie (3.2.0)
     hike (1.2.3)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -87,12 +91,25 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mechanize (2.7.2)
+      domain_name (~> 0.5, >= 0.5.1)
+      http-cookie (~> 1.0.0)
+      mime-types (~> 1.17, >= 1.17.2)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-persistent (~> 2.5, >= 2.5.2)
+      nokogiri (~> 1.4)
+      ntlm-http (~> 0.1, >= 0.1.1)
+      webrobots (>= 0.0.9, < 0.2)
     mime-types (1.25.1)
     minitest (5.4.0)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    net-http-digest_auth (1.4)
+    net-http-persistent (2.9.4)
+    newrelic_rpm (3.9.7.266)
     nokogiri (1.5.11)
+    ntlm-http (0.1.1)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -180,6 +197,9 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.6)
     unicorn (4.8.3)
       kgio (~> 2.6)
       rack
@@ -187,6 +207,7 @@ GEM
     uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
+    webrobots (0.1.1)
 
 PLATFORMS
   ruby
@@ -200,8 +221,10 @@ DEPENDENCIES
   grabbit (~> 1.0.0)
   jbuilder (~> 2.0)
   jquery-rails
-  kaminari
-  ledermann-rails-settings
+  kaminari (~> 0.16.1)
+  ledermann-rails-settings (~> 2.3.0)
+  mechanize
+  newrelic_rpm
   omniauth-google-oauth2
   omnicontacts (~> 0.3.4)
   paperclip (~> 4.1)

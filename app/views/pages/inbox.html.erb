@@ -48,7 +48,7 @@
 		    <h3><%= link_to visit_link_path(tip), target: '_blank' do %><%= raw tip.title %><%end%></h3>
 		    <p><%= raw tip.description %></p>
 		    	<%= link_to profile_path(tip.user_id) do %>
-	    			<%= image_tag tip.user.avatar.url(:thumb), class: "origin" %>
+	    			<%= image_tag tip.user.avatar.url(:thumb), class: "origin", alt: "#{tip.user.full_name} sent you this tip." %>
 	    		<% end %>
     			<%= link_to delete_share_path(tip, link: tip.link) do %>
 	    			<span class="glyphicon glyphicon-trash"></span>

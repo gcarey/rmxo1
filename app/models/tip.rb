@@ -32,8 +32,12 @@ class Tip < ActiveRecord::Base
         if data.title
           self.title = data.title
         else
-          displaylink = link.sub(/^https?\:\/\//, '')
-          self.title = displaylink
+          begin
+            self.title = Mechanize.new.get(link).title
+          rescue
+            displaylink = link.sub(/^https?\:\/\//, '')
+            self.title = displaylink
+          end
         end
         self.description = data.description
         unless data.images.nil?

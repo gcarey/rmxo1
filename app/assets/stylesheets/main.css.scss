@@ -177,24 +177,25 @@ body {
 			.box .glyphicon {
 				font-size: 14px;
 				color: #b5b5b5;
-				top: 2px;
-				left: 5px;
+				top: 3px;
 			}
 
 			.box .count {
 				font-size: 18px;
 				color: black;
+				vertical-align: middle;
+				margin-right: 3px;
 			}
 
 			img.origin {
 				width: 19px;
-				margin: 0px 5px 3px 2px;
+				margin: 1px 5px 3px 2px;
 				border-radius: 2px;
 			}
 
 			img.discovery {
 				width: 17px;
-				margin: 0px 6px 3px 1px;
+				margin: 1px 6px 3px 1px;
 			}
 
 	#sendTip .field {
