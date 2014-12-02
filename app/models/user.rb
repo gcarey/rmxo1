@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:google_oauth2]
 
   # Validation
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates :first_name, presence: true, length: { maximum: 14 }
+  validates :last_name, presence: true, length: { maximum: 28 }
 
   # Welcome Email
   after_create :send_welcome_email
