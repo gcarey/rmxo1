@@ -14,6 +14,18 @@ class UsersController < ApplicationController
 		discoveries
 	end
 
+  # Stopgap for Alpha
+  def update_password
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      # Sign in the user by passing validation in case their password changed
+      sign_in @user, :bypass => true
+      redirect_to root_path, :notice => "Successfully changed password."
+    else
+      render "edit", :notice => "That didn't seem to work."
+    end
+  end
+
 
 	private
   # Check if @user is current_user's friend
@@ -29,5 +41,11 @@ class UsersController < ApplicationController
 
   def discoveries
   	@discoveries = @user.originated_tips.where(user_id: @user)
+  end
+
+  # Stopgap for Alpha
+  def user_params
+    # NOTE: Using `strong_parameters` gem
+    params.required(:user).permit(:password)
   end
 end

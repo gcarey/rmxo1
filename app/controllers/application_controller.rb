@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
   	if request.referer == 'http://www.tipster.to/api_login'
 			'https://kcaggdadonedjneipfkphbianejifnep.chromiumapp.org/oce'
-  	else
+    else
     	stored_location_for(resource) || root_path
     end
   end

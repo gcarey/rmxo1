@@ -66,7 +66,12 @@ class Tip < ActiveRecord::Base
           end 
         end
       else
-        self.title = "shu"
+        begin
+          self.title = Mechanize.new.get(link).title
+        rescue
+          self.title = "Unknown"
+          self.description = "Sorry, couldn't pull any information from this site. Link still works though!"
+        end
       end
     end
 

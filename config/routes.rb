@@ -39,4 +39,12 @@ Rails.application.routes.draw do
     put 'shares/:id/serve', to: 'shares#serve_link'
     put 'shares/:id/visit', to: 'shares#visit_link'
   end
+
+# Stopgap for alpha
+resource :user, only: [:edit] do
+  collection do
+    post 'update_password'
+  end
+end
+
 end
