@@ -6,6 +6,7 @@ module Api
 
     def index
       @friends = current_user.friends
+      @shares = Share.where(user_id: current_user.id).where(visited: nil)
     end
   end
 end
