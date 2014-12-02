@@ -87,6 +87,20 @@ input.btn {
 	height: 50px
 }
 
+.google-signin {
+	width: 216px;
+	height: 42px;
+	overflow: hidden;
+	background: #ffffff url("/assets/gsi.png") no-repeat left top;
+	margin: 0 auto;
+}
+
+.google-signin:hover { background-position: right -42px; }
+.google-signin:active { background-position: right -84px; }
+
+.or {
+	margin: 20px auto 22px;
+}
 
 
 
