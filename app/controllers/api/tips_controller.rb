@@ -26,7 +26,7 @@ module Api
       if User.find(params[:user_id]).received_tips.where(link: params[:tip][:link]).last != nil
         User.find(params[:user_id]).received_tips.where(link: params[:tip][:link]).each do |t|
           #Add reshare to original tip
-          t.increment!("reshares", by = 1)
+          t.increment!("reshares", by = @recipients.count)
         end
         #Record origin
         @original_tip = User.find(params[:user_id]).received_tips.where(link: params[:tip][:link]).first
