@@ -4,7 +4,7 @@
     tip = Tip.find(params[:id])
     shares = tip.shares.where(user_id: current_user.id)
     shares.update_all(visited: true)
-    redirect_to tip.link
+    redirect_to "http://redirect.viglink.com?key=2936e5116a8b6c8d103ef904f2da99fd&u="+CGI.escape(tip.link)
   end
 
   def destroy
