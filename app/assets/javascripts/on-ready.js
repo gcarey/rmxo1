@@ -4,7 +4,9 @@ $(document).ready(function(){
     $('.alert').fadeOut(500, function() { $(this).remove(); });
   }, 3000);
 
-  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="tooltip"]').tooltip({ 
+  	delay: { "show": 300, "hide": 100 },
+  });
 
 	  // Find Friends
 	  function popupCenter(url, width, height, name) {
