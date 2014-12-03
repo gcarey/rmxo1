@@ -91,14 +91,14 @@
 				<% if current_user.requested_friendships.count > 0 %>
 					<h4>Friend Requests</h4>
 					<div class="request-list">
-						<% current_user.requested_friendships.each do |request| %>
+						<% current_user.requested_friendships.each do |f| %>
 							<div class="settings-row edit-friend">
-								<%= link_to profile_path(request) do %>
-									<%= image_tag request.avatar.url(:thumb) %>
+								<%= link_to profile_path(f) do %>
+									<%= image_tag f.avatar.url(:thumb) %>
 								<% end %>
-								<span class="name"><%= request.full_name %> </span>
-					      <%= link_to "Decline", friendship_path(:id => request), :method => :delete, class: "btn btn-default decline request", :remote => true %>
-					      <%= link_to "Accept", friendship_path(:id => request), :method => "put", class: "btn btn-default accept request", :remote => true %>
+								<span class="name"><%= f.full_name %> </span>
+					      <%= link_to "Decline", friendship_path(id: f.id), :method => :delete, class: "btn btn-default decline request", :remote => true %>
+					      <%= link_to "Accept", friendship_path(id: f.id), :method => "put", class: "btn btn-default accept request", :remote => true %>
 							</div>
 					  <% end %>
 					</div>
@@ -106,13 +106,12 @@
 
 				<h4>Edit Friends</h4>
 				<% current_user.friends.each do |f| %>
-					<% friendship = Friendship.where(friend_id: [current_user, f]).where(user_id: [current_user, f]).where(approved: true).last %>
 					<div class="settings-row edit-friend">
 						<%= link_to profile_path(f) do %>
 							<%= image_tag f.avatar.url(:thumb) %>
 						<% end %>
 						<span class="name"><%= f.full_name %></span>
-		    		<%= link_to "Remove friend", friendship, method: :delete, data: { confirm: "Are you sure you want to unfriend this person?" }, class: "btn btn-default" %>
+		    		<%= link_to "Remove friend", friendship_path(id: f.id), method: :delete, data: { confirm: "Are you sure you want to unfriend this person?" }, class: "btn btn-default" %>
 					</div>
 				<% end %>
     </div>

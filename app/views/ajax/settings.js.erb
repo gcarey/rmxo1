@@ -28,12 +28,14 @@ if ( $("#settingsModalBody").hasClass( "unloaded" ) ) {
 		row = $(this).parent()
 		row.children('.request').remove()
 		row.prepend('<p class="request-response">Friend added.<p>')
+		$('.friend-alert').remove()
   });
 
   $("a.decline").click(function(e) {
 		row = $(this).parent()
 		row.children('.request').remove()
 		row.prepend('<p class="request-response">Request denied.<p>')
+		$('.friend-alert').remove()
   });
 }
 

@@ -22,7 +22,7 @@
              <span class='glyphicon glyphicon-comment'></span> You have <%= @newtips.count %> new tip<%= "s" if @newtips.count != 1 %>!
             <% end %>
           <% elsif current_user.requested_friendships.count > 0 %>
-            <%= link_to settings_path(tab: "friends"), remote: true, data: { toggle: "modal", target: "#settings" }, :class => "nav-alert" do %>
+            <%= link_to settings_path(tab: "friends"), remote: true, data: { toggle: "modal", target: "#settings" }, :class => "nav-alert friend-alert" do %>
               <span class='glyphicon glyphicon-comment'></span> You have <%= current_user.requested_friendships.count %> friend request<%= "s" if current_user.requested_friendships.count != 1 %>!
             <% end %>
           <% end %>
