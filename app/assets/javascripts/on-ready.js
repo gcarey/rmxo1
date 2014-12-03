@@ -80,7 +80,9 @@ $(".pages.mobile_settings").ready(function(){
 	});
 
 	uploadPhoto.on("success", function(file) {
-		$(".dropzone").prepend("<div class='success-msg'><h3>Looking Good!</h3><p>Here's your new profile photo. Happy with it?</p><%= escape_javascript(link_to 'Return to Profile', root_path, class: 'btn btn-primary') %><p>Want to try again?</p><a id='retry' class='btn btn-default'>Upload Another</a>");
+		$(".dropzone").prepend("<div class='success-msg'><h3>Looking Good!</h3></div>");
+		$(".dropzone").append("<div class='success-msg'><p>Here's your new profile photo.<br>Happy with it?</p><a href='http://www.tipster.to' class='btn btn-primary'>Return to Profile</a><p>Want to try again?</p><a id='retry' class='btn btn-default'>Upload Another</a>");
+
 
 		$(".dropzone").on( 'click', '#retry', function() {
 			$('.success-msg').remove();
