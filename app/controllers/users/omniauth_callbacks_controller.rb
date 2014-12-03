@@ -9,6 +9,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         @after_sign_in_url = after_sign_in_path_for(@user)
         if request.env['omniauth.params']['popup']
           render 'popups/callback', :layout => false
+        elsif request.env['omniauth.params']['api']
+          redirect_to 'https://kcaggdadonedjneipfkphbianejifnep.chromiumapp.org/oce'
         else
           redirect_to @after_sign_in_url
         end
