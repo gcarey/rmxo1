@@ -18,22 +18,6 @@ $(document).ready(function(){
 
 	  // Settings
 	  Dropzone.autoDiscover = false;
-
-	// Tips Pages  
-	var $container = $('#page');
-
-  if ( $(window).width() > 768) {     
-		$container.isotope({itemSelector: '.tip', layoutMode: 'masonryHorizontal', stamp: '#stamp' });
-	}
-
-	$( window ).resize(function() {
-	  if ( $(window).width() > 768) {     
-			$container.isotope({itemSelector: '.tip', layoutMode: 'masonryHorizontal', stamp: '#stamp' });
-		}
-		else {
-			$container.isotope('destroy')
-		}
-	});
 })
 
 
@@ -47,6 +31,7 @@ $(".users.show").ready(function(){
 		  $('.filter').toggleClass("active");
 		});
 	}
+	console.dir("is profile")
 })
 
 

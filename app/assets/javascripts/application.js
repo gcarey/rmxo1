@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-readyselector
 //= require isotope.pkgd
+//= require masonry-horizontal
+//= require isotope-loader
 //= require google-analytics
 //= require bootstrap/alert
 //= require bootstrap/transition
@@ -22,6 +23,6 @@
 //= require bootstrap/tab
 //= require bootstrap/button
 //= require bootstrap/collapse
-//= require masonry-horizontal
 //= require dropzone.min
-//= require_tree .
+//= require jquery-readyselector
+//= require on-ready
