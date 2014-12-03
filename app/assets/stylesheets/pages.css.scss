@@ -20,38 +20,43 @@
 		height: 30px;
 	}
 
-	label.filter {
-		padding: 5px 15px;
-		margin: 0 3px;
-		box-shadow: 1px 1px 1px #eee;
-		display: inline-block;
-		height: 28px;
-		border:none;
-		border-radius:none;
+	.inbox-page .filters.scroll {
+		height: 40px;
 	}
 
-	label.filter.active, label.filter:active {
-		box-shadow: none;
-		background-color: white;
-		color: #bbb;
-	}
+		.filters label.filter {
+			padding: 5px 15px;
+			margin: 0 3px;
+			box-shadow: 1px 1px 1px #eee;
+			display: inline-block;
+			height: 28px;
+			border:none;
+			border-radius:none;
+			float: none;
+			margin: 0;
+		}
 
-	label.filter:hover {
-		background-color: #eee;
-	}
+		.filters label.filter.active, label.filter:active {
+			box-shadow: none;
+			background-color: white;
+			color: #bbb;
+		}
 
+		.filters label.filter:hover {
+			background-color: #eee;
+		}
 
-	label.sender-filter {
-		padding: 5px 10px 5px 38px;
-		position: relative;
-	}
+		.filters label.sender-filter {
+			padding: 5px 10px 5px 38px;
+			position: relative;
+		}
 
-	.filter img {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 28px;
-	}
+		.filter img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 28px;
+		}
 
 	.inbox-page .glyphicon {
 		top: 4px;
