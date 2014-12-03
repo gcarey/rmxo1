@@ -293,3 +293,14 @@ body {
 	text-align: center;
 	font-size: 16px;
 }
+
+.tooltip.right .tooltip-arrow {
+	border-right-color: white;
+}
+
+.tooltip-inner {
+	background-color: white;
+	color: black;
+	max-width: 500px !important;
+	padding: 3px 0;
+}

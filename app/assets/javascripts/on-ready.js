@@ -4,6 +4,8 @@ $(document).ready(function(){
     $('.alert').fadeOut(500, function() { $(this).remove(); });
   }, 3000);
 
+  $('[data-toggle="tooltip"]').tooltip()
+
 	  // Find Friends
 	  function popupCenter(url, width, height, name) {
 	    var left = (screen.width/2)-(width/2);

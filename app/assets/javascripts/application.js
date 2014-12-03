@@ -17,12 +17,13 @@
 //= require isotope-loader
 //= require google-analytics
 //= require bootstrap/alert
+//= require bootstrap/button
+//= require bootstrap/dropdown
 //= require bootstrap/transition
 //= require bootstrap/modal
-//= require bootstrap/dropdown
 //= require bootstrap/tab
-//= require bootstrap/button
 //= require bootstrap/collapse
+//= require bootstrap/tooltip
 //= require dropzone.min
 //= require jquery-readyselector
 //= require on-ready

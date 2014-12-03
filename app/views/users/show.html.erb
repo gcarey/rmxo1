@@ -85,10 +85,10 @@
 		    <p><%= raw tip.description %></p>
 		    	<span class="count"><%= tip.reshares %></span>
 		    	<% if tip.originator == @user %>
-	    			<%= image_tag "discovery.png",  class: "origin discovery", alt: "This tip was discovered by #{@user.first_name}." %>
+	    			<%= image_tag "discovery.png",  class: "origin discovery", alt: "This tip was discovered by #{@user.first_name}.", data: {toggle: "tooltip", placement: "right" }, title: "This tip was discovered by #{@user.first_name}." %>
 		    	<% elsif tip.originator != nil %>
 		    		<%= link_to profile_path(tip.originator.id) do %>
-		    			<%= image_tag tip.originator.avatar.url(:thumb), class: "origin", alt: "This tip was sent to #{@user.first_name} by #{tip.originator.full_name}" %>
+		    			<%= image_tag tip.originator.avatar.url(:thumb), class: "origin", alt: "This tip was sent to #{@user.first_name} by #{tip.originator.full_name}", data: {toggle: "tooltip", placement: "right" }, title: "This tip was sent to #{@user.first_name} by #{tip.originator.full_name}" %>
 		    		<% end %>
 		    	<% end %>
 		    	<% if current_user == @user %>
