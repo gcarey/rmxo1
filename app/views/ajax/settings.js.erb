@@ -23,6 +23,18 @@ if ( $("#settingsModalBody").hasClass( "unloaded" ) ) {
 			uploadPhoto.removeAllFiles();
 		});
   });
+
+	$("a.accept").click(function(e) {
+		row = $(this).parent()
+		row.children('.request').remove()
+		row.prepend('<p class="request-response">Friend added.<p>')
+  });
+
+  $("a.decline").click(function(e) {
+		row = $(this).parent()
+		row.children('.request').remove()
+		row.prepend('<p class="request-response">Request denied.<p>')
+  });
 }
 
 $('#settings-nav a[href="#<%= escape_javascript(@tab) %>"]').tab('show');
