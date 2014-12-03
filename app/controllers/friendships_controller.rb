@@ -29,7 +29,9 @@ class FriendshipsController < ApplicationController
   def update
   @friendship = Friendship.where(friend_id: current_user, user_id: params[:id]).first
   @friendship.update(approved: true)
-    if @friendship.save
+    if @friendship.save && params[:response] == "accept"
+      render js: "$('#f-"+params[:id]+"').children('.request').remove(); $('#f-"+params[:id]+"').append('<p class='request-response'>Friend added.<p>'); $('.friend-alert').remove();"
+    elsif @friendship.save
       redirect_to root_url, :notice => "Successfully confirmed friend!"
     else
       redirect_to root_url, :notice => "Sorry! Could not confirm friend!"
@@ -41,7 +43,11 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendship = Friendship.where(friend_id: [current_user, params[:id]]).where(user_id: [current_user, params[:id]]).last
     @friendship.destroy
-    flash[:notice] = "We never liked them anyway."
-    redirect_to :back
+    if params[:response] == "decline"
+      render js: "$('#f-"+params[:id]+"').children('.request').remove(); $('#f-"+params[:id]+"').append('<p class='request-response'>Request declined.<p>'); $('.friend-alert').remove();"
+    else
+      flash[:notice] = "We never liked them anyway."
+      redirect_to :back
+    end
   end
 end
