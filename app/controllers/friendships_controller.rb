@@ -30,7 +30,7 @@ class FriendshipsController < ApplicationController
   @friendship = Friendship.where(friend_id: current_user, user_id: params[:id]).first
   @friendship.update(approved: true)
     if @friendship.save && params[:response] == "accept"
-      render js: "$('#f-"+params[:id]+"').children('.request').remove(); $('#f-"+params[:id]+"').append('<p class='request-response'>Friend added.<p>'); $('.friend-alert').remove();"
+      render js: "$('#f-"+params[:id]+"').children('.request').remove(); $('#f-"+params[:id]+"').append('<p>Friend added.<p>'); $('.friend-alert').remove();"
     elsif @friendship.save
       redirect_to root_url, :notice => "Successfully confirmed friend!"
     else
@@ -44,7 +44,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.where(friend_id: [current_user, params[:id]]).where(user_id: [current_user, params[:id]]).last
     @friendship.destroy
     if params[:response] == "decline"
-      render js: "$('#f-"+params[:id]+"').children('.request').remove(); $('#f-"+params[:id]+"').append('<p class='request-response'>Request declined.<p>'); $('.friend-alert').remove();"
+      render js: "$('#f-"+params[:id]+"').children('.request').remove(); $('#f-"+params[:id]+"').append('<p>Request declined.<p>'); $('.friend-alert').remove();"
     else
       flash[:notice] = "We never liked them anyway."
       redirect_to :back

@@ -35,7 +35,6 @@ $(".users.show").ready(function(){
 		  $('.filter').toggleClass("active");
 		});
 	}
-	console.dir("is profile")
 })
 
 
