@@ -39,7 +39,7 @@ class Tip < ActiveRecord::Base
             self.title = displaylink
           end
         end
-        self.description = data.description
+        self.description = data.description[0,150]
         begin
           unless data.images.nil?
             $offset = 0
