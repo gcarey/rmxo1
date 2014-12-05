@@ -51,7 +51,7 @@ $(".pages.inbox").ready(function(){
 	}
 
 	$('.tip').on( 'click', 'h3, img', function() {
-	  location.reload();
+	  $(this).parent().parent().removeClass('new').addClass('visited');
 	});
 })
 
