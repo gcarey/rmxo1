@@ -79,9 +79,9 @@
 	<!-- Tips -->
 	<% @user.tips.order("created_at DESC").each do |tip| %>
 		<div class="tip <% if tip.originator == @user %>disc<% end %>">
-			<%= link_to image_tag(tip.image.url(:full)), visit_link_path(tip, loc: request.original_url, uid: current_user.id), target: '_blank', class: "tip-image" %>
+			<%= link_to image_tag(tip.image.url(:full)), visit_link_path(tip), target: '_blank', class: "tip-image" %>
 			<div class="box">
-		    <h3><%= link_to visit_link_path(tip, loc: request.original_url, uid: current_user.id), target: '_blank' do %><%= raw tip.title %><%end%></h3>
+		    <h3><%= link_to visit_link_path(tip), target: '_blank' do %><%= raw tip.title %><%end%></h3>
 		    <p><%= raw tip.description %></p>
 		    	<span class="count" data-toggle="tooltip" data-placement="right" title="This tip has been re-shared <%= tip.reshares %> time<%= "s" unless tip.reshares == 1 %> by <%= @user.first_name %>'s friends." data-container=".box"><%= tip.reshares %></span>
 		    	<% if tip.originator == @user %>
