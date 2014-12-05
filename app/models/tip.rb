@@ -40,30 +40,34 @@ class Tip < ActiveRecord::Base
           end
         end
         self.description = data.description
-        unless data.images.nil?
-          $offset = 0
-          # Run until an image is saved
-          while self.image_file_name == nil
-            # Attempt to extract file dimensions
-            begin
-              geometry = Paperclip::Geometry.from_file(data.images.drop($offset).first)
-            rescue
-              false
-            else
-              # Set file as image if dimensions meet reqs
-              if geometry.width.to_i >= 130 && geometry.height.to_i >= 130
-                self.image = URI.parse(data.images.drop($offset).first)
+        begin
+          unless data.images.nil?
+            $offset = 0
+            # Run until an image is saved
+            while self.image_file_name == nil
+              # Attempt to extract file dimensions
+              begin
+                geometry = Paperclip::Geometry.from_file(data.images.drop($offset).first)
+              rescue
+                false
+              else
+                # Set file as image if dimensions meet reqs
+                if geometry.width.to_i >= 130 && geometry.height.to_i >= 130
+                  self.image = URI.parse(data.images.drop($offset).first)
+                end
               end
-            end
-            # Move on to next image
-            $offset +=1
-            # If no more images to check, stop checking
-            if data.images.drop($offset).first == nil
-              ## And use first image
-              #self.image = URI.parse(data.images.first)
-              break
-            end
-          end 
+              # Move on to next image
+              $offset +=1
+              # If no more images to check, stop checking
+              if data.images.drop($offset).first == nil
+                ## And use first image
+                #self.image = URI.parse(data.images.first)
+                break
+              end
+            end 
+          end
+        rescue
+          false
         end
       else
         begin
