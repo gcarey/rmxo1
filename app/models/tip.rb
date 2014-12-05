@@ -49,14 +49,14 @@ class Tip < ActiveRecord::Base
               begin
                 geometry = Paperclip::Geometry.from_file(data.images.drop($offset).first)
               rescue
-                false
+                # If there's an error, stop working with this image
               else
-                # Set file as image if dimensions meet reqs
+                # If image dimensions meet reqs, use image
                 if geometry.width.to_i >= 130 && geometry.height.to_i >= 130
                   self.image = URI.parse(data.images.drop($offset).first)
                 end
               end
-              # Move on to next image
+              # Queue up next image
               $offset +=1
               # If no more images to check, stop checking
               if data.images.drop($offset).first == nil
@@ -67,7 +67,6 @@ class Tip < ActiveRecord::Base
             end 
           end
         rescue
-          false
         end
       else
         begin
