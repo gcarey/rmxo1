@@ -4,6 +4,9 @@ class PagesController < ApplicationController
   end
 
   def inbox
+  	if params[:filter]
+  		@filter = params[:filter]
+  	end
   end
 
   def mobile_settings
