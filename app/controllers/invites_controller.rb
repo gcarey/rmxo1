@@ -13,7 +13,7 @@ class InvitesController < ApplicationController
 
     respond_to do |format|
       if @invite.save
-        render js: "$('"+params[:email]+"').html('Invite sent.').addClass('added');"
+        render js: "$('"+params[:email]+"').html('Invite sent.').removeClass().addClass('added');"
       end
     end
   end

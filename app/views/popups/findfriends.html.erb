@@ -16,7 +16,7 @@
 	<% @contacts.each do |contact| %>
 		<% if User.where(email: contact[:email]).last == nil %>
 			<div class="contact" id="<%= contact[:email]%>">
-			  <span class="action"><%= link_to "Invite", invites_path(email: contact[:email]), class: "btn btn-primary", :method => :post %></span>
+			  <span class="action"><%= link_to "Invite", invites_path(email: contact[:email]), class: "btn btn-primary", :method => :post, :remote => true %></span>
 				<p><span class="name"><%= contact[:name] %></span> <%= contact[:email]%></span></p> 
 			</div>
 		<% end %>
