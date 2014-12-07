@@ -78,7 +78,7 @@ class User < ActiveRecord::Base
     end
 
     def tally_invites
-      if Invitee.where(email: self.email)
+      if Invitee.where(email: self.email).last
         invitee = Invitee.where(email: self.email).last
         self.update(invitations: invitee.invites.count)
       end

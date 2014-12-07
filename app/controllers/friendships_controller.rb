@@ -8,6 +8,7 @@ class FriendshipsController < ApplicationController
 
     if @friendship.save && params[:omnicontact]
       render js: "document.getElementById('"+params[:email]+"').innerHTML = 'Friend requested.'; document.getElementById('"+params[:email]+"').className = 'added';"
+      # render js: "$('"+params[:email]+"').html('Friend requested.').removeClass().addClass('added');"
     elsif @friendship.save && params[:og]
       flash[:notice] = "Garrett has now been added as your friend."
       redirect_to :back

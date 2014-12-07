@@ -28,7 +28,7 @@ class TipsController < ApplicationController
 
     respond_to do |format|
       if @tip.valid? && @tip.save
-        Notifications.tip(@recipient, @tip, current_user).deliver if @recipient.settings(:email).tip == true
+        Notifications.tip(@recipient, current_user, @tip).deliver if @recipient.settings(:email).tip == true
         format.html { redirect_to root_url, notice: 'Tip sent!' }
       elsif !@tip.valid?
         format.html { redirect_to root_url, notice: "That doesn't seem to be a real URL. Are you sure you copied it correctly?" }

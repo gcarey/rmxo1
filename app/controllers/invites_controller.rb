@@ -10,11 +10,10 @@ class InvitesController < ApplicationController
     end
 
     @invite = current_user.invites.build(:invitee_id => @invitee.id)
+    Notifications.invite(@invitee, current_user).deliver
 
-    respond_to do |format|
-      if @invite.save
-        render js: "$('"+params[:email]+"').html('Invite sent.').removeClass().addClass('added');"
-      end
+    if @invite.save
+      render js: "$('"+params[:email]+"').html('Invite sent.').removeClass().addClass('added');"
     end
   end
 end
