@@ -13,7 +13,7 @@ class InvitesController < ApplicationController
     Notifications.invite(@invitee, current_user).deliver
 
     if @invite.save
-      render js: "$('#"+params[:email]+"').removeClass().addClass('added').html('Invite sent.');"
+      render js: "document.getElementById('"+params[:email]+"').innerHTML = 'Invite.'; document.getElementById('"+params[:email]+"').className = 'added';"
     end
   end
 end
