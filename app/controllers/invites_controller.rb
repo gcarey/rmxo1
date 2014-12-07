@@ -13,7 +13,7 @@ class InvitesController < ApplicationController
 
     respond_to do |format|
       if @invite.save
-        format.html { redirect_to root_path, notice: 'Invite was successfully created.' }
+        render js: "$('"+params[:email]+"').html('Invite sent.').addClass('added');"
       end
     end
   end
