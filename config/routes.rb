@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :tips
   resources :friendships
+  resources :invites
 
   get 'users/:id', to: 'users#show', as: 'profile'
   get 'inbox', to: 'pages#inbox'
