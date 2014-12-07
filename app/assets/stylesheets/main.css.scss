@@ -20,39 +20,31 @@ body {
 }
 
 
-.navbar .logo {
-	margin: 16px 10px 0 0;
-	width: 114px
-}
-
-.navbar .thumb {
-	padding: 15px 0 5px;
-}
-
-.navbar .thumb img {
-	border-radius: 3px;
-}
-
-.dropdown .navbar-toggle {
-	display: initial;
-	margin-top: -7px;
-}
-
-.nav-alert {
-	margin: 0 5px 0 0;
-}
-
-.nav-alert:focus {
-  outline-width: 0;
-}
-
-.nav-alert .glyphicon {
-	top: 2px;
-	margin-right: 3px;
-}
-
-.alert {
-	margin: 0 5px 0 5px;
+.navbar {
+	.logo {
+		margin: 16px 10px 0 0;
+		width: 114px;
+	}
+	.thumb {
+		padding: 15px 0 5px;
+	}
+	.thumb img {
+		border-radius: 3px;
+	}
+	.dropdown .navbar-toggle {
+		display: initial;
+		margin-top: -7px;
+	}
+	.nav-alert {
+		margin: 0 5px 0 0;
+		&:focus {
+		  outline-width: 0;
+		}
+		.glyphicon {
+			top: 2px;
+			margin-right: 3px;
+		}
+	}
 }
 
 
@@ -60,8 +52,6 @@ body {
 #page {
 	padding: 25px 30px 60px;
 	height: 100%;
-}
-
 	#stamp {
 		position: absolute;
 		top: 25px;
@@ -69,8 +59,6 @@ body {
 		width: 690px;
 		height: 260px;
 		margin: 10px;
-	}
-
 		#profile {
 			font-size: 24px;
 			color: #282828;
@@ -78,55 +66,52 @@ body {
 			margin: 0 110px 35px 0;
 			float: left;
 			width: 590px;
-		}
-
+			h1 {
+				margin: 10px 0 3px 0;
+			}
+			h2 {
+				color: #111
+			}
+			p {
+				font-size: 14px;
+			}
 			.avatar {
 				float: left;
 				margin: 0 20px 0 0;
 				border: 3px solid white;
 			}
-
-			#profile h1 {
-				margin: 10px 0 3px 0;
-			}
-
-			#profile h2 {
-				color: #111
-			}
-
-			#profile p {
-				font-size: 14px;
-			}
-
-			.counts {
-				margin: 5px 0 0 -3px;
-			}
-
-			.counts .btn {
-				font-size: 20px;
-				padding: 8px 20px;
-				line-height: 0.7;
-				border-color: #eee;
-			}
-
-			.counts .btn.active {
-				background-color: #fdfdfd;
-				border-color: #eee;
-			}
-
-
-			.count-label {
-				font-size: 12px;
-				color: #444;
-			}
-
 			.nofriends {
 				margin: 10px 0 0;
 			}
-
 			.addfriend {
 				margin: 10px 0 0 0;
 			}
+			.counts {
+				margin: 5px 0 0 -3px;
+				.btn {
+					font-size: 20px;
+					padding: 8px 20px;
+					line-height: 0.7;
+					border-color: #eee;
+					&.active {
+						background-color: #fdfdfd;
+						border-color: #eee;
+					}
+					&:hover {
+						background-color: #ededed;
+						border-color: #ddd;
+					}
+				}
+				.count-label {
+					font-size: 12px;
+					color: #444;
+				}
+			}
+		}
+	}
+}
+
+
 
 	.tip {
 		display: inline;
