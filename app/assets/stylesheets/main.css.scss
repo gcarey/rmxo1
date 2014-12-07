@@ -109,10 +109,6 @@ body {
 			}
 		}
 	}
-}
-
-
-
 	.tip {
 		display: inline;
 		margin: 10px 110px 10px 10px;
@@ -120,18 +116,14 @@ body {
 		width: 590px;
 		height: 130px;
 		background-color: white;
-	}
-
-		.tip a.tip-image {
+		a.tip-image {
 			float: left;
 			position: relative;
 			z-index: 10;
 		}
-
-		.tip img {
+		img {
 			width: 130px;
 		}
-
 		.box {
 			padding: 15px 25px 15px 155px;
 			display: inline-block;
@@ -139,74 +131,68 @@ body {
 			left: 0;
 			width: 100%;
 			height: 130px;
-		}
-
-			.box h3 {
+			h3 {
 				text-overflow: ellipsis;
 				width: 100%;
 				white-space: nowrap;
 				overflow: hidden;
 				margin: 0 0 3px;
 				color: #000cac;
+				a:hover {
+					text-decoration:none;
+					color: #000cac;
+				}
 			}
-
-			.box h3 a:hover {
-				text-decoration:none;
-				color: #000cac;
-			}
-
-			.box p {
+			p {
 				font-size: 16px;
 				height: 42px;
 				overflow: hidden;
 				color: #111;
 				margin: 0 0 3px 0;
 			}
-
-			.box .glyphicon {
+			.glyphicon {
 				font-size: 14px;
 				color: #b5b5b5;
 				top: 3px;
 			}
-
-			.box .count {
+			.count {
 				font-size: 18px;
 				color: black;
 				vertical-align: middle;
 				margin-right: 4px;
 				cursor: default;
 			}
-
 			img.origin {
 				width: 19px;
 				margin: 1px 5px 3px 2px;
 				border-radius: 2px;
 			}
-
 			img.discovery {
 				width: 17px;
 				margin: 1px 6px 3px 1px;
 			}
-
-	#sendTip .field {
-		margin: -23px 0 7px
+		}
 	}
 
-	#sendTip p {
-		padding: 0 3px
+	#sendTip {
+		.field {
+			margin: -23px 0 7px
+		}
+		p {
+			padding: 0 3px
+		}
+		.tipbutton {
+			margin-top: 5px
+		}
 	}
-
-	.tipbutton {
-		margin-top: 5px
-	}
+}
 
 
 // Shared styles
 .btn-file {
-    position: relative;
-    overflow: hidden;
-}
-.btn-file input[type=file] {
+  position: relative;
+  overflow: hidden;
+	input[type=file] {
     position: absolute;
     top: 0;
     right: 0;
@@ -220,6 +206,7 @@ body {
     background: white;
     cursor: inherit;
     display: block;
+  }
 }
 
 

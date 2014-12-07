@@ -9,10 +9,9 @@ $font-family-sans-serif: 'Montserrat', sans-serif;
   left:50%;
   margin-left:-724px; /* half of the width */
   height:480px;
-}
-
-.boxes {
-	float: left;
+	.boxes {
+		float: left;
+	}
 }
 
 .head {
@@ -22,26 +21,23 @@ $font-family-sans-serif: 'Montserrat', sans-serif;
 	text-align: center;
 	padding: 122px 0 0 0;
 	float: left;
-}
-
-	.head img {
+	img {
 		display: block;
 		margin: 0 auto;
 		width: 240px;
 	}
-
-	.head h2 {
+	h2 {
 		font-size: 20px;
 		margin-top: 12px;
 	}
-
-	.head .btn {
+	.btn {
 		border: none;
 		padding: 10px 50px;
 		margin: 25px 0 15px;
 		font-size: 16px;
 		color: white;
 	}
+}
 
 
 
@@ -49,83 +45,69 @@ $font-family-sans-serif: 'Montserrat', sans-serif;
 	width: 960px;
 	margin: 100px auto 0;
   height: 480px;
+	.userform {
+		display: inline-block;
+		width: 480px;
+		height: 480px;
+		text-align: center;
+		padding: 11px 100px 5px;
+		float: left;
+		&.loginform { padding-top: 42px; }
+		&.resetform { padding-top: 85px; }
+		&.passform { padding-top: 82px; }
+		.logotype {
+			border-bottom: 1px solid #bcbcbc;
+			padding: 0 20px 5px;
+		}
+		h2 {
+			font-weight: 400;
+			margin: 8px 0 15px;
+		}
+		p {
+			font-size: 12px;
+		}
+		.form-control {
+			height: 40px;
+			padding: 6px 16px 6px;
+			font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		}
+		.btn {
+			border: none;
+			padding: 7px 30px;
+			margin: 10px 0 0;
+			font-size: 16px;
+			color: white;
+		}
+		.userform-group {
+			height: 50px
+		}
+		.google-signin {
+			width: 216px;
+			height: 42px;
+			overflow: hidden;
+			background: #ffffff url("/assets/gsi.png") no-repeat left top;
+			margin: 0 auto;
+			&:hover { background-position: right -42px; }
+			&:active { background-position: right -84px; }
+		}
+		.google-signup {
+			width: 216px;
+			height: 42px;
+			overflow: hidden;
+			background: #ffffff url("/assets/gsu.png") no-repeat left top;
+			margin: 0 auto;
+			&:hover { background: #ffffff url("/assets/gsu.png") no-repeat right -42px; }
+			&:active { background: #ffffff url("/assets/gsu.png") no-repeat right -84px; }
+		}
+		.or {
+			margin: 20px auto 22px;
+		}
+	}
+
+	.boxes {
+		float: left;
+	}
 }
-
-.userform {
-	display: inline-block;
-	width: 480px;
-	height: 480px;
-	text-align: center;
-	padding: 11px 100px 5px;
-	float: left;
-}
-
-	.userform .logotype {
-		border-bottom: 1px solid #bcbcbc;
-		padding: 0 20px 5px;
-	}
-
-	#front .userform h2 {
-		font-weight: 400;
-		margin: 8px 0 15px;
-	}
-
-	.userform p {
-		font-size: 12px;
-	}
-
-	.userform .form-control {
-		height: 40px;
-		padding: 6px 16px 6px;
-		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	}
-
-	.userform .btn {
-		border: none;
-		padding: 7px 30px;
-		margin: 10px 0 0;
-		font-size: 16px;
-		color: white;
-	}
-
-	.userform-group {
-		height: 50px
-	}
-
-	.google-signin {
-		width: 216px;
-		height: 42px;
-		overflow: hidden;
-		background: #ffffff url("/assets/gsi.png") no-repeat left top;
-		margin: 0 auto;
-	}
-
-	.google-signin:hover { background-position: right -42px; }
-	.google-signin:active { background-position: right -84px; }
-
-	.google-signup {
-		width: 216px;
-		height: 42px;
-		overflow: hidden;
-		background: #ffffff url("/assets/gsu.png") no-repeat left top;
-		margin: 0 auto;
-	}
-
-	.google-signup:hover { background: #ffffff url("/assets/gsu.png") no-repeat right -42px; }
-	.google-signup:active { background: #ffffff url("/assets/gsu.png") no-repeat right -84px; }
-
-	.or {
-		margin: 20px auto 22px;
-	}
-
-.boxes {
-	float: left;
-}
-
-.loginform { padding-top: 42px; }
-.resetform { padding-top: 85px; }
-.passform { padding-top: 82px; }
-
 
 
 /* Mobile Styles*/
