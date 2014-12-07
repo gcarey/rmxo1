@@ -62,7 +62,7 @@
 <% unless @filter == nil %>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('#page').isotope({ filter: '<%= @filter %>' });
+			$('#page').isotope({ filter: '.<%= @filter %>' });
 			$('.active').removeClass("active");
 			$('label[data-filter=".new"]').addClass('active');
 		});
