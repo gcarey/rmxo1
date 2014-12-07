@@ -50,7 +50,9 @@
 <p style="font-size:18px;"><strong><%= @sender.full_name %></strong> has sent you a tip!<br>Hit the button below to check it out:</p>
 
 <p style="margin: 20px 0;">
-  <%= link_to "View Tip", visit_link_path(@tip.id, rec: @recipient.id), style: "border:none;padding:10px 50px;margin:15px 0 5px;color:white;background-color:#ff6600;text-align:center;vertical-align:middle;cursor:pointer;white-space:nowrap;border-radius:4px;", target: "_blank" %>
+  <a href="http://www.tipster.to/visit_link/<%= @tip.id %>?rec=<%= @recipient.id %>" style="border:none;padding:10px 50px;margin:15px 0 5px;color:white;background-color:#ff6600;text-align:center;vertical-align:middle;cursor:pointer;white-space:nowrap;border-radius:4px;" target="_blank">
+    View Tip
+  </a>
 </p>
 
 <p>
