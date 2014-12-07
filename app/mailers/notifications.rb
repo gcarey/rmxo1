@@ -26,7 +26,7 @@ class Notifications < ActionMailer::Base
   def invite(recipient, sender)
     @recipient  = recipient
     @sender  = sender
-    attachments.inline['header.jpg'] = File.read('app/assets/images/friend-header.jpg')
+    attachments.inline['header.jpg'] = File.read('app/assets/images/invite-header.jpg')
     mail(to: @recipient.email, subject: @sender.full_name+' wants you to join Tipster!')
   end
 

@@ -47,13 +47,20 @@
                     <td width="30">&nbsp;</td>
                     <td valign="top" colspan="2" style="text-align:center;">
 
-<p style="font-size:18px;"><strong><%= @sender.full_name %></strong> would like you to join Tipster!</p>
+<p style="font-size:18px;"><strong><%= @sender.full_name %></strong> wants you to join Tipster!</p>
 
 <p style="margin: 20px 0;">
-  <a href="http://www.tipster.to/" style="border:none;padding:10px 50px;margin:15px 0 5px;color:white;background-color:#ff6600;text-align:center;vertical-align:middle;cursor:pointer;white-space:nowrap;border-radius:4px;">
-    Try Tipster
-  </a>
+  <%= link_to "Try Tipster", new_user_registration_path, style: "border:none;padding:10px 50px;margin:15px 0 5px;color:white;background-color:#ff6600;text-align:center;vertical-align:middle;cursor:pointer;white-space:nowrap;border-radius:4px;", target: "_blank" do %>
 </p>
+
+<p>Tipster is the quickest and easiest way to share great content with your friends. Use it to send them the page you're currently viewing and they can receive it directly into their browser - no more copying and pasting URLs!</p>
+
+<p>With Tipster you can find out which of your shares are most popular, who was the first of your friends to discover something, and what the people you know are sharing.</p>
+
+<p>We're building a community around great content, making sharing and discovering fun again.</p>
+
+<p><%= link_to "Click here", root_path, target: "_blank" do %> to find out more, or <%= link_to "sign up now", new_user_registration_path, target: "_blank" do %>.</p>
+
 
                     </td>
                     <td width="30">&nbsp;</td>
