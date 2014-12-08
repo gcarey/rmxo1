@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   use_doorkeeper
   devise_for :users, :skip => [:sessions], :controllers => {registrations: "registrations", omniauth_callbacks: "users/omniauth_callbacks"}
 
