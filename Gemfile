@@ -28,7 +28,8 @@ gem 'ledermann-rails-settings', '~> 2.3.0'
 gem 'unicorn'
 gem 'rack-cors'
 gem 'newrelic_rpm'
-gem 'mechanize'
+gem 'mechanize', '~> 2.7.2'
+gem 'rails_admin'
 
 group :development, :test do 
 	gem 'sqlite3'

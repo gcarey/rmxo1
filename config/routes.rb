@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  use_doorkeeper
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :skip => [:sessions], :controllers => {registrations: "registrations", omniauth_callbacks: "users/omniauth_callbacks"}
 
   as :user do
@@ -35,6 +34,7 @@ Rails.application.routes.draw do
   get 'contacts/gmail/callback', to: 'popups#findfriends'
   get 'contacts/failure', to: 'popups#failure'
 
+  use_doorkeeper
   namespace :api do
     resources :tips
     get 'friends', to: 'friends#index'
