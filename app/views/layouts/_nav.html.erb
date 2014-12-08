@@ -17,12 +17,23 @@
       <ul class="nav navbar-nav navbar-right">
         <!-- Alert Notifications -->
         <li class="wide">
-          <% if @newtips.count > 0 %>
+          <% if @newtips.count > 0 && current_user.requested_friendships.count > 0 %>
+            <div class="nav-alert">
+              <span class='glyphicon glyphicon-comment'>
+              <%= link_to "/inbox#new" do %>
+                </span> You have <%= @newtips.count %> new tip<%= "s" if @newtips.count > 1 %>
+              <% end %>
+               and 
+              <%= link_to settings_path(tab: "friends"), remote: true, data: { toggle: "modal", target: "#settings" }, class: "friend-alert" do %>
+                </span><%= current_user.requested_friendships.count %> friend request<%= "s" if current_user.requested_friendships.count != 1 %>!
+              <% end %>
+            </div>
+          <% elsif @newtips.count > 0 %>
             <%= link_to "/inbox#new", class: "nav-alert" do %>
              <span class='glyphicon glyphicon-comment'></span> You have <%= @newtips.count %> new tip<%= "s" if @newtips.count > 1 %>!
             <% end %>
           <% elsif current_user.requested_friendships.count > 0 %>
-            <%= link_to settings_path(tab: "friends"), remote: true, data: { toggle: "modal", target: "#settings" }, :class => "nav-alert friend-alert" do %>
+            <%= link_to settings_path(tab: "friends"), remote: true, data: { toggle: "modal", target: "#settings" }, class: "nav-alert friend-alert" do %>
               <span class='glyphicon glyphicon-comment'></span> You have <%= current_user.requested_friendships.count %> friend request<%= "s" if current_user.requested_friendships.count != 1 %>!
             <% end %>
           <% end %>

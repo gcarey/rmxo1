@@ -19,7 +19,7 @@
 				<% end %>
 
 				<% if current_user == @user %>
-					<div><%= link_to "Manage Friends", settings_path(tab: "friends"), remote: true, data: { toggle: "modal", target: "#settings", dismiss: "modal" }, class: "manage btn btn-default" %></div>
+					<div><%= link_to "Manage Friends", settings_path(tab: "friends"), remote: true, data: { toggle: "modal", target: "#settings", dismiss: "modal" }, class: "manage btn btn-primary" %></div>
 				<% end %>
 			</div>
 			<div class="modal-footer">
