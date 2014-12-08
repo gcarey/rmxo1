@@ -35,6 +35,21 @@ $(".users.show").ready(function(){
 		  $('.filter').toggleClass("active");
 		});
 	}
+
+  var target = document.location.hash.replace("#", "");
+  if (target.length) {
+    if(target=="friends"){
+      $('#settings').modal()
+			$.getScript( "/settings.js", function( data, textStatus, jqxhr ) {
+				$('#settings-nav a[href="#friends"]').tab('show');
+			});
+    }else if(target=="email"){
+      $('#settings').modal()
+			$.getScript( "/settings.js", function( data, textStatus, jqxhr ) {
+				$('#settings-nav a[href="#notifications"]').tab('show');
+			});
+    }
+  }
 })
 
 
@@ -53,6 +68,15 @@ $(".pages.inbox").ready(function(){
 	$('.tip').on( 'click', 'h3, img', function() {
 	  $(this).parent().parent().removeClass('new').addClass('visited');
 	});
+
+	var target = document.location.hash.replace("#", "");
+  if (target.length) {
+    if(target=="new"){
+			$('#page').isotope({ filter: '.new' });
+			$('.active').removeClass("active");
+			$('label[data-filter=".new"]').addClass('active');
+    }
+  }
 })
 
 

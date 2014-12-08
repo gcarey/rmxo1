@@ -18,7 +18,7 @@
         <!-- Alert Notifications -->
         <li class="wide">
           <% if @newtips.count > 0 %>
-            <%= link_to inbox_path(filter: "new"), class: "nav-alert" do %>
+            <%= link_to "/inbox#new", class: "nav-alert" do %>
              <span class='glyphicon glyphicon-comment'></span> You have <%= @newtips.count %> new tip<%= "s" if @newtips.count > 1 %>!
             <% end %>
           <% elsif current_user.requested_friendships.count > 0 %>
