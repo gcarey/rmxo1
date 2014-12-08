@@ -1,30 +1,29 @@
 // Inbox
 
-.inbox-page h1 {
-	margin: 5px 0;
-}
-
-.inbox-page h4 {
-	margin: 20px 0 10px;
-}
-
-.inbox-page p {
-	margin: 0 0 5px;
-}
-
-	.inbox-page .filters {
-		overflow-x: scroll;
+.inbox-page {
+	h1 {
+		margin: 5px 0;
+	}
+	h4 {
+		margin: 20px 0 10px;
+	}
+	p {
+		margin: 0 0 5px;
+	}
+	.glyphicon {
+		top: 4px;
+		left: 1px;
+	}
+	.filters {
 		white-space: nowrap;
 		margin: 0 0 10px;
 		width: 590px;
 		height: 30px;
-	}
-
-	.inbox-page .filters.scroll {
-		height: 40px;
-	}
-
-		.filters label.filter {
+		&.scroll {
+			height: 40px;
+			overflow: auto;
+		}
+		label.filter {
 			padding: 5px 15px;
 			margin: 0 3px;
 			box-shadow: 1px 1px 1px #eee;
@@ -34,67 +33,53 @@
 			border-radius:none;
 			float: none;
 			margin: 0;
+			img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 28px;
+			}
+			&.active, &:active {
+				box-shadow: none;
+				background-color: white;
+				color: #bbb;
+			}
+			&:hover {
+				background-color: #eee;
+			}
 		}
-
-		.filters label.filter.active, label.filter:active {
-			box-shadow: none;
-			background-color: white;
-			color: #bbb;
-		}
-
-		.filters label.filter:hover {
-			background-color: #eee;
-		}
-
-		.filters label.sender-filter {
+		label.sender-filter {
 			padding: 5px 10px 5px 38px;
 			position: relative;
 		}
-
-		.filter img {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 28px;
-		}
-
-	.inbox-page .glyphicon {
-		top: 4px;
-		left: 1px;
 	}
-
+}
 
 // Mobile Settings
 
 #m-settings {
 	padding: 10px 20px;
-}
-
-#m-settings .spacer {
-	height: 60px;
-}
-
-.settings-section {
-	margin: 20px 0 50px;
-}
-
-#m-settings a.delete {
-	font-size: 12px;
-	color: #666;
-	margin-top: 38px;
-}
-
-#m-settings .success-msg {
-	float:none;
-	width: 100%;
-	text-align: center;
-}
-
-#m-settings .dz-preview {
-	margin: 10px auto;
-	display:block;
-	width: 203px;
-}
-
-#m-settings .dz-message {
+	.spacer {
+		height: 60px;
+	}
+	.settings-section {
+		margin: 20px 0 50px;
+	}
+	a.delete {
+		font-size: 12px;
+		color: #666;
+		margin-top: 38px;
+	}
+	.success-msg {
+		float:none;
+		width: 100%;
+		text-align: center;
+	}
+	.dz-preview {
+		margin: 10px auto;
+		display:block;
+		width: 203px;
+	}
+	.dz-message {
+	}
 }
