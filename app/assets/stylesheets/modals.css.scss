@@ -26,14 +26,12 @@
 
 .tab-pane {
 	padding: 10px 10px 0;
-}
-
-.tab-pane h4 {
-	margin-bottom: 15px;
-}
-
-.tab-pane h5 {
-	margin-bottom: 12px;
+	h4 {
+		margin-bottom: 15px;
+	}
+	h5 {
+		margin-bottom: 12px;
+	}
 }
 
 .settings-row {
@@ -61,15 +59,13 @@
 
 	.edit-notification {
 		text-align: right;
-	}
-
-	.edit-notification span {
-		float: left;
-		margin: 10px 0 0 15px;
-	}
-
-	.edit-notification .btn-group {
-		margin: 5px 0;
+		span {
+			float: left;
+			margin: 10px 0 0 15px;
+		}
+		.btn-group {
+			margin: 5px 0;
+		}
 	}
 
 	// Friends
@@ -82,15 +78,16 @@
 		margin-left: 15px
 	}
 
-	.edit-friend .btn {
-		float: right;
-		margin: 6px 2px 0;
-	}
-
-	.edit-friend p {
-		color: #999;
-		float: right;
-		margin-top: 12px;
+	.edit-friend {
+		.btn {
+			float: right;
+			margin: 6px 2px 0;
+		}
+		p {
+			color: #999;
+			float: right;
+			margin-top: 12px;
+		}
 	}
 
 	// Profile Photo
@@ -103,17 +100,15 @@
 		padding: 15px;
 		text-align: center;
 		color: #999;
-	}
-
-	.dz-message h4 {
-		margin: 14px 0 10px;
-	}
-
-	.dz-message img {
-		padding: 10px;
-		border-radius: 20px;
-		border: 3px dashed #ccc;
-		margin: 10px 0 15px;
+		h4 {
+			margin: 14px 0 10px;
+		}
+		img {
+			padding: 10px;
+			border-radius: 20px;
+			border: 3px dashed #ccc;
+			margin: 10px 0 15px;
+		}
 	}
 
 	.fallback {
@@ -131,12 +126,11 @@
 	.success-msg {
 		float: right;
 		width: 250px;
-	}
-
-	.success-msg .btn {
-		position: relative;
-		z-index: 10;
-		margin-bottom: 15px;
+		.btn {
+			position: relative;
+			z-index: 10;
+			margin-bottom: 15px;
+		}
 	}
 
 
@@ -144,7 +138,6 @@
 // Friends Modal
 
 a.manage {
-	color: #666;
 	float: left;
 	margin-top: 29px;
 }
