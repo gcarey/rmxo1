@@ -10,7 +10,6 @@
 			  	<% if @tip.errors.any? %>
 				    <div id="error_explanation">
 				      <h2><%= pluralize(@tip.errors.count, "error") %> prohibited this tip from being saved:</h2>
-
 				      <ul>
 				      <% @tip.errors.full_messages.each do |message| %>
 				        <li><%= message %></li>
@@ -19,7 +18,7 @@
 				    </div>
 				  <% end %>
 
-				  <p>Enter the URL of the tip you want to send below:<p>
+				  <p>Enter the URL of the tip you want to send below:</p>
 
 				  <div class="field">
 				    <%= f.label :link, class: "sr-only" %><br>
