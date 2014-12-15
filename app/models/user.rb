@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
         email: data["email"],
         password: Devise.friendly_token[0,20],
         avatar: data["image"],
-        provider: data.to_s
+        provider: "google"
         )
     end
     user
