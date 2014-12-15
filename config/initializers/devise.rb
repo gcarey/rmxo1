@@ -264,5 +264,9 @@ Devise.setup do |config|
     Devise::PasswordsController.layout "index"        
   end
 
-  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]
+  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"],
+    {
+      :image_aspect_ratio => "square",
+      :image_size => 190
+    }
 end
