@@ -7,7 +7,9 @@ module Api
     # GET /tips
     # GET /tips.json
     def index
-      @shares = Share.where(user_id: current_user.id).where(visited: nil).where(served: nil)
+      if current_user
+        @shares = Share.where(user_id: current_user.id).where(visited: nil).where(served: nil)
+      end
     end
 
     # POST /api/tips
