@@ -49,8 +49,8 @@
 
 <p style="font-size:18px;"><strong><%= @sender.full_name %></strong> has sent you a tip!</p>
 
-<div style="width:500px;height:130px;background-color:white;margin:0 auto;overflow:hidden;border:1px #eee solid;">
-  <a href="http://www.tipster.to/visit_link/<%= @tip.id %>?rec=<%= @recipient.id %>" target="_blank" style="float:left;position:relative;"><%= image_tag @tip.image.url(:full) %></a>
+<div style="width:500px;max-height:130px;background-color:white;margin:0 auto;overflow:hidden;border:1px #eee solid;">
+  <a href="http://www.tipster.to/visit_link/<%= @tip.id %>?rec=<%= @recipient.id %>" target="_blank" style="float:left;position:relative;"><%= image_tag @tip.image.url(:full), size: "130x130" %></a>
   <div style="padding:9px 22px 9px 152px;width:326px;height:100px;text-align:left;">
     <h3 style="text-overflow:ellipsis;width:100%;white-space:nowrap;overflow:hidden;margin:0 0 3px;color:#000cac"><a href="http://www.tipster.to/visit_link/<%= @tip.id %>?rec=<%= @recipient.id %>" target="_blank" style="font-size:22px;"><%= raw @tip.title %></a></h3>
     <p style="font-size:16px;height:42px;overflow:hidden;color:#111;"><%= raw @tip.description %></p>
