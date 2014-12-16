@@ -59,6 +59,14 @@
   Or view it in your <a href="http://www.tipster.to/inbox" target="_blank">Inbox</a>.
 </p>
 
+<div style="box-shadow:1px 1px 1px #eee;width:590px;height:130px;background-color:white;margin:0 auto">
+  <a href="http://www.tipster.to/visit_link/<%= @tip.id %>?rec=<%= @recipient.id %>" target="_blank" style="float:left;position:relative;"><%= image_tag attachments['tip.jpg'].url %></a>
+  <div style="padding:15px 25px 15px 155px;display:inline-block;position:absolute;left:0;width:100%;height:130px;">
+    <h3 style="text-overflow:ellipsis;width:100%;white-space:nowrap;overflow:hidden;margin:0 0 3px;color:#000cac;"><a href="http://www.tipster.to/visit_link/<%= @tip.id %>?rec=<%= @recipient.id %>" target="_blank"><%= raw @tip.title %></a></h3>
+    <p style="font-size:16px;height:42px;overflow:hidden;color:#111;margin:0 0 3px 0;"><%= raw @tip.description %></p>
+  </div>
+</div>
+
 <p style="font-size:18px;">
   You can reply to this email to send <%= @sender.first_name %> a response.
 </p>
