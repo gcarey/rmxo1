@@ -136,8 +136,18 @@
 
 
 // Friends Modal
+.friends-modal {
+	width: 596px;
+	a.friend-thumb {
+		font-size: 0;
+		img {
+			margin: 1px;
+			border-radius: 4px;
+		}
+	}
 
-a.manage {
-	float: left;
-	margin-top: 29px;
+	a.manage {
+		float: left;
+		margin-top: 29px;
+	}
 }
