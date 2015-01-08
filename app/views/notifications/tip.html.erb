@@ -50,12 +50,12 @@
 <p style="font-size:18px;"><strong><%= @sender.full_name %></strong> has sent you a tip!</p>
 
 <div style="width:500px;max-height:130px;background-color:white;margin:0 auto;overflow:hidden;border:1px #eee solid;">
-  <% if @tip.image %>
-    <a href="http://www.tipster.to/visit_link/<%= @tip.id %>?rec=<%= @recipient.id %>" target="_blank" style="float:left;position:relative;"><%= image_tag @tip.image.url(:full), size: "130x130" %></a>
-  <% else %>
-    <%= image_tag attachments['missing.png'].url, size: "130x130" %>
-  <% end %>
+<% if @tip.image %>
+  <a href="http://www.tipster.to/visit_link/<%= @tip.id %>?rec=<%= @recipient.id %>" target="_blank" style="float:left;position:relative;"><%= image_tag @tip.image.url(:full), size: "130x130" %></a>
   <div style="padding:15px 25px 15px 155px;width:326px;height:100px;text-align:left;">
+<% else %>
+  <div style="padding:15px 25px 15px 25px;width:451px;height:100px;text-align:left;">
+<% end %>
     <h3 style="text-overflow:ellipsis;width:100%;white-space:nowrap;overflow:hidden;margin:0 0 3px;color:#000cac"><a href="http://www.tipster.to/visit_link/<%= @tip.id %>?rec=<%= @recipient.id %>" target="_blank" style="font-size:22px;"><%= raw @tip.title %></a></h3>
     <p style="font-size:16px;min-height:42px;max-height:66px;overflow:hidden;color:#111;margin:5px 0;"><%= raw @tip.description %></p>
   </div>
