@@ -32,21 +32,25 @@
 				<div class="nofriends">
 					<p> No friends yet. <%= link_to "Find some?", "contacts/gmail", :class => "popup", :"data-width" => 500, :"data-height" => 500 %><p>
 				</div>
-			<% elsif @user.friends.count == 0 && @requested_friendship == nil %>
+			<% elsif @user.friends.count == 0 && @friendship == nil %>
 				<div class="nofriends">
 					<p>No friends yet. You should fix that.<p>
 				</div>
 			<% end %>
 
-			<div class="addfriend">
-				<% if @user != current_user && @friendship == nil && @requested_friendship == nil %>
-					<%= link_to "Add Friend", friendships_path(:friend_id => @user), class: "btn btn-primary", :method => :post %>
-				<% elsif @user != current_user && @friendship == nil && @requested_friendship != nil %>
-					<%= link_to "Friend Requested.", "#", class: "btn btn-default", :"disabled" => "disabled" %>
-				<% end %>
-			</div>
+			<% if @user != current_user %>
+				<div class="addfriend">
+					<% if @friendship == nil %>
+						<%= link_to "Add Friend", friendships_path(:friend_id => @user), class: "btn btn-primary", :method => :post %>
+					<% elsif @friendship.approved == nil %>
+						<%= link_to "Friend Requested.", "#", class: "btn btn-default", :"disabled" => "disabled" %>
+					<% elsif @friendship.approved == false %>
+						<p><%= @user.full_name %> has declined your request for friendship.</p>
+					<% end %>
+				</div>
+			<% end %>
 
-			<% if @user != current_user && @friendship != nil %>
+			<% if @user != current_user && @friendship != nil && @friendship.approved == true %>
 				<div class="tipbutton">
 					<button class="btn btn-primary" data-toggle="modal" data-target="#sendTip">
 					  Send Tip

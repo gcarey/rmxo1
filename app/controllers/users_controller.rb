@@ -30,8 +30,7 @@ class UsersController < ApplicationController
 	private
   # Check if @user is current_user's friend
   def is_friend
-  	@friendship = Friendship.where(friend_id: [current_user, params[:id]]).where(user_id: [current_user, params[:id]]).where(approved: true).last
-    @requested_friendship = Friendship.where(friend_id: params[:id]).where(user_id: current_user).where(approved: nil).last
+  	@friendship = Friendship.where(friend_id: [current_user, params[:id]]).where(user_id: [current_user, params[:id]]).last
   end
 
 	# Create new tip from profile
@@ -45,7 +44,6 @@ class UsersController < ApplicationController
 
   # Stopgap for Alpha
   def user_params
-    # NOTE: Using `strong_parameters` gem
     params.required(:user).permit(:password)
   end
 end

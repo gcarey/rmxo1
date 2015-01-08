@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
   has_many :active_friends, -> { where(friendships: {approved: true}) }, :through => :friendships, :source => :friend
   has_many :passive_friends, -> { where(friendships: {approved: true}) }, :through => :passive_friendships, :source => :user
   has_many :pending_friends, -> { where(friendships: {approved: nil}) }, :through => :friendships, :source => :friend
+  
   has_many :requested_friendships, -> { where(friendships: {approved: nil}) }, :through => :passive_friendships, :source => :user
 
 	def friends

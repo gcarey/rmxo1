@@ -28,13 +28,11 @@ class FriendshipsController < ApplicationController
   # PATCH/PUT /friendships/1.json
   def update
   @friendship = Friendship.where(friend_id: current_user, user_id: params[:id]).first
-  @friendship.update(approved: true)
-    if @friendship.save && params[:response] == "accept"
+  @friendship.update(approved: params[:approved])
+    if @friendship.save && params[:approved] == "true"
       render js: "$('#f-"+params[:id]+"').children('.request').remove(); $('#f-"+params[:id]+"').append('<p>Friend added.<p>'); $('.friend-alert').remove();"
-    elsif @friendship.save
-      redirect_to root_url, :notice => "Successfully confirmed friend!"
-    else
-      redirect_to root_url, :notice => "Sorry! Could not confirm friend!"
+    elsif @friendship.save && params[:approved] == "false"
+      render js: "$('#f-"+params[:id]+"').children('.request').remove(); $('#f-"+params[:id]+"').append('<p>Request declined.<p>'); $('.friend-alert').remove();"
     end
   end
 
@@ -43,11 +41,7 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendship = Friendship.where(friend_id: [current_user, params[:id]]).where(user_id: [current_user, params[:id]]).last
     @friendship.destroy
-    if params[:response] == "decline"
-      render js: "$('#f-"+params[:id]+"').children('.request').remove(); $('#f-"+params[:id]+"').append('<p>Request declined.<p>'); $('.friend-alert').remove();"
-    else
-      flash[:notice] = "We never liked them anyway."
-      redirect_to :back
-    end
+    flash[:notice] = "We never liked them anyway."
+    redirect_to :back
   end
 end

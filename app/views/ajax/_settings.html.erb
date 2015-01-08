@@ -97,8 +97,8 @@
 									<%= image_tag f.avatar.url(:thumb) %>
 								<% end %>
 								<span class="name"><%= f.full_name %> </span>
-					      <%= link_to "Decline", friendship_path(id: f.id, response: "decline"), :method => :delete, class: "btn btn-default decline request", :remote => true %>
-					      <%= link_to "Accept", friendship_path(id: f.id, response: "accept"), :method => "put", class: "btn btn-default accept request", :remote => true %>
+					      <%= link_to "Decline", friendship_path(id: f.id, approved: false), :method => "put", class: "btn btn-default decline request", :remote => true %>
+					      <%= link_to "Accept", friendship_path(id: f.id, approved: true), :method => "put", class: "btn btn-default accept request", :remote => true %>
 							</div>
 					  <% end %>
 					</div>
