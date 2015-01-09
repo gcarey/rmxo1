@@ -8,7 +8,11 @@
 		<div id="profile">
 			<% if @user == current_user %>
 				<%= link_to settings_path(tab: "profile-photo"), remote: true, data: { toggle: "modal", target: "#settings" }, class: "upload-link" do %>
-					<%= image_tag @user.avatar.url(:medium), class: "avatar", data: {toggle: "tooltip", placement: "top" }, title: "Click to Upload Photo" %>
+					<% if @user.avatar.exists? %>
+						<%= image_tag @user.avatar.url(:medium), class: "avatar" %>
+					<% else %>
+						<%= image_tag @user.avatar.url(:medium), class: "avatar", data: {toggle: "tooltip", placement: "top" }, title: "Click to Upload Photo" %>
+					<% end %>
 				<% end %>
 			<% else %>
 				<%= image_tag @user.avatar.url(:medium), class: "avatar" %>

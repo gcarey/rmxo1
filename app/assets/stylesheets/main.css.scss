@@ -88,21 +88,10 @@ body {
 				float: left;
 				margin: 0 20px 0 0;
 				border: 3px solid white;
-				&:hover {
-					border-color: #eee;
-				}
 			}
-			.upload-link {
-				p {
-					display: none;
-				}
-				&:hover {
-					img {
-						border-color: #eee;
-					}
-					p {
-						display: block;
-					}
+			.upload-link:hover {
+				img {
+					border-color: #eee;
 				}
 			}
 			.nofriends {
