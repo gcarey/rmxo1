@@ -57,7 +57,7 @@ GEM
       warden (~> 1.2.3)
     domain_name (0.5.22)
       unf (>= 0.0.5, < 1.0.0)
-    doorkeeper (1.4.0)
+    doorkeeper (1.4.1)
       railties (>= 3.1)
     erubis (2.7.0)
     execjs (2.2.1)
@@ -243,7 +243,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 4.0.0)
   devise (~> 3.1.0.rc2)
-  doorkeeper (~> 1.4.0)
+  doorkeeper (~> 1.4.1)
   grabbit (~> 1.0.0)
   jbuilder (~> 2.0)
   jquery-rails

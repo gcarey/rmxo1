@@ -88,6 +88,22 @@ body {
 				float: left;
 				margin: 0 20px 0 0;
 				border: 3px solid white;
+				&:hover {
+					border-color: #eee;
+				}
+			}
+			.upload-link {
+				p {
+					display: none;
+				}
+				&:hover {
+					img {
+						border-color: #eee;
+					}
+					p {
+						display: block;
+					}
+				}
 			}
 			.nofriends {
 				margin: 10px 0 0;
@@ -286,13 +302,26 @@ body {
 	font-size: 16px;
 }
 
-.tooltip.right .tooltip-arrow {
-	border-right-color: white;
-}
-
 .tooltip-inner {
 	background-color: white;
 	color: black;
-	max-width: 500px !important;
-	padding: 3px 0;
+}
+
+.tooltip.right {
+	.tooltip-arrow {
+		border-right-color: white;
+	}
+	.tooltip-inner {
+		max-width: 500px !important;
+		padding: 3px 0;
+	}
+}
+
+.tooltip.top {
+	.tooltip-arrow {
+		border-top-color: white;
+	}
+	.tooltip-inner {
+		padding: 3px 5px;
+	}
 }
