@@ -1,5 +1,7 @@
-json.tips  @shares do |share|
+json.tips  @unserved_shares do |share|
   json.id       share.tip.id
   json.shareId  share.id
   json.sender   User.where(id: share.tip.user_id).last.full_name
 end
+
+json.count       @new_tips.count

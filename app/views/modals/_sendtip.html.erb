@@ -21,7 +21,7 @@
 				  <p>Enter the URL of the tip you want to send below:</p>
 
 				  <div class="field">
-				    <%= f.label :link, class: "sr-only" %><br>
+				    <%= f.label :link, class: "sr-only" %>
 				    <%= f.text_field :link, class: "form-control", placeholder: "e.g., http://www.google.com"  %>
 				    <%= hidden_field_tag(:recipient_id, @user.id) %>
 				  </div>
