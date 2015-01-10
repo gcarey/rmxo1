@@ -4,4 +4,4 @@ json.tips  @unserved_shares do |share|
   json.sender   User.where(id: share.tip.user_id).last.full_name
 end
 
-json.count       @new_tips.count
+json.count       @newtips_count

@@ -9,7 +9,7 @@ module Api
     def index
       if current_user
         @unserved_shares = Share.where(user_id: current_user.id).where(visited: nil).where(served: nil)
-        @new_tips = Share.where(user_id: current_user.id).where(visited: nil).count
+        @newtips_count = Share.where(user_id: current_user.id).where(visited: nil).count
       end
     end
 
