@@ -19,9 +19,17 @@ if ( $("#settingsModalBody").hasClass( "unloaded" ) ) {
 
 		$(".dropzone").on( 'click', '#retry', function() {
 			$('.success-msg').remove();
-		 	uploadPhoto.enable();
 			uploadPhoto.removeAllFiles();
 		});
+  });
+
+ 	uploadPhoto.on("drop", function(file) {
+		$('.success-msg').remove();
+		uploadPhoto.removeAllFiles();
+  });
+
+ 	uploadPhoto.on("error", function(file, errorMessage) {
+		$(".dropzone").prepend("<div class='error-msg'><p>"+errorMessage+"</p><a id='retry' class='btn btn-default'>Upload Another</a>");
   });
 }
 

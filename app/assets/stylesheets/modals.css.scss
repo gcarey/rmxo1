@@ -133,6 +133,19 @@
 		}
 	}
 
+	.error-msg {
+		float: right;
+		width: 250px;
+		padding-top: 30px;
+		.btn {
+			position: relative;
+			z-index: 10;
+			margin-bottom: 15px;
+		}
+	}
+
+	.dz-error-message {display:none !important;}
+
 
 
 // Friends Modal
