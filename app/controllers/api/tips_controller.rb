@@ -58,7 +58,7 @@ module Api
         @recipients.each do |r|
           Notifications.tip(r, @user, @tip).deliver if r.settings(:email).tip == true
         end
-        @invitees.each do |i|
+        @tip.external_recipients.each do |i|
           Notifications.outgoing_tip(i, @user, @tip).deliver
         end
       else
