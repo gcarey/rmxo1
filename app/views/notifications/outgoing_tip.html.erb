@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style type="text/css">
+      a, p {
+        font-family: Avenir, sans-serif;
+        font-size: 15px;
+      }
+
+      a {
+        color: #000cac;
+        text-decoration:none;
+      }
+    </style>
+  </head>
+
+  <body>
+  <div style="background-color:#fbfbfb">
+    <div style="border-bottom:2px solid #eeeeee;background-color:#ffffff">
+      <table cellspacing="0" align="center" width="600" cellpadding="0"><tbody>
+        <tr>
+          <td valign="middle" width="40" height="50">
+            <%= link_to "www.tipster.to", :target => "_blank" do %>
+              <%= image_tag attachments['logo.png'].url, size: "114x32" %>
+            <% end %>
+          </td>
+          <td align="right">
+            <%= link_to "Log In", new_user_session_path, :target => "_blank" %>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+    <table align="center" width="600" cellpadding="0" cellspacing="0" border="0"><tbody>
+      <tr><td height="30">&nbsp;</td></tr>
+      <tr>
+        <td valign="top">
+          <%= image_tag attachments['header.jpg'].url, :class => "header" %>
+          <table style="border:1px solid #eee;" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" align="center" width="600"><tbody>
+            <tr>
+              <td>
+                <table cellpadding="0" cellspacing="0" border="0" align="center" width="550"><tbody>
+                  <tr><td valign="top" colspan="2" height="25">&nbsp;</td></tr>
+                  <tr>
+                    <td width="30">&nbsp;</td>
+                    <td valign="top" colspan="2" style="text-align:center;">
+
+<p style="font-size:18px;"><strong><%= @sender.full_name %></strong> has sent you a link using Tipster:</p>
+
+<div style="width:500px;max-height:130px;background-color:white;margin:0 auto;overflow:hidden;border:1px #eee solid;">
+<% if @tip.image.exists? %>
+  <a href="http://www.tipster.to/visit_link/<%= @tip.id %>?recipient=<%= @recipient.id %>" target="_blank" style="float:left;position:relative;"><%= image_tag @tip.image.url(:full), size: "130x130" %></a>
+  <div style="padding:15px 25px 15px 155px;width:326px;height:100px;text-align:left;">
+<% else %>
+  <div style="padding:15px 25px 15px 25px;width:451px;height:100px;text-align:left;">
+<% end %>
+    <h3 style="text-overflow:ellipsis;width:100%;white-space:nowrap;overflow:hidden;margin:0 0 3px;color:#000cac"><a href="http://www.tipster.to/visit_link/<%= @tip.id %>?rec=<%= @recipient.id %>" target="_blank" style="font-size:22px;"><%= raw @tip.title %></a></h3>
+    <p style="font-size:16px;min-height:42px;max-height:66px;overflow:hidden;color:#111;margin:5px 0;"><%= raw @tip.description %></p>
+  </div>
+</div>
+
+<p>Tipster is the quickest and easiest way to share great content with your friends. Use it to send the page you're viewing and they'll receive it directly into their browser &mdash; no more copying and pasting URLs!</p>
+
+<p>Want to try it for yourself?</p>
+
+<p style="margin: 20px 0 25px;">
+  <a href="http://www.tipster.to/users/sign_up" style="border:none;padding:10px 50px;margin:15px 0 5px;color:white;background-color:#ff6600;text-align:center;vertical-align:middle;cursor:pointer;white-space:nowrap;border-radius:4px;" target="_blank">
+    Sign Up Now!
+  </a>
+</p>
+
+<p style="font-size:18px;">
+  You can reply to this email to send <%= @sender.first_name %> a response.
+</p>
+
+                    </td>
+                    <td width="30">&nbsp;</td>
+                  </tr>
+       
+                  <tr>
+                    <td valign="top" height="30" style="height:30px">&nbsp;</td>
+                  </tr>
+                </tbody></table>
+              </td>
+            </tr>
+          </tbody></table>
+          <table cellpadding="0" cellspacing="0" border="0" align="center" width="540"><tbody>
+            <tr>
+              <td height="20">&nbsp;</td>
+            </tr>
+            <tr>
+              <td>
+                <p style="font-size:9pt;color:#8b959e;text-decoration:none;text-align:center">
+                  You are receiving this email because your account is set to notify you when you receive a new tip. Want to get rid of these emails? <a href="http://www.tipster.to/#email" style="font-size:9pt;text-decoration:none;" target="_blank">Manage your email preferences</a>.
+                </p>
+              </td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+      <tr>
+        <td height="50">&nbsp;</td>
+      </tr>
+    </tbody></table>
+  </div>
+  </body>
+</html>

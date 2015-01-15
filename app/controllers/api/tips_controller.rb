@@ -24,9 +24,8 @@ module Api
       @user = User.find(params[:user_id])
 
       if params[:recipient_ids]
-        @received_tip = @tip
         @recipients = User.find(params[:recipient_ids].split(','))
-        @received_tip.recipients << @recipients 
+        @tip.recipients << @recipients 
       end
 
       if params[:emails]
@@ -38,8 +37,8 @@ module Api
             @invitee = Invitee.create(email: i)
           end
 
-          @outgoing_share = @tip.outgoing_shares.build(:invitee_id => @invitee.id)
-          Notifications.outgoing_tip(@invitee, current_user).deliver
+          @received_tip.external_recipients << @invitee
+          Notifications.outgoing_tip(@invitee, @user, @tip).deliver
         end
       end
 
