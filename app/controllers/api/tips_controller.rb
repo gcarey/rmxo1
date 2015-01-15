@@ -36,9 +36,7 @@ module Api
           else
             @invitee = Invitee.create(email: i)
           end
-
           @tip.external_recipients << @invitee
-          Notifications.outgoing_tip(@invitee, @user, @tip).deliver
         end
       end
 
@@ -59,6 +57,9 @@ module Api
         render :show, status: :created
         @recipients.each do |r|
           Notifications.tip(r, @user, @tip).deliver if r.settings(:email).tip == true
+        end
+        @invitees.each do |i|
+          Notifications.outgoing_tip(i, @user, @tip).deliver
         end
       else
         render json: @tip.errors, status: :unprocessable_entity
