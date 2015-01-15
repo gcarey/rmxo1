@@ -15,24 +15,42 @@ module Api
 
     # POST /api/tips
     def create
-      if Tip.exists?(user_id: params[:tip][:user_id], link: params[:tip][:link])
-        @tip = Tip.where(user_id: params[:tip][:user_id]).where(link: params[:tip][:link]).last
+      if Tip.exists?(user_id: params[:user_id], link: params[:link])
+        @tip = Tip.where(user_id: params[:user_id]).where(link: params[:link]).last
       else
         @tip = Tip.new(tip_params)
       end
-      @received_tip = @tip
-      @recipients = User.find(params[:recipient_ids].split(','))
-      @received_tip.recipients << @recipients 
-      @user = User.find(params[:tip][:user_id])
+
+      @user = User.find(params[:user_id])
+
+      if params[:recipient_ids]
+        @received_tip = @tip
+        @recipients = User.find(params[:recipient_ids].split(','))
+        @received_tip.recipients << @recipients 
+      end
+
+      if params[:emails]
+        @invitees = params[:emails].split(',')
+        @invitees.each do |i|
+          if Invitee.where(email: i).last
+            @invitee = Invitee.where(email: i).last
+          else
+            @invitee = Invitee.create(email: i)
+          end
+
+          @outgoing_share = @tip.outgoing_shares.build(:invitee_id => @invitee.id)
+          Notifications.outgoing_tip(@invitee, current_user).deliver
+        end
+      end
 
       #Check if the tip being saved is a reshare
-      if User.find(params[:user_id]).received_tips.where(link: params[:tip][:link]).last != nil
-        User.find(params[:user_id]).received_tips.where(link: params[:tip][:link]).each do |t|
+      if @user.received_tips.where(link: params[:tip][:link]).last != nil
+        @user.received_tips.where(link: params[:tip][:link]).each do |t|
           #Add reshare to original tip
           t.increment!("reshares", by = @recipients.count)
         end
         #Record origin
-        @original_tip = User.find(params[:user_id]).received_tips.where(link: params[:tip][:link]).first
+        @original_tip = @user.received_tips.where(link: params[:tip][:link]).first
         @tip.originator_id = @original_tip.user_id
       else
         @tip.originator_id = params[:user_id]
@@ -52,7 +70,7 @@ module Api
 
     private
       def tip_params
-        params.require(:tip).permit(:link, :user_id, :recipient_id)
+        params.require(:tip).permit(:link, :user_id)
       end
   end
 end

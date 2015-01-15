@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208193108) do
+ActiveRecord::Schema.define(version: 20150113191250) do
 
   create_table "friendships", force: true do |t|
     t.integer  "user_id"
@@ -72,6 +72,14 @@ ActiveRecord::Schema.define(version: 20141208193108) do
   end
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true
+
+  create_table "outgoing_shares", force: true do |t|
+    t.integer  "tip_id"
+    t.integer  "invitee_id"
+    t.boolean  "visited"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "settings", force: true do |t|
     t.string   "var",         null: false

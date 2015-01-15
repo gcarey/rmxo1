@@ -4,6 +4,9 @@ class Tip < ActiveRecord::Base
   has_many :shares, dependent: :destroy
 	has_many :recipients, :through => :shares, :source => :user
 
+  has_many :outgoing_shares, dependent: :destroy
+  has_many :external_recipients, :through => :outgoing_shares, :source => :invitee
+
   belongs_to :originator, :class_name => "User"
 
   before_validation :add_url_protocol
@@ -25,6 +28,9 @@ class Tip < ActiveRecord::Base
       self.image = uri
       self.title = File.basename(uri.path)
       self.description = "Image link"
+    elsif File.extname(uri.path) =~ /^.pdf$/
+      self.title = File.basename(uri.path)
+      self.description = "Portable Document Format (PDF) file"
     else
       data = Grabbit.url(link)
 
