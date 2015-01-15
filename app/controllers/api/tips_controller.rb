@@ -37,7 +37,7 @@ module Api
             @invitee = Invitee.create(email: i)
           end
 
-          @received_tip.external_recipients << @invitee
+          @tip.external_recipients << @invitee
           Notifications.outgoing_tip(@invitee, @user, @tip).deliver
         end
       end
