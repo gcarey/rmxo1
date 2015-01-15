@@ -39,7 +39,6 @@ Rails.application.routes.draw do
     resources :tips
     get 'friends', to: 'friends#index'
     put 'shares/:id/serve', to: 'shares#serve_link'
-    put 'shares/:id/visit', to: 'shares#visit_link'
   end
 
 # Stopgap for alpha
