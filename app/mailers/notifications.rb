@@ -21,7 +21,7 @@ class Notifications < ActionMailer::Base
     @sender = sender
     @tip = tip
     attachments.inline['header.jpg'] = File.read('app/assets/images/tip-header.jpg')
-    mail(to: @recipient.email, subject: 'Message from '+@sender.first_name+' on Tipster: '+@tip.title, reply_to: @sender.email)
+    mail(to: @recipient.email, subject: 'New link from '+@sender.first_name+': '+@tip.title, reply_to: @sender.email)
   end
 
   def friend_request(recipient, sender)

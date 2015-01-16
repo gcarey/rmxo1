@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  before_action :authenticate_user!, except: [:front]
+
   def front
   	render layout: "index"
   end
