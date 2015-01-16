@@ -256,6 +256,19 @@ body {
 		.spacer.narrow {height: 60px;}
 	}
 
+	.front {
+		#userforms-container {
+			text-align: center;
+			.userform {
+				max-width: 80%;
+				margin: 0 auto;
+				float: none;
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	}
+
 	// Temporary styles
 	.alpha-msg {width:500px;max-width:90%;text-align:left;margin:25px auto 0;}
 }
