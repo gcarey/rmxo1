@@ -112,12 +112,10 @@ $font-family-sans-serif: 'Montserrat', sans-serif;
 
 /* Mobile Styles*/
 @media (max-width: 767px) {
-	#boxes-container {
-		#userforms-container {width:100%;margin:-240px 0 0 0;left:0;position:absolute;top:50%;text-align:center;
-			.head {width:100%;}
-			.userform {max-width:80%;float:none;padding-left:0;padding-right:0;}
-			.boxes {display:none;}
-		}
+	#boxes-container, #userforms-container {width:100%;margin:-240px 0 0 0;left:0;position:absolute;top:50%;text-align:center;
+		.userform {max-width:80%;padding-left:0;padding-right:0;float:none;}
+		.head {width:100%;}
+		.boxes {display:none;}
 	}
 }
 
