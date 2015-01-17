@@ -26,15 +26,13 @@ $(document).ready(function(){
 
 
 // Profile
-$(".users.show").ready(function(){
-  if ( $(window).width() > 768) {     
-	  var $profile = $('.profile-page')
-		$('.counts').on( 'click', '.filter', function() {
-		  var filterValue = $(this).attr('data-filter');
-		  $profile.isotope({ filter: filterValue });
-		  $('.filter').toggleClass("active");
-		});
-	}
+$(".users.show").ready(function(){    
+  var $profile = $('.profile-page')
+	$('.counts').on( 'click', '.filter', function() {
+	  var filterValue = $(this).attr('data-filter');
+	  $profile.isotope({ filter: filterValue });
+	  $('.filter').toggleClass("active");
+	});
 
   var target = document.location.hash.replace("#", "");
   if (target.length) {
@@ -55,15 +53,13 @@ $(".users.show").ready(function(){
 
 // Inbox
 $(".pages.inbox").ready(function(){
-  if ( $(window).width() > 768) { 
-	  var $inbox = $('.inbox-page')
-		$('.filters').on( 'click', 'label', function() {
-		  var filterValue = $(this).attr('data-filter');
-		  $inbox.isotope({ filter: filterValue });
-		  $('.active').removeClass("active");
-		  $(this).toggleClass("active");
-		});
-	}
+  var $inbox = $('.inbox-page')
+	$('.filters').on( 'click', 'label', function() {
+	  var filterValue = $(this).attr('data-filter');
+	  $inbox.isotope({ filter: filterValue });
+	  $('.active').removeClass("active");
+	  $(this).toggleClass("active");
+	});
 
 	$('.tip').on( 'click', 'h3, img', function() {
 	  $(this).parent().parent().removeClass('new').addClass('visited');
