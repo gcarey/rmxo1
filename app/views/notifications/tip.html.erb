@@ -56,7 +56,7 @@
 <% else %>
   <div style="padding:15px 25px 15px 25px;width:451px;height:100px;text-align:left;">
 <% end %>
-    <h3 style="text-overflow:ellipsis;width:100%;white-space:nowrap;overflow:hidden;margin:0 0 3px;color:#000cac"><a href="http://www.tipster.to/visit_link/<%= @tip.id %>?rec=<%= @recipient.id %>" target="_blank" style="font-size:22px;"><%= raw @tip.title %></a></h3>
+    <h3 style="text-overflow:ellipsis;width:100%;white-space:nowrap;overflow:hidden;margin:0 0 3px;color:#000cac"><a href="http://www.tipster.to/visit_link/<%= @tip.id %>?recipient=<%= @recipient.id %>" target="_blank" style="font-size:22px;"><%= raw @tip.title %></a></h3>
     <p style="font-size:16px;min-height:42px;max-height:66px;overflow:hidden;color:#111;margin:5px 0;"><%= raw @tip.description %></p>
   </div>
 </div>
