@@ -14,7 +14,7 @@
 			<div class="modal-body">
 				<% @user.friends.each do |f| %>
 					<%= link_to profile_path(f), class: "friend-thumb" do %>
-						<%= image_tag f.avatar.url(:thumb) %>
+						<%= image_tag f.avatar.url(:thumb), title: f.full_name %>
 					<% end %>
 				<% end %>
 
