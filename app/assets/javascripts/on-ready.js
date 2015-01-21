@@ -112,3 +112,19 @@ $(".popups.failure").ready(function(){
 		window.close()
   });
 });
+
+
+// Front
+$(".pages.front").ready(function(){
+	$('#head').css('max-height',$(window).height());
+	$('.content').css('top',$('#head').height()/2);
+
+	$( window ).resize(function() {
+		$('#head').css('max-height',$(window).height());
+		$('.content').css('top',$('#head').height()/2);
+	});
+
+	$.stellar({
+		horizontalScrolling: false,
+	});
+});

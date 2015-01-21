@@ -24,6 +24,7 @@
 //= require bootstrap/tab
 //= require bootstrap/collapse
 //= require bootstrap/tooltip
+//= require jquery.stellar.min
 //= require dropzone.min
 //= require jquery-readyselector
 //= require on-ready

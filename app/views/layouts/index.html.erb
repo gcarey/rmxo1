@@ -13,14 +13,12 @@
   <%= favicon_link_tag 'favicon.ico' %>
   <%= csrf_meta_tags %>
 </head>
-<body id="front">
+<body class="<%= controller_name %> <%= action_name %>">
 
-<div class="container-fluid">
 	<% flash.each do |name, msg| %>
 		<%= content_tag(:div, msg, class: "alert alert-info") %>
 	<% end %>
 	<%= yield %>
-</div>
 
 </body>
 </html>

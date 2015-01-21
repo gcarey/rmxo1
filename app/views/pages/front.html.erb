@@ -1,10 +1,34 @@
-<div id="boxes-container">
-	<img src="/assets/boxes-left.jpg" class="boxes">
-	<div class="head">
-		<img src="/assets/logotype.png" alt="Tipster">
-		<h2>Share cool stuff with friends.</h2>
-		<%= link_to "Sign Up Now", new_user_registration_path, class: "btn btn-primary" %>
+<div id="head" data-stellar-background-ratio="0.3">
+	<div class="content">
+		<%= image_tag "front-logo.png", class: "logo" %>
+		<h2>Share stuff with friends.</h2>
+		<%= link_to "Sign Up Now", new_user_registration_path, class: "btn btn-primary sign-up" %>
 		<p>Already a member? <%= link_to "Log In", new_user_session_path %></p>
 	</div>
-	<img src="/assets/boxes-right.jpg" class="boxes">
+</div>
+<div class="slide">
+	<h3>Instantly share any web page with your friends.</h3>
+	<p>Never copy and paste a link again!</p>
+	<div class="demo one">
+		<%= image_tag "front-demo1-img1.png", class: "demo-img" %>
+		<%= image_tag "front-demo1-aro.png", class: "aro" %>
+		<%= image_tag "front-demo1-img2.png", class: "demo-img" %>
+	</div>
+</div>
+<div class="divider one"  data-stellar-background-ratio="0.3"></div>
+<div class="slide">
+	<h3>See what your friends are sharing.</h3>
+	<p>(And who shared what first.)</p>
+	<div class="demo two">
+		<%= image_tag "front-demo2-img1.jpg", class: "demo-img" %>
+		<%= image_tag "front-demo2-img2.jpg", class: "demo-img" %>
+	</div>
+</div>
+<div class="divider two"  data-stellar-background-ratio="0.3"></div>
+<div class="slide">
+	<h3>You should be a part of this.</h3>
+	<%= link_to "Sign Up Now", new_user_registration_path, class: "btn btn-primary sign-up" %>
+</div>
+<div id="foot">
+	<p>&copy; Copyright 2015 Garrett Carey. All Rights reserved. Photography by <a href="http://cindy.io">Cindy Ho</a>.</p>
 </div>
