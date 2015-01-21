@@ -90,10 +90,10 @@ body {
   background-size: cover;
   height: 400px;
 	&.one {
-  	background: image-url("front-bg2.jpg") no-repeat center top fixed; 
+  	background: image-url("front-bg2.jpg") no-repeat center center fixed; 
 	}
 	&.two {
-  	background: image-url("front-bg3.jpg") no-repeat center top fixed; 
+  	background: image-url("front-bg3.jpg") no-repeat center center fixed; 
 	}
 }
 
