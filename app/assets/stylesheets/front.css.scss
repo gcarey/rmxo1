@@ -90,10 +90,10 @@ body {
   background-size: cover;
   height: 400px;
 	&.one {
-  	background: image-url("front-bg2.jpg") no-repeat center center fixed; 
+  	background: image-url("front-bg2.jpg") no-repeat top center; 
 	}
 	&.two {
-  	background: image-url("front-bg3.jpg") no-repeat center center fixed; 
+  	background: image-url("front-bg3.jpg") no-repeat top center; 
 	}
 }
 
@@ -194,7 +194,10 @@ body {
 		}
 	}
 
-	.divider { height: 300px; }
+	.divider { height: 300px; 
+		&.one {background: image-url("front-bg2m.jpg") no-repeat center center; }
+		&.two {background: image-url("front-bg3m.jpg") no-repeat center center; }
+	}
 
 	#userforms-container {width:100%;margin:-240px 0 0 0;left:0;position:absolute;top:50%;text-align:center;
 		.userform {max-width:80%;padding-left:0;padding-right:0;float:none;}
