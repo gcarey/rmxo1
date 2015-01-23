@@ -124,7 +124,9 @@ $(".pages.front").ready(function(){
 		$('.content').css('top',$('#head').height()/2);
 	});
 
+	if ( $(window).width() > 768) {     
 		$.stellar({
 			horizontalScrolling: false,
 		});
+	} 
 });
