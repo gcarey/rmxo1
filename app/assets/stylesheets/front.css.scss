@@ -199,7 +199,10 @@ body {
 	}
 
 	#userforms-container {width:100%;margin:-240px 0 0 0;left:0;position:absolute;top:50%;text-align:center;
-		.userform {max-width:80%;padding-left:0;padding-right:0;float:none;}
+		.userform {max-width:80%;padding-left:0;padding-right:0;float:none;
+			.google-signin {background: #ffffff url("/assets/gsi-m.png") no-repeat left top;;background-size: 100% auto;}
+			.google-signup {background: #ffffff url("/assets/gsu-m.png") no-repeat left top;;background-size: 100% auto;}
+		}
 	}
 	.boxes {display:none;}
 }
