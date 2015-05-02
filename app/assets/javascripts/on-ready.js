@@ -114,8 +114,8 @@ $(".popups.failure").ready(function(){
 });
 
 
-// Front
-$(".pages.front").ready(function(){
+// Index
+$(".pages.index").ready(function(){
 	$('#head').css('max-height',$(window).height());
 	$('.content').css('top',$('#head').height()/2);
 

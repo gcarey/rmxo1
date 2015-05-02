@@ -257,11 +257,11 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   Rails.application.config.to_prepare do
-    Devise::SessionsController.layout "index"
-    Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "index" }
-    Devise::ConfirmationsController.layout "index"
-    Devise::UnlocksController.layout "index"            
-    Devise::PasswordsController.layout "index"        
+    Devise::SessionsController.layout "front"
+    Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "front" }
+    Devise::ConfirmationsController.layout "front"
+    Devise::UnlocksController.layout "front"            
+    Devise::PasswordsController.layout "front"        
   end
 
   config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"],

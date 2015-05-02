@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   unauthenticated :user do
-    root "pages#front"
+    root "pages#index"
   end
 
   authenticated :user do
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :friendships
   resources :invites
 
+  get 'welcome', to: 'pages#tour'
   get 'users/:id', to: 'users#show', as: 'profile'
   get 'inbox', to: 'pages#inbox'
   get 'm_settings', to: 'pages#mobile_settings'

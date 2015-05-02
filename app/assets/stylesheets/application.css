@@ -14,5 +14,6 @@
  *= require dropzone
  *= require_tree .
  *= stub front
+ *= stub welcome
  *= stub popup
  */

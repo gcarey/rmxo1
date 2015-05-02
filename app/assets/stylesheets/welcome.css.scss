@@ -1,0 +1,18 @@
+$btn-primary-bg: #ff6600;
+$link-color: #000cac;
+$font-family-sans-serif: 'Montserrat', sans-serif;
+$body-bg: #fbfbfb;
+
+body {
+	text-align: center;
+	h1, h2, h3 {
+		margin: 0;
+	}
+	h1 {
+		margin: 0;
+		font-size: 72px;
+		letter-spacing: 0.1em;
+	}
+}
+
+@import 'bootstrap';
