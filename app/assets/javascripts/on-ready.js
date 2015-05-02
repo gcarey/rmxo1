@@ -130,3 +130,9 @@ $(".pages.index").ready(function(){
 		});
 	} 
 });
+
+// Welcome
+$(".pages.tour").ready(function(){
+  $('.slider').slick({
+  });
+});
